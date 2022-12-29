@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="dev.mvc.surveyitem.SurveyitemDAOInter"> 
+  <insert id="create" parameterType="dev.mvc.surveyitem.SurveyitemVO">
+    INSERT INTO surveyitem(surveyitemno, surveyno, item, cnt, rdate)
+    VALUES(surveyitem_seq.nextval, #{surveyno}, #{item}, #{cnt}, sysdate)
+  </insert>
+  
+  <!-- 특정 카테고리의 등록된 글목록 -->
+  <select id="list_by_surveyno" resultType="dev.mvc.surveyitem.SurveyitemVO" parameterType="int">
+    SELECT surveyitemno, surveyno, item, cnt, rdate
+    FROM surveyitem 
+    WHERE surveyno = #{surveyno}
+    ORDER BY surveyitemno DESC
+  </select>
+     
+</mapper>
