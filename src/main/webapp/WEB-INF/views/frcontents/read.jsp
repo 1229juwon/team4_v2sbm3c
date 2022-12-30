@@ -105,7 +105,7 @@
         <DIV>${fr_content }</DIV>
       </li>
 
-      <c:if test="${map.trim().length() > 0 }">
+      <c:if test="${fr_map.trim().length() > 0 }">
 	      <li class="li_none" style="clear: both; padding-top: 15px; padding-bottom: 15px;">
 				  <DIV style='width:640px; height: 380px; margin: 0px auto;'>
 				    ${fr_map }

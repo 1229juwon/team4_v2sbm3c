@@ -2,6 +2,7 @@ package dev.mvc.frcontents;
 
 import java.util.ArrayList;
 
+
 import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import dev.mvc.fcate.FCateProcInter;
 import dev.mvc.fcate.FCateVO;
 import dev.mvc.member.MemberProcInter;
@@ -516,5 +516,41 @@ public class FRContentsCont {
     
     return mav;
   }   
+  
+  // MAP 등록/수정/삭제 폼
+  // http://localhost:9093/frcontents/map.do?cateno=15&contentsno=6
+  @RequestMapping(value="/frcontents/map.do", method = RequestMethod.GET)
+  public ModelAndView map(int cateno, int frno) {
+    ModelAndView mav = new ModelAndView();
+
+    FCateVO fcateVO = this.fcateProc.read(cateno);
+    mav.addObject("fcateVO", fcateVO);
+    
+    FRContentsVO frcontentsVO = this.frcontentsProc.read(frno);
+    mav.addObject("frcontentsVO", frcontentsVO);
+    
+    mav.setViewName("/frcontents/map"); // /webapp/WEB-INF/views/contents/map.jsp
+    
+    return mav;
+  }
+  
+  // MAP 등록/수정/삭제 처리
+  @RequestMapping(value="/frcontents/map.do", method = RequestMethod.POST)
+  public ModelAndView map_update(int cateno, int frno, String fr_map) {
+    // System.out.println("-> contentsno: " + contentsno);
+    
+    ModelAndView mav = new ModelAndView();
+
+    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+    hashMap.put("frno", frno);
+    hashMap.put("fr_map", fr_map);
+    
+    this.frcontentsProc.map(hashMap);
+    
+    mav.setViewName("redirect:/frcontents/read.do?cateno=" + cateno + "&frno=" + frno); 
+    // /webapp/WEB-INF/views/frcontents/read.jsp
+    
+    return mav;
+  }
   
 }

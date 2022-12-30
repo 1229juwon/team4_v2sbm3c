@@ -111,6 +111,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE cateno=#{cateno}
   </select>
   
+    <!-- Map 등록, 수정, 삭제 -->
+  <update id="map" parameterType="HashMap">
+    UPDATE frcontents 
+    SET fr_map=#{fr_map}
+    WHERE frno=#{frno}
+  </update>   
+  
 </mapper>
 
 

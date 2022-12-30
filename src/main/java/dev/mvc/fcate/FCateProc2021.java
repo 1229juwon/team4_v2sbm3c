@@ -1,6 +1,7 @@
 package dev.mvc.fcate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -91,5 +92,6 @@ public class FCateProc2021 implements FCateProcInter {
     // TODO Auto-generated method stub
     return 0;
   }
+
 
 }

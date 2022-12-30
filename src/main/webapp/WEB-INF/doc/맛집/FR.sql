@@ -11,7 +11,7 @@ CREATE TABLE frcontents(
         fr_name                               VARCHAR2(60)         NOT NULL,
         fr_content                            VARCHAR2(3000)                  NOT NULL,
         fr_addres                             VARCHAR2(200)         DEFAULT 0         NOT NULL,
-        fr_map                                VARCHAR2(50)            NULL,
+        fr_map                                VARCHAR2(1000)            NULL,
         fr_word                               VARCHAR2(100)         NULL ,
         fr_rdate                              DATE               NOT NULL,
         fr_udate                              DATE                NULL,
@@ -200,6 +200,11 @@ SELECT COUNT(*) as cnt
 
 --- 삭제
 DELETE FROM frcontents
+WHERE frno=1;
+
+-- 지도
+UPDATE frcontents 
+SET fr_map='지도'
 WHERE frno=1;
     
     
