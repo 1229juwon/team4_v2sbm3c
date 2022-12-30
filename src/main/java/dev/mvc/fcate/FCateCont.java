@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.frcontents.FRContentsProcInter;
+
 //import dev.mvc.contents.ContentsProcInter;
 
 @Controller
@@ -21,8 +23,8 @@ public class FCateCont {
   private FCateProcInter fcateProc; // "dev.mvc.fcate.CateProc" 이름으로 지정된 클래스의 객체가 자동 생성되어 할당
   
   @Autowired
-//  @Qualifier("dev.mvc.contents.ContentsProc") 
-//  private ContentsProcInter contentsProc;  // "dev.mvc.contents.ContentsProc" 이름으로 지정된 클래스의 객체가 자동 생성되어 할당
+  @Qualifier("dev.mvc.frcontents.FRContentsProc") 
+  private FRContentsProcInter frcontentsProc;  // "dev.mvc.contents.ContentsProc" 이름으로 지정된 클래스의 객체가 자동 생성되어 할당
   
   public FCateCont() {
     System.out.println("-> FCateCont created.");
@@ -161,8 +163,8 @@ public class FCateCont {
     json.put("seqno", fcateVO.getSeqno());
     json.put("visible", fcateVO.getVisible());
     
-//    int count_by_cateno = this.contentsProc.count_by_cateno(cateno); // cateno가 사용되는 레코드 갯수 파악
-//    json.put("count_by_cateno", count_by_cateno);
+    int count_by_cateno = this.frcontentsProc.count_by_cateno(cateno); // cateno가 사용되는 레코드 갯수 파악
+    json.put("count_by_cateno", count_by_cateno);
     
     return json.toString();
   }
