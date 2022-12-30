@@ -14,37 +14,37 @@ CREATE TABLE fcate(
         visible                            CHAR(1)      DEFAULT 'N'     NOT NULL -- Y, N
 );
 
-COMMENT ON TABLE fcate is '1';
-COMMENT ON COLUMN fcate.cateno is '1';
-COMMENT ON COLUMN fcate.name is '1';
-COMMENT ON COLUMN fcate.cnt is '1';
-COMMENT ON COLUMN fcate.rdate is '1';
-COMMENT ON COLUMN fcate.udate is '1';
-COMMENT ON COLUMN fcate.seqno is '1';
-COMMENT ON COLUMN fcate.visible is '1';
+COMMENT ON TABLE fcate is 'ì¹´í…Œê³ ë¦¬';
+COMMENT ON COLUMN fcate.cateno is 'ì¹´í…Œê³ ë¦¬ë²ˆí˜¸';
+COMMENT ON COLUMN fcate.name is 'ì¹´í…Œê³ ë¦¬ ì´ë¦„';
+COMMENT ON COLUMN fcate.cnt is 'ê´€ë ¨ ìë£Œìˆ˜';
+COMMENT ON COLUMN fcate.rdate is 'ë“±ë¡ì¼';
+COMMENT ON COLUMN fcate.udate is 'ìˆ˜ì •ì¼';
+COMMENT ON COLUMN fcate.seqno is 'ì¶œë ¥ ìˆœì„œ';
+COMMENT ON COLUMN fcate.visible is 'ì¶œë ¥ ëª¨ë“œ';
 
 -- SEQUENCE
 DROP SEQUENCE fcate_seq;
 
 CREATE SEQUENCE fcate_seq
-  START WITH 1              -- ?‹œ?‘ ë²ˆí˜¸
-  INCREMENT BY 1          -- ì¦ê?ê°?
-  MAXVALUE 9999999999 -- ìµœë?ê°?: 999999999 --> NUMBER(10) ???‘
-  CACHE 2                       -- 2ë²ˆì? ë©”ëª¨ë¦¬ì—?„œë§? ê³„ì‚°
-  NOCYCLE;                     -- ?‹¤?‹œ 1ë¶??„° ?ƒ?„±?˜?Š” ê²ƒì„ ë°©ì?
+  START WITH 1              -- ì‹œì‘ ë²ˆí˜¸
+  INCREMENT BY 1          -- ì¦ê°€ê°’
+  MAXVALUE 9999999999 -- ìµœëŒ€ê°’: 999999999 --> NUMBER(10) ëŒ€ì‘
+  CACHE 2                       -- 2ë²ˆì€ ë©”ëª¨ë¦¬ì—ì„œë§Œ ê³„ì‚°
+  NOCYCLE;                     -- ë‹¤ì‹œ 1ë¶€í„° ìƒì„±ë˜ëŠ” ê²ƒì„ ë°©ì§€
   
 -- CREATE
 INSERT INTO fcate(cateno, name, cnt, rdate, seqno, visible)
-VALUES (fcate_seq.nextval, '³ª', 0, sysdate, 1, 'Y');
+VALUES (fcate_seq.nextval, 'í•œì‹', 0, sysdate, 1, 'Y');
 
 INSERT INTO fcate(cateno, name, cnt, rdate, seqno, visible)
-VALUES (fcate_seq.nextval, '°¡', 0, sysdate, 2, 'Y');
+VALUES (fcate_seq.nextval, 'ì–‘ì‹', 0, sysdate, 2, 'Y');
 
 
 commit;
 
 -- SELECT ëª©ë¡
--- PK ì»¬ëŸ¼?? ìµœì´ˆ ?“±ë¡ì‹œ ê°’ì´ sequence?—?˜?•´ ê³ ì •?¨.
+-- PK ì»¬ëŸ¼ì€ ìµœì´ˆ ë“±ë¡ì‹œ ê°’ì´ sequenceì—ì˜í•´ ê³ ì •ë¨.
 SELECT cateno, name, cnt, rdate, udate, seqno, visible
 FROM fcate
 ORDER BY cateno ASC;
@@ -55,7 +55,7 @@ FROM fcate
 WHERE cateno = 1;
 
 -- UPDATE
--- ìµœì´ˆ ?“±ë¡? ?‚ ì§? ?œ ì§?, ?ˆ˜? • ?‚ ì§? ì¶”ê?
+-- ìµœì´ˆ ë“±ë¡ ë‚ ì§œ ìœ ì§€, ìˆ˜ì • ë‚ ì§œ ì¶”ê°€
 UPDATE cate
 SET name='ê³ ì „', seqno=1, udate=sysdate
 WHERE cateno=1;
@@ -68,7 +68,7 @@ WHERE cateno=5;
 
 commit;
 
--- ëª¨ë“  ? ˆì½”ë“œ ?‚­? œ
+-- ëª¨ë“  ë ˆì½”ë“œ ì‚­ì œ
 DELETE FROM cate;
 commit;
 
@@ -76,26 +76,26 @@ commit;
 SELECT COUNT(*) as cnt
 FROM cate;
 
--- seqno ì¶œë ¥ ?ˆœ?„œ ê¸°ì? ëª©ë¡
+-- seqno ì¶œë ¥ ìˆœì„œ ê¸°ì¤€ ëª©ë¡
 SELECT cateno, name, cnt, rdate, udate, seqno
 FROM fcate
 ORDER BY seqno ASC;
 
--- ì¶œë ¥ ?ˆœ?„œ ?˜¬ë¦?(?ƒ?–¥, 10 ?“± -> 1 ?“±), seqno: 10 -> 1
+-- ì¶œë ¥ ìˆœì„œ ì˜¬ë¦¼(ìƒí–¥, 10 ë“± -> 1 ë“±), seqno: 10 -> 1
 UPDATE cate
 SET seqno = seqno - 1
 WHERE cateno = 1;
 
 commit;
 
--- ì¶œë ¥ ?ˆœ?„œ ?‚´ë¦?(?•˜?–¥, 1 ?“± -> 10 ?“±), seqno: 1 -> 10
+-- ì¶œë ¥ ìˆœì„œ ë‚´ë¦¼(í•˜í–¥, 1 ë“± -> 10 ë“±), seqno: 1 -> 10
 UPDATE cate
 SET seqno = seqno + 1
 WHERE cateno = 1;
 
 commit;
 
--- ì¶œë ¥ ëª¨ë“œ?˜ ë³?ê²?
+-- ì¶œë ¥ ëª¨ë“œì˜ ë³€ê²½
 UPDATE cate
 SET visible = 'Y'
 WHERE cateno=1;
@@ -110,18 +110,18 @@ SELECT * FROM cate;
 
 commit;
 
--- seqno ì¶œë ¥ ?ˆœ?„œ ê¸°ì? ëª©ë¡
+-- seqno ì¶œë ¥ ìˆœì„œ ê¸°ì¤€ ëª©ë¡
 SELECT cateno, name, cnt, rdate, udate, seqno, visible
 FROM cate
 ORDER BY seqno ASC;
 
--- visible?´ 'Y'?¸ ì¹´í…Œê³ ë¦¬ ì¶œë ¥?•˜ê¸?
+-- visibleì´ 'Y'ì¸ ì¹´í…Œê³ ë¦¬ ì¶œë ¥í•˜ê¸°
 SELECT cateno, name, cnt, rdate, udate, seqno, visible
 FROM cate
 WHERE visible='Y'
 ORDER BY seqno ASC;
 
--- ê¸??ˆ˜?˜ ì¦ê?
+-- ê¸€ìˆ˜ì˜ ì¦ê°€
 UPDATE cate
 SET cnt = cnt + 1
 WHERE cateno=1;
@@ -130,7 +130,7 @@ commit;
 
 SELECT * FROM cate;
 
--- ê¸??ˆ˜?˜ ê°ì†Œ
+-- ê¸€ìˆ˜ì˜ ê°ì†Œ
 UPDATE cate
 SET cnt = cnt - 1
 WHERE cateno=1;
