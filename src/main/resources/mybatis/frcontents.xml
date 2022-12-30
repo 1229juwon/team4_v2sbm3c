@@ -8,12 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dev.mvc.frcontents.FRContentsDAOInter">
   <!-- 커뮤니티(공지사항, 게시판, 자료실, 갤러리,  Q/A...)글 등록  -->
 <!--   <insert id="create" parameterType="dev.mvc.contents.ContentsVO">
-		INSERT INTO contents(contentsno, adminno, cateno, title, content, passwd, word,
-		                              file1, file1saved, thumb1, size1, rdate)
-		VALUES(contents_seq.nextval, #{adminno}, #{cateno}, #{title}, #{content}, #{passwd}, #{word},
-		           #{file1}, #{file1saved}, #{thumb1}, #{size1}, sysdate)
+    INSERT INTO contents(contentsno, adminno, cateno, title, content, passwd, word,
+                                  file1, file1saved, thumb1, size1, rdate)
+    VALUES(contents_seq.nextval, #{adminno}, #{cateno}, #{title}, #{content}, #{passwd}, #{word},
+               #{file1}, #{file1saved}, #{thumb1}, #{size1}, sysdate)
   </insert> -->
-	
+  
   <!-- 쇼핑몰의 상품 정보 등록  -->
   <insert id="create" parameterType="dev.mvc.frcontents.FRContentsVO">
   INSERT INTO frcontents(frno, cateno, memberno,
@@ -33,34 +33,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE cateno=#{cateno}
       </when>
       <otherwise> <!-- 검색하는 경우의 레코드 갯수 -->
-        WHERE cateno=#{cateno} AND (UPPER(fr_name) LIKE '%' || #{fr_name} || '%' 
-                                                  OR UPPER(fr_content) LIKE '%' || #{fr_content} || '%' 
-                                                  OR UPPER(fr_word) LIKE '%' || #{fr_word} || '%')
+        WHERE cateno=#{cateno} AND (UPPER(fr_name) LIKE '%' || #{fr_name, jdbcType=VARCHAR} || '%' 
+                                                  OR UPPER(fr_content) LIKE '%' || #{fr_content, jdbcType=VARCHAR} || '%' 
+                                                  OR UPPER(fr_word) LIKE '%' || #{fr_word, jdbcType=VARCHAR} || '%')
       </otherwise>
     </choose>
   </select>
   
   <select id="list_by_cateno_search_paging" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="HashMap">
-	SELECT frno, cateno, memberno,
-	       fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-	       price, file1, file1saved, thumb1, size1
-	FROM(
-	     SELECT frno, cateno, memberno,
-	       fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-	       price, file1, file1saved, thumb1, size1, rownum as r
-	     FROM (
-	          SELECT frno, cateno, memberno,
-	                 fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-	                 price, file1, file1saved, thumb1, size1
-	          FROM frcontents
+  SELECT frno, cateno, memberno,
+         fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+         price, file1, file1saved, thumb1, size1
+  FROM(
+       SELECT frno, cateno, memberno,
+         fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+         price, file1, file1saved, thumb1, size1, rownum as r
+       FROM (
+            SELECT frno, cateno, memberno,
+                   fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+                   price, file1, file1saved, thumb1, size1
+            FROM frcontents
                         <choose>
-                          <when test="word == null or word == ''"> <!-- 검색하지 않는 경우 -->
+                          <when test="fr_word == null or fr_word == ''"> <!-- 검색하지 않는 경우 -->
                              WHERE cateno=#{cateno}
                           </when>
                           <otherwise>
-                            WHERE cateno=#{cateno} AND (UPPER(fr_name) LIKE '%' || #{fr_word} || '%' 
-                                                              OR UPPER(fr_content) LIKE '%' || #{fr_word} || '%' 
-                                                              OR UPPER(fr_word) LIKE '%' || #{fr_word} || '%')
+                            WHERE cateno=#{cateno} AND (UPPER (fr_name) LIKE '%' || #{fr_word} || '%' 
+                                                            OR UPPER(fr_content) LIKE '%' || #{fr_word} || '%' 
+                                                            OR UPPER(fr_word) LIKE '%' || #{fr_word} || '%')
                           </otherwise>
                         </choose>
                         ORDER BY frno DESC
@@ -79,16 +79,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
        price, file1, file1saved, thumb1, size1
-		FROM frcontents
-		WHERE frno = #{frno}
+    FROM frcontents
+    WHERE frno = #{frno}
   </select>
   
     <!-- 글 수정 -->
   <update id="update_text" parameterType="dev.mvc.frcontents.FRContentsVO">
-		UPDATE frcontents
-		SET fr_name=#{fr_name}, fr_content=#{fr_content}, fr_addres=#{fr_addres}, 
-		      fr_word=#{fr_word}, fr_udate=sysdate, price=#{price}
-		WHERE frno=#{frno}
+    UPDATE frcontents
+    SET fr_name=#{fr_name}, fr_content=#{fr_content}, fr_addres=#{fr_addres}, 
+          fr_word=#{fr_word}, fr_udate=sysdate, price=#{price}
+    WHERE frno=#{frno}
   </update>
   
     <!-- 파일 수정 -->
@@ -101,7 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <!-- 삭제 -->
    <delete id="delete" parameterType="int">
     DELETE FROM frcontents
-		WHERE frno=#{frno}
+    WHERE frno=#{frno}
   </delete>
   
    <!-- 특정 카테고리에 속한 레코드 갯수 산출 -->

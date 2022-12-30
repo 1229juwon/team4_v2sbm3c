@@ -150,7 +150,7 @@ SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
        price, file1, file1saved, thumb1, size1
 FROM frcontents
-WHERE fr_name Like '%플레이%' or fr_word Like'%고기%'
+WHERE fr_name Like '%가게%' or fr_word Like'%고기%'
 ORDER BY cateno DESC;
 
 -- 검색 + 페이징 목록(구현 권장)
@@ -168,7 +168,9 @@ FROM(
                  fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
                  price, file1, file1saved, thumb1, size1
           FROM frcontents
-          WHERE fr_name Like '%플레이%' or fr_word Like'%고기%'
+          WHERE cateno=1 AND (UPPER (fr_name) LIKE '%' || '가게' || '%' 
+                                                OR UPPER(fr_content) LIKE '%' || '가게' || '%' 
+                                              OR UPPER(fr_word) LIKE '%' || '가게' || '%')
           ORDER BY frno DESC
      )  
 )
