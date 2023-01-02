@@ -9,6 +9,7 @@ package dev.mvc.admin;
     grade      NUMBER(2)     NOT NULL, -- 등급(1~10: 관리자, 11~20: 회원, 비회원: 30~39, 정지 회원: 40~49, 탈퇴 회원: 99)    
  
  */
+
 public class AdminVO {
   /** 관리자 번호 */
   private int adminno;

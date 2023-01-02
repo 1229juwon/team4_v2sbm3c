@@ -15,31 +15,31 @@ CREATE TABLE MEMBER (
   PRIMARY KEY (memberno)           
 );
 
-COMMENT ON TABLE MEMBER is 'È¸¿ø';
-COMMENT ON COLUMN MEMBER.MEMBERNO is 'È¸¿ø¹øÈ£';
-COMMENT ON COLUMN MEMBER.ID is '¾ÆÀÌµğ';
-COMMENT ON COLUMN MEMBER.PASSWORD is 'ºñ¹Ğ¹øÈ£';
-COMMENT ON COLUMN MEMBER.MNAME is '¼º¸í';
-COMMENT ON COLUMN MEMBER.PHONENUM is 'ÀüÈ­¹øÈ£';
-COMMENT ON COLUMN MEMBER.HOMENUM is '¿ìÆí¹øÈ£';
-COMMENT ON COLUMN MEMBER.ADDRESS is 'ÁÖ¼Ò';
-COMMENT ON COLUMN MEMBER.NICKNAME is '´Ğ³×ÀÓ';
-COMMENT ON COLUMN MEMBER.MDATE is '°¡ÀÔÀÏ';
-COMMENT ON COLUMN MEMBER.GRADE is 'µî±Ş';
+COMMENT ON TABLE MEMBER is 'íšŒì›';
+COMMENT ON COLUMN MEMBER.MEMBERNO is 'íšŒì›ë²ˆí˜¸';
+COMMENT ON COLUMN MEMBER.ID is 'ì•„ì´ë””';
+COMMENT ON COLUMN MEMBER.PASSWORD is 'ë¹„ë°€ë²ˆí˜¸';
+COMMENT ON COLUMN MEMBER.MNAME is 'ì„±ëª…';
+COMMENT ON COLUMN MEMBER.PHONENUM is 'ì „í™”ë²ˆí˜¸';
+COMMENT ON COLUMN MEMBER.HOMENUM is 'ìš°í¸ë²ˆí˜¸';
+COMMENT ON COLUMN MEMBER.ADDRESS is 'ì£¼ì†Œ';
+COMMENT ON COLUMN MEMBER.NICKNAME is 'ë‹‰ë„¤ì„';
+COMMENT ON COLUMN MEMBER.MDATE is 'ê°€ì…ì¼';
+COMMENT ON COLUMN MEMBER.GRADE is 'ë“±ê¸‰';
 
 DROP SEQUENCE MEMBER_seq;
 
 CREATE SEQUENCE MEMBER_seq
-  START WITH 1              -- ½ÃÀÛ ¹øÈ£
-  INCREMENT BY 1          -- Áõ°¡°ª
-  MAXVALUE 9999999999 -- ÃÖ´ë°ª: 9999999 --> NUMBER(7) ´ëÀÀ
-  CACHE 2                       -- 2¹øÀº ¸Ş¸ğ¸®¿¡¼­¸¸ °è»ê
-  NOCYCLE;                     -- ´Ù½Ã 1ºÎÅÍ »ı¼ºµÇ´Â °ÍÀ» ¹æÁö
+  START WITH 1              -- ì‹œì‘ ë²ˆí˜¸
+  INCREMENT BY 1          -- ì¦ê°€ê°’
+  MAXVALUE 9999999999 -- ìµœëŒ€ê°’: 9999999 --> NUMBER(7) ëŒ€ì‘
+  CACHE 2                       -- 2ë²ˆì€ ë©”ëª¨ë¦¬ì—ì„œë§Œ ê³„ì‚°
+  NOCYCLE;                     -- ë‹¤ì‹œ 1ë¶€í„° ìƒì„±ë˜ëŠ” ê²ƒì„ ë°©ì§€
  
  
-1. µî·Ï
+1. ë“±ë¡
  
-1) id Áßº¹ È®ÀÎ(null ÀÏ½Ã count ¾ÈµÊ)
+1) id ì¤‘ë³µ í™•ì¸(null ì¼ì‹œ count ì•ˆë¨)
 SELECT COUNT(id)
 FROM MEMBER
 WHERE id='user1';
@@ -48,23 +48,23 @@ SELECT COUNT(id) as cnt
 FROM MEMBER
 WHERE id='user1';
 
--- È¸¿ø °èÁ¤
+-- íšŒì› ê³„ì •
 INSERT INTO member(memberno, id, password, mname, phonenum, homenum,address, nickname, mdate, grade)
 VALUES (member_seq.nextval, 'user1', '1234', 'juwon', '000-0000-0000', '00-0000-0000',
-             '¼­¿ï½Ã', 'ÁÖ¿ø', sysdate, 1);
+             'ì„œìš¸ì‹œ', 'ì£¼ì›', sysdate, 1);
 
 COMMIT;
 
  
-2. ¸ñ·Ï
-- °Ë»öÀ» ÇÏÁö ¾Ê´Â °æ¿ì, ÀüÃ¼ ¸ñ·Ï Ãâ·Â
+2. ëª©ë¡
+- ê²€ìƒ‰ì„ í•˜ì§€ ì•ŠëŠ” ê²½ìš°, ì „ì²´ ëª©ë¡ ì¶œë ¥
  
 SELECT memberno, id, password, mname, phonenum, homenum, address, nickname, mdate, grade
 FROM member
 ORDER BY grade ASC, id ASC;
      
      
-3. Á¶È¸
+3. ì¡°íšŒ
  
 SELECT memberno, id, password, mname, phonenum, homenum, address, nickname, mdate, grade
 FROM member
@@ -75,7 +75,7 @@ FROM member
 WHERE id = 'user1';
  
     
-4. ¼öÁ¤
+4. ìˆ˜ì •
 UPDATE member 
 
 SET memberno = 2, id = '', password='', mname='', phonenum = 000-0000-0000, homenum= 00-0000-0000, address='', nickname='', mdate=0000-00-00, grade=0
@@ -87,11 +87,11 @@ WHERE memberno=2;
 
 commit;
  
-5. »èÁ¦
-1) ¸ğµÎ »èÁ¦
+5. ì‚­ì œ
+1) ëª¨ë‘ ì‚­ì œ
 DELETE FROM member;
  
-2) Æ¯Á¤ È¸¿ø »èÁ¦
+2) íŠ¹ì • íšŒì› ì‚­ì œ
 DELETE FROM MEMBER
 WHERE memberno=1;
 commit;

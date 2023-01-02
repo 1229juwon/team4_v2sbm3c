@@ -42,7 +42,7 @@
       <input type='hidden' name='cateno' value='${param.cateno }'>
       
       <c:choose>
-        <c:when test="${param.word != '' }"> <%-- 검색하는 경우 --%>
+        <c:when test="${param.fr_word != '' }"> <%-- 검색하는 경우 --%>
           <input type='text' name='fr_word' id='fr_word' value='${param.fr_word }' style='width: 20%;'>
         </c:when>
         <c:otherwise> <%-- 검색하지 않는 경우 --%>
@@ -52,7 +52,7 @@
       <button type='submit'>검색</button>
       <c:if test="${param.fr_word.length() > 0 }">
         <button type='button' 
-                     onclick="location.href='./list_by_cateno_search_paging.do?cateno=${fcateVO.cateno}&word='">검색 취소</button>  
+                     onclick="location.href='./list_by_cateno_search_paging.do?cateno=${fcateVO.cateno}&fr_word='">검색 취소</button>  
       </c:if>    
     </form>
   </DIV>
@@ -94,18 +94,18 @@
             <c:choose>
               <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}"> <%-- 이미지인지 검사 --%>
                 <%-- /static/contents/storage/ --%>
-                <a href="./read.do?frno=${frno}&cateno=${cateno}&word=${param.word}&now_page=${param.now_page}"><IMG src="/frcontents/storage/${thumb1 }" style="width: 120px; height: 80px;"></a> 
+                <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><IMG src="/frcontents/storage/${thumb1 }" style="width: 120px; height: 80px;"></a> 
               </c:when>
               <c:otherwise> <!-- 파일이 없거나 이미지가 아닌 경우 출력 -->
-		
-							  <c:choose>
-							    <c:when test="${size1 > 0 }"> <!-- 파일명 출력 -->
-							      <a href="./read.do?frno=${frno}&cateno=${cateno}&word=${param.word}&now_page=${param.now_page}">${file1 }</a>
-							    </c:when>
-							    <c:when test="${size1 == 0 }"> <!-- 기본 이미지 출력 -->
-    							  <a href="./read.do?frno=${frno}&cateno=${cateno}&word=${param.word}&now_page=${param.now_page}"><IMG src="/frcontents/images/none1.png" style="width: 120px; height: 80px;"></a>
-							    </c:when>
-							  </c:choose>
+    
+                <c:choose>
+                  <c:when test="${size1 > 0 }"> <!-- 파일명 출력 -->
+                    <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}">${file1 }</a>
+                  </c:when>
+                  <c:when test="${size1 == 0 }"> <!-- 기본 이미지 출력 -->
+                    <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><IMG src="/frcontents/images/none1.png" style="width: 120px; height: 80px;"></a>
+                  </c:when>
+                </c:choose>
                 
               </c:otherwise>
             </c:choose>
