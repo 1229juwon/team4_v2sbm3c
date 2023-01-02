@@ -18,37 +18,14 @@
 
 <DIV class='title_line'>알림</DIV>
 
- <c:set var="code" value="${code }" />
-<c:set var="cnt" value="${cnt }" />
+ <c:set var="code" value="${param.code }" />
+<c:set var="cnt" value="${param.cnt }" />
 <c:set var="surveyno" value="${param.surveyno }" />
 
 <DIV class='message'>
   <fieldset class='fieldset_basic'>
     <UL>
       <c:choose>
-        <c:when test="${code == 'passwd_fail'}">
-          <LI class='li_none'>
-            <span class="span_fail">패스워드가 일치하지 않습니다.</span>
-          </LI> 
-        </c:when>
-        
-        <c:when test="${code == 'product_success'}"> <%-- Java if --%>
-          <LI class='li_none'>
-            <span class="span_success">상품 정보를 등록했습니다.</span>
-          </LI>                   
-          <LI class='li_none'>                                                   
-            <button type='button' 
-                         onclick="location.href='./product_update.do?surveyno=${surveyno}&surveyitemno=${surveyitemno }'"
-                         class="btn btn-primary">관련 상품 정보 재등록</button>
-          </LI>
-        </c:when>
-        
-        <c:when test="${code == 'product_fail'}"> <%-- Java if --%>
-          <LI class='li_none'>
-            <span class="span_fail">상품 정보 등록에 실패했습니다.</span>
-          </LI>                                                                      
-        </c:when>
-
         <c:when test="${code == 'create_success'}"> <%-- Java if --%>
           <LI class='li_none'>
             <span class="span_success">새로운 항목을 등록했습니다.</span>
@@ -97,7 +74,7 @@
         </c:choose>
         
         <button type='button' onclick="location.href='./create.do?surveyno=${surveyno}'" class="btn btn-primary">새로운 컨텐츠 등록</button>
-        <button type='button' onclick="location.href='./list_by_surveyno_search_paging.do?surveyno=${surveyno}'" class="btn btn-primary">목록</button>
+        <button type='button' onclick="location.href='./list_by_surveyno.do?surveyno=${surveyno}'" class="btn btn-primary">목록</button>
       </LI>
     </UL>
   </fieldset>

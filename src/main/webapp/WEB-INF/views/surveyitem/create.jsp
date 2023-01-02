@@ -25,13 +25,13 @@
     <span class='menu_divide' >│</span>
     <A href="javascript:location.reload();">새로고침</A>
     <span class='menu_divide' >│</span>
-    <A href="./list_by_surveyno_search_paging.do?surveyno=${surveyVO.surveyno }">기본 목록형</A>    
+    <A href="./list_by_surveyno.do?surveyno=${surveyVO.surveyno }">기본 목록형</A>    
     <span class='menu_divide' >│</span>
     <A href="./list_by_surveyno_grid.do?surveyno=${surveyVO.surveyno }">갤러리형</A>
   </ASIDE> 
   
   <DIV style="text-align: right; clear: both;">  
-    <form name='frm' id='frm' method='get' action='./list_by_surveyno_search_paging.do'>
+    <form name='frm' id='frm' method='get' action='./list_by_surveyno.do'>
       <input type='hidden' name='surveyno' value='${surveyVO.surveyno }'>  <%-- 게시판의 구분 --%>
       
       <c:choose>
@@ -68,7 +68,7 @@
       
     <div class="content_body_bottom">
       <button type="submit" class="btn btn-primary">등록</button>
-      <button type="button" onclick="location.href='./list_by_surveyno_search_paging.do?surveyno=${param.surveyno}'" class="btn btn-primary">목록</button>
+      <button type="button" onclick="location.href='./list_by_surveyno.do?surveyno=${param.surveyno}'" class="btn btn-primary">목록</button>
     </div>
   
   </FORM>
