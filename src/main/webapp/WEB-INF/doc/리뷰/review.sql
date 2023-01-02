@@ -1,3 +1,7 @@
+/**********************************/
+/* Table Name: ë¦¬ë·° */
+/**********************************/
+
 DROP TABLE review CASCADE CONSTRAINTS;
 DROP TABLE review;
 
@@ -5,66 +9,53 @@ CREATE TABLE review(
         reviewno                            NUMBER(10)         NOT NULL         PRIMARY KEY,
         frno                              NUMBER(10)     NOT NULL , -- FK
         memberno                                NUMBER(10)         NOT NULL , -- FK
-        RATING                                 NUMBER(2)         NOT NULL,
         review_content                         VARCHAR2(500)                  NOT NULL,
   FOREIGN KEY (frno) REFERENCES frcontents (frno),
   FOREIGN KEY (memberno) REFERENCES member (memberno)
 );
 
-COMMENT ON TABLE review is '¸®ºä';
-COMMENT ON COLUMN review.reviewno is '¸®ºä ¹øÈ£';
-COMMENT ON COLUMN review.frno is '¸ÀÁı ¹øÈ£';
-COMMENT ON COLUMN review.memberno is 'È¸¿ø ¹øÈ£';
-COMMENT ON COLUMN review.RATING is 'ÆòÁ¡';
-COMMENT ON COLUMN review.review_content is '¸®ºä ³»¿ë';
+COMMENT ON TABLE review is 'ë¦¬ë·°';
+COMMENT ON COLUMN review.reviewno is 'ë¦¬ë·° ë²ˆí˜¸';
+COMMENT ON COLUMN review.frno is 'ë§›ì§‘ ë²ˆí˜¸';
+COMMENT ON COLUMN review.memberno is 'íšŒì› ë²ˆí˜¸';
+COMMENT ON COLUMN review.review_content is 'ë¦¬ë·° ë‚´ìš©';
 
 
 DROP SEQUENCE review_seq;
 
 CREATE SEQUENCE review_seq
-  START WITH 1                -- ½ÃÀÛ ¹øÈ£
-  INCREMENT BY 1            -- Áõ°¡°ª
-  MAXVALUE 9999999999  -- ÃÖ´ë°ª: 9999999999 --> NUMBER(10) ´ëÀÀ
-  CACHE 2                        -- 2¹øÀº ¸Ş¸ğ¸®¿¡¼­¸¸ °è»ê
-  NOCYCLE;                      -- ´Ù½Ã 1ºÎÅÍ »ı¼ºµÇ´Â °ÍÀ» ¹æÁö
+  START WITH 1                -- ì‹œì‘ ë²ˆí˜¸
+  INCREMENT BY 1            -- ì¦ê°€ê°’
+  MAXVALUE 9999999999  -- ìµœëŒ€ê°’: 9999999999 --> NUMBER(10) ëŒ€ì‘
+  CACHE 2                        -- 2ë²ˆì€ ë©”ëª¨ë¦¬ì—ì„œë§Œ ê³„ì‚°
+  NOCYCLE;                      -- ë‹¤ì‹œ 1ë¶€í„° ìƒì„±ë˜ëŠ” ê²ƒì„ ë°©ì§€
 
--- µî·Ï È­¸é À¯Çü 1: Ä¿¹Â´ÏÆ¼(°øÁö»çÇ×, °Ô½ÃÆÇ, ÀÚ·á½Ç, °¶·¯¸®,  Q/A...)±Û µî·Ï
-INSERT INTO review(reviewno, frno, memberno, RATING, review_content)
-VALUES(review_seq.nextval, 5, 1, 5, '¸ÀÀÖ¾î¿ä');
+-- ë“±ë¡ í™”ë©´ ìœ í˜• 1: ì»¤ë®¤ë‹ˆí‹°(ê³µì§€ì‚¬í•­, ê²Œì‹œíŒ, ìë£Œì‹¤, ê°¤ëŸ¬ë¦¬,  Q/A...)ê¸€ ë“±ë¡
+INSERT INTO review(reviewno, frno, memberno, review_content)
+VALUES(review_seq.nextval, 2, 1,  'ë§›ìˆì–´ìš”');
 
-INSERT INTO review(reviewno, frno, memberno, RATING, review_content)
-VALUES(review_seq.nextval, 5, 1, 1, 'º°·Î¿¡¿ä');
+INSERT INTO review(reviewno, frno, memberno, review_content)
+VALUES(review_seq.nextval, 1, 1,  'ë³„ë¡œì—ìš”');
 
--- ¸ÀÁı ¸®ºä Á¶È¸
-SELECT reviewno, frno, memberno, RATING, review_content
+-- ë§›ì§‘ ë¦¬ë·° ì¡°íšŒ
+SELECT reviewno, frno, memberno,  review_content
 FROM review
-WHERE frno=5
+WHERE frno=1
 
--- ¸ÀÁı ¸®ºä Á¶È¸(ÆòÁ¡ ³·Àº¼ø)
-SELECT reviewno, frno, memberno, RATING, review_content
-FROM review
-WHERE frno=5
-ORDER BY RATING ASC;
-
--- ¸ÀÁı ¸®ºä Á¶È¸(ÆòÁ¡ ³ôÀº¼ø)
-SELECT reviewno, frno, memberno, RATING, review_content
-FROM review
-WHERE frno=5
-ORDER BY RATING DESC;
-
--- ¸ğµç ·¹ÄÚµå »èÁ¦
+-- ëª¨ë“  ë ˆì½”ë“œ ì‚­ì œ
 DELETE FROM review;
 commit;
 
--- ¸ÀÁı ¸®ºä »èÁ¦
+-- ë§›ì§‘ ë¦¬ë·° ì‚­ì œ
 DELETE FROM review
-WHERE frno = 5;
+WHERE frno = 1;
 commit;
 
--- ¸®ºä »èÁ¦(ÇÏ³ª¸¸)
+-- ë¦¬ë·° ì‚­ì œ(í•˜ë‚˜ë§Œ)
 DELETE FROM review
-WHERE reviewno = 3;
+WHERE reviewno = 1;
 commit;
+
 
 
 

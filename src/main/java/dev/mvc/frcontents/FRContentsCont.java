@@ -2,6 +2,7 @@ package dev.mvc.frcontents;
 
 import java.util.ArrayList;
 
+
 import java.util.HashMap;
 
 import javax.servlet.http.Cookie;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import dev.mvc.fcate.FCateProcInter;
 import dev.mvc.fcate.FCateVO;
 import dev.mvc.member.MemberProcInter;
@@ -170,7 +170,7 @@ public class FRContentsCont {
   
   /**
    * 목록 + 검색 + 페이징 지원 + Cookie
-   * http://localhost:9090/contents/list_by_cateno_search_paging.do?cateno=1&word=스위스&now_page=1
+   * http://localhost:9093/frcontents/list_by_cateno_search_paging.do?cateno=1&word=스위스&now_page=1
    * 
    * @param cateno
    * @param word
@@ -219,48 +219,12 @@ public class FRContentsCont {
 //    // mav.addObject("now_page", now_page);
 //    
 //    // 로그인 Cookie 지원
-//    // mav.setViewName("/contents/list_by_cateno_search_paging_cookie");  // /contents/list_by_cateno_search_paging_cookie.jsp ★
+//    mav.setViewName("/contents/list_by_cateno_search_paging_cookie");  // /contents/list_by_cateno_search_paging_cookie.jsp ★
 //    
 //    // 로그인 Cookie + 쇼핑카트
-//    mav.setViewName("/contents/list_by_cateno_search_paging_cookie_cart");  // /contents/list_by_cateno_search_paging_cookie_cart.jsp ★
-//    
-//    // -------------------------------------------------------------------------------
-//    // 쇼핑 카트 장바구니에 상품 등록전 로그인 폼 출력 관련 쿠기  
-//    // -------------------------------------------------------------------------------
-//    Cookie[] cookies = request.getCookies();
-//    Cookie cookie = null;
-//
-//    String ck_id = ""; // id 저장
-//    String ck_id_save = ""; // id 저장 여부를 체크
-//    String ck_passwd = ""; // passwd 저장
-//    String ck_passwd_save = ""; // passwd 저장 여부를 체크
-//
-//    if (cookies != null) {  // Cookie 변수가 있다면
-//      for (int i=0; i < cookies.length; i++){
-//        cookie = cookies[i]; // 쿠키 객체 추출
-//        
-//        if (cookie.getName().equals("ck_id")){
-//          ck_id = cookie.getValue();                                 // Cookie에 저장된 id
-//        }else if(cookie.getName().equals("ck_id_save")){
-//          ck_id_save = cookie.getValue();                          // Cookie에 id를 저장 할 것인지의 여부, Y, N
-//        }else if (cookie.getName().equals("ck_passwd")){
-//          ck_passwd = cookie.getValue();                          // Cookie에 저장된 password
-//        }else if(cookie.getName().equals("ck_passwd_save")){
-//          ck_passwd_save = cookie.getValue();                  // Cookie에 password를 저장 할 것인지의 여부, Y, N
-//        }
-//      }
-//    }
-//    
-//    System.out.println("-> ck_id: " + ck_id);
-//    
-//    mav.addObject("ck_id", ck_id); 
-//    mav.addObject("ck_id_save", ck_id_save);
-//    mav.addObject("ck_passwd", ck_passwd);
-//    mav.addObject("ck_passwd_save", ck_passwd_save);
-//    // -------------------------------------------------------------------------------
-//    
+        mav.setViewName("/frcontents/list_by_cateno_search_paging");  // /contents/list_by_cateno_search_paging.jsp ★ 
 
-    return mav;
+        return mav;
   }
   
   /**
@@ -516,5 +480,41 @@ public class FRContentsCont {
     
     return mav;
   }   
+  
+  // MAP 등록/수정/삭제 폼
+  // http://localhost:9093/frcontents/map.do?cateno=15&contentsno=6
+  @RequestMapping(value="/frcontents/map.do", method = RequestMethod.GET)
+  public ModelAndView map(int cateno, int frno) {
+    ModelAndView mav = new ModelAndView();
+
+    FCateVO fcateVO = this.fcateProc.read(cateno);
+    mav.addObject("fcateVO", fcateVO);
+    
+    FRContentsVO frcontentsVO = this.frcontentsProc.read(frno);
+    mav.addObject("frcontentsVO", frcontentsVO);
+    
+    mav.setViewName("/frcontents/map"); // /webapp/WEB-INF/views/contents/map.jsp
+    
+    return mav;
+  }
+  
+  // MAP 등록/수정/삭제 처리
+  @RequestMapping(value="/frcontents/map.do", method = RequestMethod.POST)
+  public ModelAndView map_update(int cateno, int frno, String fr_map) {
+    // System.out.println("-> contentsno: " + contentsno);
+    
+    ModelAndView mav = new ModelAndView();
+
+    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+    hashMap.put("frno", frno);
+    hashMap.put("fr_map", fr_map);
+    
+    this.frcontentsProc.map(hashMap);
+    
+    mav.setViewName("redirect:/frcontents/read.do?cateno=" + cateno + "&frno=" + frno); 
+    // /webapp/WEB-INF/views/frcontents/read.jsp
+    
+    return mav;
+  }
   
 }

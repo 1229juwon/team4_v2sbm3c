@@ -1,6 +1,7 @@
 package dev.mvc.fcate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 // Spring framework에서 제공하는 기능
 // application.properties를 읽어서 DBMS 연결/해제 자동 구현

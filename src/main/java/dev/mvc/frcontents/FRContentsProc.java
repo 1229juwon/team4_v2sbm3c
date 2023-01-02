@@ -228,4 +228,10 @@ public class FRContentsProc implements FRContentsProcInter {
     int cnt = this.frcontentsDAO.count_by_cateno(cateno);
     return cnt;
   }
+
+  @Override
+  public int map(HashMap<String, Object> hashMap) {
+    int cnt = this.frcontentsDAO.map(hashMap);
+    return cnt;
+  }
 }

@@ -70,4 +70,11 @@ public interface FRContentsDAOInter {
    */
   public int count_by_cateno(int cateno);
   
+  /**
+   * MAP 등록/수정/삭제
+   * @param hashMap
+   * @return 수정된 레코드 수
+   */
+  public int map(HashMap<String, Object> hashMap);
+  
 }
