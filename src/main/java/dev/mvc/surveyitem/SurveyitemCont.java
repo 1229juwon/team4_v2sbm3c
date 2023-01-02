@@ -26,6 +26,19 @@ public class SurveyitemCont {
   @Qualifier("dev.mvc.survey.SurveyProc") 
   private SurveyProcInter surveyProc;
   
+   /**
+   * 새로고침 방지, POST -> POST 정보 삭제 -> GET -> msg.jsp
+   * @return
+   */
+  @RequestMapping(value="/surveyitem/msg.do", method=RequestMethod.GET)
+  public ModelAndView msg(String url){
+    ModelAndView mav = new ModelAndView();
+
+    mav.setViewName(url); // forward
+    
+    return mav; // forward
+  }
+  
   @Autowired
   @Qualifier("dev.mvc.surveyitem.SurveyitemProc") 
   private SurveyitemProcInter surveyitemProc;
@@ -70,22 +83,25 @@ public class SurveyitemCont {
     }
     
     mav.addObject("cnt", cnt);
+    mav.addObject("surveyno", surveyitemVO.getSurveyno());
     
     if (cnt > 0) { // 정상 등록
       System.out.println("정상 등록");
       // mav.setViewName("redirect:/survey/list_all.do"); // 콘트롤러의 주소 요청, 자동 이동
       // mav.setViewName("/survey/list_all"); // /webapp/WEB-INF/views/survey/list_all.jsp X      
-      mav.setViewName("/surveyitem/msg");
+      mav.addObject("url", "/surveyitem/msg"); // /webapp/WEB-INF/views/surveyitem/msg.jsp  
     } else { // 등록 실패
       System.out.println("등록 실패");
-     // mav.setViewName("/survey/msg"); // /webapp/WEB-INF/views/survey/msg.jsp      
+      mav.addObject("url", "/surveyitem/msg"); // /webapp/WEB-INF/views/surveyitem/msg.jsp  
     }
+    
+    mav.setViewName("redirect:/surveyitem/msg.do"); // GET
     
     return mav;
   }
   
   /**
-  * 모든 레코드 목록, http://localhost:9093/surveyitem/list_by_surveyno_search_paging.do?surveyno=1
+  * 모든 레코드 목록, http://localhost:9093/surveyitem/list_by_surveyno.do?surveyno=1
   * @return
   */ 
   @RequestMapping(value="/surveyitem/list_by_surveyno.do", method=RequestMethod.GET)

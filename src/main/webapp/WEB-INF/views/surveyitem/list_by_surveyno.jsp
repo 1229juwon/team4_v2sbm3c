@@ -20,7 +20,7 @@
 <c:import url="/menu/top.do" />
  
 <DIV class='title_line'>
-  <A href="./list_by_surveyno_search_paging.do?surveyno=${surveyVO.surveyno }" class='title_link'>${surveyVO.topic }</A>
+  <A href="./list_by_surveyno.do?surveyno=${surveyVO.surveyno }" class='title_link'>${surveyVO.topic }</A>
 </DIV>
 
 <DIV class='content_body'>
@@ -58,7 +58,7 @@
 
       
             <label style="cursor: pointer;">
-            <input type="checkbox" name="${surveyitemVO.item}" value="${surveyitemVO.item}" > ${surveyitemVO.item}
+            <input type="radio" name="${surveyitemVO.item}" value="${surveyitemVO.item}" > ${surveyitemVO.item}
             </label>
 
           </td> 
