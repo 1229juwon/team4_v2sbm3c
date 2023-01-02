@@ -26,7 +26,7 @@ public class AdminCont {
   }
   
   /**
-   * 로그인 폼
+   * 濡쒓렇�씤 �뤌
    * @return
    */
   // http://localhost:9091/admin/login.do 
@@ -38,14 +38,14 @@ public class AdminCont {
     Cookie[] cookies = request.getCookies();
     Cookie cookie = null;
   
-    String ck_admin_id = ""; // id 저장
-    String ck_admin_id_save = ""; // id 저장 여부를 체크
-    String ck_admin_passwd = ""; // passwd 저장
-    String ck_admin_passwd_save = ""; // passwd 저장 여부를 체크
+    String ck_admin_id = ""; // id ���옣
+    String ck_admin_id_save = ""; // id ���옣 �뿬遺�瑜� 泥댄겕
+    String ck_admin_passwd = ""; // passwd ���옣
+    String ck_admin_passwd_save = ""; // passwd ���옣 �뿬遺�瑜� 泥댄겕
   
-    if (cookies != null) { // 쿠키가 존재한다면
+    if (cookies != null) { // 荑좏궎媛� 議댁옱�븳�떎硫�
       for (int i=0; i < cookies.length; i++){
-        cookie = cookies[i]; // 쿠키 객체 추출
+        cookie = cookies[i]; // 荑좏궎 媛앹껜 異붿텧
       
         if (cookie.getName().equals("ck_admin_id")){
           ck_admin_id = cookie.getValue(); 
@@ -61,11 +61,11 @@ public class AdminCont {
   
     //    <input type='text' class="form-control" name='id' id='id' 
     //            value='${ck_admin_id }' required="required" 
-    //            style='width: 30%;' placeholder="아이디" autofocus="autofocus">
+    //            style='width: 30%;' placeholder="�븘�씠�뵒" autofocus="autofocus">
     mav.addObject("ck_admin_id", ck_admin_id);
   
     //    <input type='checkbox' name='id_save' value='Y' 
-    //            ${ck_admin_id_save == 'Y' ? "checked='checked'" : "" }> 저장
+    //            ${ck_admin_id_save == 'Y' ? "checked='checked'" : "" }> ���옣
     mav.addObject("ck_admin_id_save", ck_admin_id_save);
   
     mav.addObject("ck_admin_passwd", ck_admin_passwd);
@@ -76,14 +76,14 @@ public class AdminCont {
   }
    
   /**
-  * Cookie 기반 로그인 처리
-  * @param request Cookie를 읽기위해 필요
-  * @param response Cookie를 쓰기위해 필요
-  * @param session 로그인 정보를 메모리에 기록
-  * @param id  회원 아이디
-  * @param passwd 회원 패스워드
-  * @param id_save 회원 아이디 Cookie에 저장 여부
-  * @param passwd_save 패스워드 Cookie에 저장 여부
+  * Cookie 湲곕컲 濡쒓렇�씤 泥섎━
+  * @param request Cookie瑜� �씫湲곗쐞�빐 �븘�슂
+  * @param response Cookie瑜� �벐湲곗쐞�빐 �븘�슂
+  * @param session 濡쒓렇�씤 �젙蹂대�� 硫붾え由ъ뿉 湲곕줉
+  * @param id  �쉶�썝 �븘�씠�뵒
+  * @param passwd �쉶�썝 �뙣�뒪�썙�뱶
+  * @param id_save �쉶�썝 �븘�씠�뵒 Cookie�뿉 ���옣 �뿬遺�
+  * @param passwd_save �뙣�뒪�썙�뱶 Cookie�뿉 ���옣 �뿬遺�
   * @return
   */
   // http://localhost:9091/admin/login.do 
@@ -103,30 +103,30 @@ public class AdminCont {
     map.put("passwd", passwd);
    
     int cnt = adminProc.login(map);
-    if (cnt == 1) { // 로그인 성공
-      // System.out.println(id + " 로그인 성공");
+    if (cnt == 1) { // 濡쒓렇�씤 �꽦怨�
+      // System.out.println(id + " 濡쒓렇�씤 �꽦怨�");
       AdminVO adminVO = adminProc.readById(id);
-      session.setAttribute("adminno", adminVO.getAdminno()); // 서버의 메모리에 기록
+      session.setAttribute("adminno", adminVO.getAdminno()); // �꽌踰꾩쓽 硫붾え由ъ뿉 湲곕줉
       session.setAttribute("admin_id", id);
       session.setAttribute("admin_mname", adminVO.getMname());
       session.setAttribute("admin_grade", adminVO.getGrade());
    
       // -------------------------------------------------------------------
-      // id 관련 쿠기 저장
+      // id 愿��젴 荑좉린 ���옣
       // -------------------------------------------------------------------
-      if (id_save.equals("Y")) { // id를 저장할 경우, Checkbox를 체크한 경우
+      if (id_save.equals("Y")) { // id瑜� ���옣�븷 寃쎌슦, Checkbox瑜� 泥댄겕�븳 寃쎌슦
         Cookie ck_admin_id = new Cookie("ck_admin_id", id);
-        ck_admin_id.setPath("/");  // root 폴더에 쿠키를 기록함으로 모든 경로에서 쿠기 접근 가능
-        ck_admin_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, 초단위
-        response.addCookie(ck_admin_id); // id 저장
-      } else { // N, id를 저장하지 않는 경우, Checkbox를 체크 해제한 경우
+        ck_admin_id.setPath("/");  // root �뤃�뜑�뿉 荑좏궎瑜� 湲곕줉�븿�쑝濡� 紐⑤뱺 寃쎈줈�뿉�꽌 荑좉린 �젒洹� 媛��뒫
+        ck_admin_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, 珥덈떒�쐞
+        response.addCookie(ck_admin_id); // id ���옣
+      } else { // N, id瑜� ���옣�븯吏� �븡�뒗 寃쎌슦, Checkbox瑜� 泥댄겕 �빐�젣�븳 寃쎌슦
         Cookie ck_admin_id = new Cookie("ck_admin_id", "");
         ck_admin_id.setPath("/");
         ck_admin_id.setMaxAge(0);
-        response.addCookie(ck_admin_id); // id 저장
+        response.addCookie(ck_admin_id); // id ���옣
       }
       
-      // id를 저장할지 선택하는  CheckBox 체크 여부
+      // id瑜� ���옣�븷吏� �꽑�깮�븯�뒗  CheckBox 泥댄겕 �뿬遺�
       Cookie ck_admin_id_save = new Cookie("ck_admin_id_save", id_save);
       ck_admin_id_save.setPath("/");
       ck_admin_id_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
@@ -134,20 +134,20 @@ public class AdminCont {
       // -------------------------------------------------------------------
   
       // -------------------------------------------------------------------
-      // Password 관련 쿠기 저장
+      // Password 愿��젴 荑좉린 ���옣
       // -------------------------------------------------------------------
-      if (passwd_save.equals("Y")) { // 패스워드 저장할 경우
+      if (passwd_save.equals("Y")) { // �뙣�뒪�썙�뱶 ���옣�븷 寃쎌슦
         Cookie ck_admin_passwd = new Cookie("ck_admin_passwd", passwd);
         ck_admin_passwd.setPath("/");
         ck_admin_passwd.setMaxAge(60 * 60 * 24 * 30); // 30 day
         response.addCookie(ck_admin_passwd);
-      } else { // N, 패스워드를 저장하지 않을 경우
+      } else { // N, �뙣�뒪�썙�뱶瑜� ���옣�븯吏� �븡�쓣 寃쎌슦
         Cookie ck_admin_passwd = new Cookie("ck_admin_passwd", "");
         ck_admin_passwd.setPath("/");
         ck_admin_passwd.setMaxAge(0);
         response.addCookie(ck_admin_passwd);
       }
-      // passwd를 저장할지 선택하는  CheckBox 체크 여부
+      // passwd瑜� ���옣�븷吏� �꽑�깮�븯�뒗  CheckBox 泥댄겕 �뿬遺�
       Cookie ck_admin_passwd_save = new Cookie("ck_admin_passwd_save", passwd_save);
       ck_admin_passwd_save.setPath("/");
       ck_admin_passwd_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
@@ -164,7 +164,7 @@ public class AdminCont {
   }
     
   /**
-   * 로그아웃 처리
+   * 濡쒓렇�븘�썐 泥섎━
    * @param session
    * @return
    */
@@ -172,7 +172,7 @@ public class AdminCont {
                              method=RequestMethod.GET)
   public ModelAndView logout(HttpSession session){
     ModelAndView mav = new ModelAndView();
-    session.invalidate(); // 모든 session 변수 삭제
+    session.invalidate(); // 紐⑤뱺 session 蹂��닔 �궘�젣
     
     mav.setViewName("redirect:/index.do"); 
     
@@ -180,7 +180,7 @@ public class AdminCont {
   }
   
   /**
-   * 새로고침 방지, EL에서 param으로 접근
+   * �깉濡쒓퀬移� 諛⑹�, EL�뿉�꽌 param�쑝濡� �젒洹�
    * @return
    */
   @RequestMapping(value="/admin/msg.do", method=RequestMethod.GET)
