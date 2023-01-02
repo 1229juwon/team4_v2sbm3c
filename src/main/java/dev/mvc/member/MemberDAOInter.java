@@ -85,7 +85,7 @@ public interface MemberDAOInter {
    * @param id
    * @return
    */
-  public MemberVO readByEmail(String mname);
+  public MemberVO readByName(String mname);
   
 }
 

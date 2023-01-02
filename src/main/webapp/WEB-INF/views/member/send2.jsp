@@ -37,8 +37,8 @@
 	      $('#modal_content').html(msg);  // 내용
 	      $('#btn_close').attr('data-focus', 'passwd');
 	      $('#modal_panel').modal();         // 다이얼로그 출력
-	      
 		  }
+
   }
 
 </script> 
@@ -46,7 +46,6 @@
 </head> 
  
 <body>
----------------------------------<br>
 <c:import url="/menu/top.do" />
 
 <!-- ******************** Modal 알림창 시작 ******************** -->
@@ -69,12 +68,12 @@
     </div>
   </div>
   <!-- ******************** Modal 알림창 종료 ******************** -->
-
+  
   <DIV class='title_line'>인증번호 입력</DIV>
 
   <DIV class='content_body'> 
     <DIV style='width: 40%; margin: 0px auto;'>
-      <FORM name='frm' id='frm' method='POST' action='./show_id.do'>
+      <FORM name='frm' id='frm' method='POST' action='./show_pw.do'>
       
         
         <div class="form_input">
@@ -89,7 +88,7 @@
         </div>
         
      	<div class="form_input" style="display:none">
-     	<textarea name="checkn" id="checkn" rows="15"  style='width: 100%; border: #AAAAAA 1px solid;'>${checkn}</textarea>
+     	<textarea name="checkId" id="checkId" rows="15"  style='width: 100%; border: #AAAAAA 1px solid;'>${checkId}</textarea>
      	</div>
       </FORM>
     </DIV>

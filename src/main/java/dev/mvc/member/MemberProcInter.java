@@ -81,20 +81,14 @@ public interface MemberProcInter {
    * @return true: 사용자
    */
   public boolean isMember(HttpSession session);   
-  
-  /**
-   * 아이디 찾기
-   * @param memberVO
-   * @return
-   */
-  public int find_id(MemberVO memberVO);
+
   
   /**
    * Email로 회원 정보 조회
    * @param id
    * @return
    */
-  public MemberVO readByEmail(String mname);
+  public MemberVO readByName(String mname);
   
 }
 

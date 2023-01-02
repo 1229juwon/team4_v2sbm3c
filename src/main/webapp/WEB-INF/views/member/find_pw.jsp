@@ -25,7 +25,7 @@
   // 테스트용 기본값 로딩
   function loadDefault() {
 	$('#receiver').val('1229juwon67@gmail.com');
-    $('#name').val('juwon');
+    $('#id').val('user1');
   }
 
   function createKey() {
@@ -39,11 +39,11 @@
 <body>
 <c:import url="/menu/top.do" />
  
-  <DIV class='title_line'>아이디 찾기</DIV>
+  <DIV class='title_line'>비밀번호 찾기</DIV>
 
   <DIV class='content_body'> 
     <DIV style='width: 40%; margin: 0px auto;'>
-      <FORM name='frm' method='POST' action='./send.do'>
+      <FORM name='frm' method='POST' action='./send2.do'>
       
       	<div class="form_input">
           <label>이메일</label>    
@@ -53,7 +53,7 @@
       
         <div class="form_input">
           <label>아이디</label>    
-          <input type='text' class="form-control" name='name' id='name' 
+          <input type='text' class="form-control" name='id' id='id' 
                     value='' required="required" 
                     style='width: 80%;' placeholder="아이디" autofocus="autofocus">
         </div>   

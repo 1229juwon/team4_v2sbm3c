@@ -99,15 +99,10 @@ public class MemberProc implements MemberProcInter {
     return sw;
   }
   
-  @Override
-  public int find_id(MemberVO memberVO) {
-    int cnt = this.memberDAO.find_id(memberVO);
-    return cnt;
-  }
   
   @Override
-  public MemberVO readByEmail(String mname) {
-    MemberVO memberVO = this.memberDAO.readByEmail(mname);
+  public MemberVO readByName(String mname) {
+    MemberVO memberVO = this.memberDAO.readByName(mname);
     return memberVO;
   }
   

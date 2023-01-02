@@ -40,7 +40,7 @@ public class MemberCont {
   
   // http://localhost:9091/member/checkID.do?id=user1
   /**
-  * ID Áßº¹ Ã¼Å©, JSON Ãâ·Â
+  * ID ì¤‘ë³µ ì²´í¬, JSON ì¶œë ¥
   * @return
   */
   @ResponseBody
@@ -57,7 +57,7 @@ public class MemberCont {
 
   // http://localhost:9091/member/create.do
   /**
-  * µî·Ï Æû
+  * ë“±ë¡ í¼
   * @return
   */
   @RequestMapping(value="/member/create.do", method=RequestMethod.GET )
@@ -69,7 +69,7 @@ public class MemberCont {
   }
 
   /**
-   * µî·Ï Ã³¸®
+   * ë“±ë¡ ì²˜ë¦¬
    * @param memberVO
    * @return
    */
@@ -80,13 +80,13 @@ public class MemberCont {
     System.out.println("id: " + memberVO.getId());
     System.out.println("address: " + memberVO.getAddress());
     
-    memberVO.setGrade(15); // ±âº» È¸¿ø °¡ÀÔ µî·Ï 15 ÁöÁ¤
+    memberVO.setGrade(15); // ê¸°ë³¸ íšŒì› ê°€ì… ë“±ë¡ 15 ì§€ì •
     
-    int cnt= memberProc.create(memberVO); // È¸¿ø °¡ÀÔ Ã³¸®
+    int cnt= memberProc.create(memberVO); // íšŒì› ê°€ì… ì²˜ë¦¬
     
     if (cnt == 1) {
       mav.addObject("code", "create_success");
-      mav.addObject("mname", memberVO.getMname());  // È«±æµ¿´Ô(user4) È¸¿ø °¡ÀÔÀ» ÃàÇÏÇÕ´Ï´Ù.
+      mav.addObject("mname", memberVO.getMname());  // í™ê¸¸ë™ë‹˜(user4) íšŒì› ê°€ì…ì„ ì¶•í•˜í•©ë‹ˆë‹¤.
       mav.addObject("id", memberVO.getId());
     } else {
       mav.addObject("code", "create_fail");
@@ -98,14 +98,14 @@ public class MemberCont {
     
     mav.setViewName("redirect:/member/msg.do");
 
-//    mav.addObject("code", "create_fail"); // °¡ÀÔ ½ÇÆĞ test¿ë
-//    mav.addObject("cnt", 0);                 // °¡ÀÔ ½ÇÆĞ test¿ë
+//    mav.addObject("code", "create_fail"); // ê°€ì… ì‹¤íŒ¨ testìš©
+//    mav.addObject("cnt", 0);                 // ê°€ì… ì‹¤íŒ¨ testìš©
     
     return mav;
   }
   
   /**
-   * »õ·Î°íÄ§ ¹æÁö, EL¿¡¼­ paramÀ¸·Î Á¢±Ù
+   * ìƒˆë¡œê³ ì¹¨ ë°©ì§€, ELì—ì„œ paramìœ¼ë¡œ ì ‘ê·¼
    * @return
    */
   @RequestMapping(value="/member/msg.do", method=RequestMethod.GET)
@@ -117,9 +117,9 @@ public class MemberCont {
     return mav; // forward
   }
 
-// ¹®Á¦ ÀÖ´Â ÆĞÅÏ
+// ë¬¸ì œ ìˆëŠ” íŒ¨í„´
 //  /**
-//  * ¸ñ·Ï Ãâ·Â °¡´É
+//  * ëª©ë¡ ì¶œë ¥ ê°€ëŠ¥
 //  * http://localhost:9091/member/list.do
 //  * @param session
 //  * @return
@@ -136,9 +136,9 @@ public class MemberCont {
 //    return mav;
 //  }  
 
-  // ±ÇÇÑ ÇÊÅÍ¸µ
+  // ê¶Œí•œ í•„í„°ë§
   /**
-  * ¸ñ·Ï Ãâ·Â °¡´É
+  * ëª©ë¡ ì¶œë ¥ ê°€ëŠ¥
   * http://localhost:9091/member/list.do
   * @param session
   * @return
@@ -162,7 +162,7 @@ public class MemberCont {
   }  
   
 //  /**
-//   * È¸¿ø Á¶È¸
+//   * íšŒì› ì¡°íšŒ
 //   * http://localhost:9091/member/read.do?memberno=1
 //   * @param memberno
 //   * @return
@@ -179,7 +179,7 @@ public class MemberCont {
 //  }
   
   /**
-   * session °´Ã¼¸¦ ÀÌ¿ëÇÑ È¸¿ø Á¶È¸
+   * session ê°ì²´ë¥¼ ì´ìš©í•œ íšŒì› ì¡°íšŒ
    * http://localhost:9091/member/read.do
    * @param memberno
    * @return
@@ -205,7 +205,7 @@ public class MemberCont {
   
 
   /**
-   * È¸¿ø Á¤º¸ ¼öÁ¤ Ã³¸®
+   * íšŒì› ì •ë³´ ìˆ˜ì • ì²˜ë¦¬
    * @param memberVO
    * @return
    */
@@ -223,7 +223,7 @@ public class MemberCont {
     
     if (cnt == 1) {
       mav.addObject("code", "update_success");
-      mav.addObject("mname", memberVO.getMname());  // È«±æµ¿´Ô(user4) È¸¿ø Á¤º¸¸¦ º¯°æÇß½À´Ï´Ù.
+      mav.addObject("mname", memberVO.getMname());  // í™ê¸¸ë™ë‹˜(user4) íšŒì› ì •ë³´ë¥¼ ë³€ê²½í–ˆìŠµë‹ˆë‹¤.
       mav.addObject("id", memberVO.getId());
     } else {
       mav.addObject("code", "update_fail");
@@ -232,14 +232,14 @@ public class MemberCont {
     mav.addObject("cnt", cnt); // request.setAttribute("cnt", cnt)
     mav.addObject("url", "/member/msg");  // /member/msg -> /member/msg.jsp
     
-    mav.setViewName("redirect:/member/msg.do"); // »õ·Î °íÄ§ ¹æÁö
+    mav.setViewName("redirect:/member/msg.do"); // ìƒˆë¡œ ê³ ì¹¨ ë°©ì§€
     
     return mav;
   }
   
   
   /**
-   * ¾ÆÀÌµğ Ã£±â
+   * ì•„ì´ë”” ì°¾ê¸°
    * @param memberVO
    * @return
    */
@@ -255,7 +255,7 @@ public class MemberCont {
   }
   
   /**
-   * ºñ¹Ğ¹øÈ£ Ã£±â
+   * ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
    * @param memberVO
    * @return
    */
@@ -267,9 +267,7 @@ public class MemberCont {
 	    if (true) {
 	      ArrayList<MemberVO> list = memberProc.list();
 	      mav.addObject("list", list);
-
-	      mav.setViewName("/member/find_pw"); 
-	      
+	      mav.setViewName("/member/find_pw");   
 	    } 
 	    
 	    return mav;
@@ -277,7 +275,7 @@ public class MemberCont {
   
   
   /**
-   * È¸¿ø »èÁ¦
+   * íšŒì› ì‚­ì œ
    * http://localhost:9091/member/delete.do?memberno=9
    * @param memberno
    * @return
@@ -286,7 +284,7 @@ public class MemberCont {
   public ModelAndView delete(int memberno){
     ModelAndView mav = new ModelAndView();
     
-    MemberVO memberVO = this.memberProc.read(memberno); // »èÁ¦ÇÒ ·¹ÄÚµå¸¦ »ç¿ëÀÚ¿¡°Ô Ãâ·ÂÇÏ±âÀ§ÇØ ÀĞÀ½.
+    MemberVO memberVO = this.memberProc.read(memberno); // ì‚­ì œí•  ë ˆì½”ë“œë¥¼ ì‚¬ìš©ìì—ê²Œ ì¶œë ¥í•˜ê¸°ìœ„í•´ ì½ìŒ.
     mav.addObject("memberVO", memberVO);
     mav.setViewName("/member/delete"); // /member/delete.jsp
     
@@ -294,7 +292,7 @@ public class MemberCont {
   }
  
   /**
-   * È¸¿ø »èÁ¦ Ã³¸®
+   * íšŒì› ì‚­ì œ ì²˜ë¦¬
    * @param memberVO
    * @return
    */
@@ -303,14 +301,14 @@ public class MemberCont {
     ModelAndView mav = new ModelAndView();
     
     // System.out.println("id: " + memberVO.getId());
-    MemberVO memberVO = this.memberProc.read(memberno); // »èÁ¦µÈ Á¤º¸¸¦ Ãâ·ÂÇÏ±âÀ§ÇØ ÀĞÀ½.
+    MemberVO memberVO = this.memberProc.read(memberno); // ì‚­ì œëœ ì •ë³´ë¥¼ ì¶œë ¥í•˜ê¸°ìœ„í•´ ì½ìŒ.
     
     
     int cnt= memberProc.delete(memberno);
 
     if (cnt == 1) {
       mav.addObject("code", "delete_success");
-      mav.addObject("mname", memberVO.getMname());  // È«±æµ¿´Ô(user4) È¸¿ø Á¤º¸¸¦ º¯°æÇß½À´Ï´Ù.
+      mav.addObject("mname", memberVO.getMname());  // í™ê¸¸ë™ë‹˜(user4) íšŒì› ì •ë³´ë¥¼ ë³€ê²½í–ˆìŠµë‹ˆë‹¤.
       mav.addObject("id", memberVO.getId());
     } else {
       mav.addObject("code", "delete_fail");
@@ -325,7 +323,7 @@ public class MemberCont {
   }
   
   /**
-   * ÆĞ½º¿öµå¸¦ º¯°æÇÕ´Ï´Ù.
+   * íŒ¨ìŠ¤ì›Œë“œë¥¼ ë³€ê²½í•©ë‹ˆë‹¤.
    * @param memberno
    * @return
    */
@@ -338,10 +336,10 @@ public class MemberCont {
   }
   
   /**
-   * ÆĞ½º¿öµå º¯°æ Ã³¸®
-   * @param memberno È¸¿ø ¹øÈ£
-   * @param current_password ÇöÀç ÆĞ½º¿öµå
-   * @param new_password »õ·Î¿î ÆĞ½º¿öµå
+   * íŒ¨ìŠ¤ì›Œë“œ ë³€ê²½ ì²˜ë¦¬
+   * @param memberno íšŒì› ë²ˆí˜¸
+   * @param current_password í˜„ì¬ íŒ¨ìŠ¤ì›Œë“œ
+   * @param new_password ìƒˆë¡œìš´ íŒ¨ìŠ¤ì›Œë“œ
    * @return
    */
   @RequestMapping(value="/member/password_update.do", method=RequestMethod.POST)
@@ -350,35 +348,35 @@ public class MemberCont {
         
     ModelAndView mav = new ModelAndView();
     
-    MemberVO memberVO = this.memberProc.read(memberno); // ÆĞ½º¿öµå¸¦ º¯°æÇÏ·Á´Â È¸¿ø Á¤º¸¸¦ ÀĞÀ½
+    MemberVO memberVO = this.memberProc.read(memberno); // íŒ¨ìŠ¤ì›Œë“œë¥¼ ë³€ê²½í•˜ë ¤ëŠ” íšŒì› ì •ë³´ë¥¼ ì½ìŒ
     mav.addObject("mname", memberVO.getMname());  
     mav.addObject("id", memberVO.getId());
     
-    // ÇöÀç ÆĞ½º¿öµå °Ë»ç¿ë µ¥ÀÌÅÍ
+    // í˜„ì¬ íŒ¨ìŠ¤ì›Œë“œ ê²€ì‚¬ìš© ë°ì´í„°
     HashMap<Object, Object> map = new HashMap<Object, Object>();
     map.put("memberno", memberno);
     map.put("password", current_password);
     
-    int cnt = memberProc.password_check(map); // ÇöÀç ÆĞ½º¿öµå °Ë»ç
-    int update_cnt = 0; // º¯°æµÈ ÆĞ½º¿öµå ¼ö
+    int cnt = memberProc.password_check(map); // í˜„ì¬ íŒ¨ìŠ¤ì›Œë“œ ê²€ì‚¬
+    int update_cnt = 0; // ë³€ê²½ëœ íŒ¨ìŠ¤ì›Œë“œ ìˆ˜
     
-    if (cnt == 1) { // ÇöÀç ÆĞ½º¿öµå°¡ ÀÏÄ¡ÇÏ´Â °æ¿ì
-      map.put("password", new_password); // »õ·Î¿î ÆĞ½º¿öµå¸¦ ÀúÀå
-      update_cnt = memberProc.password_update(map); // ÆĞ½º¿öµå º¯°æ Ã³¸®
+    if (cnt == 1) { // í˜„ì¬ íŒ¨ìŠ¤ì›Œë“œê°€ ì¼ì¹˜í•˜ëŠ” ê²½ìš°
+      map.put("password", new_password); // ìƒˆë¡œìš´ íŒ¨ìŠ¤ì›Œë“œë¥¼ ì €ì¥
+      update_cnt = memberProc.password_update(map); // íŒ¨ìŠ¤ì›Œë“œ ë³€ê²½ ì²˜ë¦¬
       
       if (update_cnt == 1) {
-        mav.addObject("code", "password_update_success"); // ÆĞ½º¿öµå º¯°æ ¼º°ø
+        mav.addObject("code", "password_update_success"); // íŒ¨ìŠ¤ì›Œë“œ ë³€ê²½ ì„±ê³µ
       } else {
-        cnt = 0;  // ÆĞ½º¿öµå´Â ÀÏÄ¡ÇßÀ¸³ª º¯°æÇÏÁö´Â ¸øÇÔ.
-        mav.addObject("code", "password_update_fail");       // ÆĞ½º¿öµå º¯°æ ½ÇÆĞ
+        cnt = 0;  // íŒ¨ìŠ¤ì›Œë“œëŠ” ì¼ì¹˜í–ˆìœ¼ë‚˜ ë³€ê²½í•˜ì§€ëŠ” ëª»í•¨.
+        mav.addObject("code", "password_update_fail");       // íŒ¨ìŠ¤ì›Œë“œ ë³€ê²½ ì‹¤íŒ¨
       }
       
-      mav.addObject("update_cnt", update_cnt);  // º¯°æµÈ ÆĞ½º¿öµåÀÇ °¹¼ö    
+      mav.addObject("update_cnt", update_cnt);  // ë³€ê²½ëœ íŒ¨ìŠ¤ì›Œë“œì˜ ê°¯ìˆ˜    
     } else {
-      mav.addObject("code", "password_fail"); // ÆĞ½º¿öµå°¡ ÀÏÄ¡ÇÏÁö ¾Ê´Â °æ¿ì
+      mav.addObject("code", "password_fail"); // íŒ¨ìŠ¤ì›Œë“œê°€ ì¼ì¹˜í•˜ì§€ ì•ŠëŠ” ê²½ìš°
     }
 
-    mav.addObject("cnt", cnt); // ÆĞ½º¿öµå ÀÏÄ¡ ¿©ºÎ
+    mav.addObject("cnt", cnt); // íŒ¨ìŠ¤ì›Œë“œ ì¼ì¹˜ ì—¬ë¶€
     mav.addObject("url", "/member/msg");  // /member/msg -> /member/msg.jsp
     
     mav.setViewName("redirect:/member/msg.do");
@@ -387,7 +385,7 @@ public class MemberCont {
   }
   
 //  /**
-//   * ·Î±×ÀÎ Æû
+//   * ë¡œê·¸ì¸ í¼
 //   * @return
 //   */
 //  // http://localhost:9091/member/login.do 
@@ -400,7 +398,7 @@ public class MemberCont {
 //  }
 //
 //  /**
-//   * ·Î±×ÀÎ Ã³¸®
+//   * ë¡œê·¸ì¸ ì²˜ë¦¬
 //   * @return
 //   */
 //  // http://localhost:9091/member/login.do 
@@ -415,29 +413,29 @@ public class MemberCont {
 //    map.put("id", id);
 //    map.put("password", password);
 //    
-//    int count = memberProc.login(map); // id, password ÀÏÄ¡ ¿©ºÎ È®ÀÎ
-//    if (count == 1) { // ·Î±×ÀÎ ¼º°ø
-//      // System.out.println(id + " ·Î±×ÀÎ ¼º°ø");
-//      MemberVO memberVO = memberProc.readById(id); // ·Î±×ÀÎÇÑ È¸¿øÀÇ Á¤º¸ Á¶È¸
+//    int count = memberProc.login(map); // id, password ì¼ì¹˜ ì—¬ë¶€ í™•ì¸
+//    if (count == 1) { // ë¡œê·¸ì¸ ì„±ê³µ
+//      // System.out.println(id + " ë¡œê·¸ì¸ ì„±ê³µ");
+//      MemberVO memberVO = memberProc.readById(id); // ë¡œê·¸ì¸í•œ íšŒì›ì˜ ì •ë³´ ì¡°íšŒ
 //      
-//      // session º¯¼ö·Î È¸¿ø Á¤º¸ ÀúÀå
+//      // session ë³€ìˆ˜ë¡œ íšŒì› ì •ë³´ ì €ì¥
 //      session.setAttribute("memberno", memberVO.getMemberno());
 //      session.setAttribute("id", id);
 //      session.setAttribute("mname", memberVO.getMname());
 //      session.setAttribute("grade", memberVO.getGrade());
 //      
-//      mav.setViewName("redirect:/index.do"); // ½ÃÀÛ ÆäÀÌÁö·Î ÀÌµ¿  
+//      mav.setViewName("redirect:/index.do"); // ì‹œì‘ í˜ì´ì§€ë¡œ ì´ë™  
 //    } else {
-//      mav.addObject("url", "/member/login_fail_msg"); // login_fail_msg.jsp, redirect parameter Àû¿ë
+//      mav.addObject("url", "/member/login_fail_msg"); // login_fail_msg.jsp, redirect parameter ì ìš©
 //     
-//      mav.setViewName("redirect:/member/msg.do");  // »õ·Î°íÄ§ ¹æÁö, /member/login_fail_msg.jsp
+//      mav.setViewName("redirect:/member/msg.do");  // ìƒˆë¡œê³ ì¹¨ ë°©ì§€, /member/login_fail_msg.jsp
 //    }
 //        
 //    return mav;
 //  }
   
 //  /**
-//   * ·Î±×ÀÎ Æû
+//   * ë¡œê·¸ì¸ í¼
 //   * @return
 //   */
 //  // http://localhost:9091/member/login.do 
@@ -449,14 +447,14 @@ public class MemberCont {
 //    Cookie[] cookies = request.getCookies();
 //    Cookie cookie = null;
 //  
-//    String ck_id = ""; // id ÀúÀå
-//    String ck_id_save = ""; // id ÀúÀå ¿©ºÎ¸¦ Ã¼Å©
-//    String ck_password = ""; // password ÀúÀå
-//    String ck_password_save = ""; // password ÀúÀå ¿©ºÎ¸¦ Ã¼Å©
+//    String ck_id = ""; // id ì €ì¥
+//    String ck_id_save = ""; // id ì €ì¥ ì—¬ë¶€ë¥¼ ì²´í¬
+//    String ck_password = ""; // password ì €ì¥
+//    String ck_password_save = ""; // password ì €ì¥ ì—¬ë¶€ë¥¼ ì²´í¬
 //  
-//    if (cookies != null) { // ÄíÅ°°¡ Á¸ÀçÇÑ´Ù¸é
+//    if (cookies != null) { // ì¿ í‚¤ê°€ ì¡´ì¬í•œë‹¤ë©´
 //      for (int i=0; i < cookies.length; i++){
-//        cookie = cookies[i]; // ÄíÅ° °´Ã¼ ÃßÃâ
+//        cookie = cookies[i]; // ì¿ í‚¤ ê°ì²´ ì¶”ì¶œ
 //      
 //        if (cookie.getName().equals("ck_id")){
 //          ck_id = cookie.getValue(); 
@@ -472,11 +470,11 @@ public class MemberCont {
 //  
 //    //    <input type='text' class="form-control" name='id' id='id' 
 //    //            value='${ck_id }' required="required" 
-//    //            style='width: 30%;' placeholder="¾ÆÀÌµğ" autofocus="autofocus">
+//    //            style='width: 30%;' placeholder="ì•„ì´ë””" autofocus="autofocus">
 //    mav.addObject("ck_id", ck_id);
 //  
 //    //    <input type='checkbox' name='id_save' value='Y' 
-//    //            ${ck_id_save == 'Y' ? "checked='checked'" : "" }> ÀúÀå
+//    //            ${ck_id_save == 'Y' ? "checked='checked'" : "" }> ì €ì¥
 //    mav.addObject("ck_id_save", ck_id_save);
 //  
 //    mav.addObject("ck_password", ck_password);
@@ -487,10 +485,10 @@ public class MemberCont {
 //  }
   
   /**
-   * ·Î±×ÀÎ Æû + ·Î±×ÀÎ ¼º°øÈÄ ÀÚµ¿À¸·Î ÁÖ¼Ò ÀÌµ¿
+   * ë¡œê·¸ì¸ í¼ + ë¡œê·¸ì¸ ì„±ê³µí›„ ìë™ìœ¼ë¡œ ì£¼ì†Œ ì´ë™
    * http://localhost:9091/member/login.do 
    * http://localhost:9091/member/login.do?return_url=/cart/list_by_memberno.do
-   * @param return_url ·Î±×ÀÎ ¼º°øÈÄ ÀÚµ¿À¸·Î ÀÌµ¿ÇÒ ÁÖ¼Ò
+   * @param return_url ë¡œê·¸ì¸ ì„±ê³µí›„ ìë™ìœ¼ë¡œ ì´ë™í•  ì£¼ì†Œ
    * @return
    */
   @RequestMapping(value = "/member/login.do", 
@@ -502,14 +500,14 @@ public class MemberCont {
     Cookie[] cookies = request.getCookies();
     Cookie cookie = null;
   
-    String ck_id = ""; // id ÀúÀå
-    String ck_id_save = ""; // id ÀúÀå ¿©ºÎ¸¦ Ã¼Å©
-    String ck_password = ""; // password ÀúÀå
-    String ck_password_save = ""; // password ÀúÀå ¿©ºÎ¸¦ Ã¼Å©
+    String ck_id = ""; // id ì €ì¥
+    String ck_id_save = ""; // id ì €ì¥ ì—¬ë¶€ë¥¼ ì²´í¬
+    String ck_password = ""; // password ì €ì¥
+    String ck_password_save = ""; // password ì €ì¥ ì—¬ë¶€ë¥¼ ì²´í¬
   
-    if (cookies != null) { // ÄíÅ°°¡ Á¸ÀçÇÑ´Ù¸é
+    if (cookies != null) { // ì¿ í‚¤ê°€ ì¡´ì¬í•œë‹¤ë©´
       for (int i=0; i < cookies.length; i++){
-        cookie = cookies[i]; // ÄíÅ° °´Ã¼ ÃßÃâ
+        cookie = cookies[i]; // ì¿ í‚¤ ê°ì²´ ì¶”ì¶œ
       
         if (cookie.getName().equals("ck_id")){
           ck_id = cookie.getValue(); 
@@ -525,31 +523,31 @@ public class MemberCont {
   
     //    <input type='text' class="form-control" name='id' id='id' 
     //            value='${ck_id }' required="required" 
-    //            style='width: 30%;' placeholder="¾ÆÀÌµğ" autofocus="autofocus">
+    //            style='width: 30%;' placeholder="ì•„ì´ë””" autofocus="autofocus">
     mav.addObject("ck_id", ck_id);
   
     //    <input type='checkbox' name='id_save' value='Y' 
-    //            ${ck_id_save == 'Y' ? "checked='checked'" : "" }> ÀúÀå
+    //            ${ck_id_save == 'Y' ? "checked='checked'" : "" }> ì €ì¥
     mav.addObject("ck_id_save", ck_id_save);
   
     mav.addObject("ck_password", ck_password);
     mav.addObject("ck_password_save", ck_password_save);
     
-    mav.addObject("return_url", return_url); // ·Î±×ÀÎ ¼º°øÈÄ ÀÚµ¿À¸·Î ÀÌµ¿ÇÒ ÁÖ¼Ò
+    mav.addObject("return_url", return_url); // ë¡œê·¸ì¸ ì„±ê³µí›„ ìë™ìœ¼ë¡œ ì´ë™í•  ì£¼ì†Œ
   
     mav.setViewName("/member/login_form_ck"); // /member/login_form_ck.jsp
     return mav;
   }
    
 //  /**
-//  * Cookie ±â¹İ ·Î±×ÀÎ Ã³¸®
-//  * @param request Cookie¸¦ ÀĞ±âÀ§ÇØ ÇÊ¿ä
-//  * @param response Cookie¸¦ ¾²±âÀ§ÇØ ÇÊ¿ä
-//  * @param session ·Î±×ÀÎ Á¤º¸¸¦ ¸Ş¸ğ¸®¿¡ ±â·Ï
-//  * @param id  È¸¿ø ¾ÆÀÌµğ
-//  * @param password È¸¿ø ÆĞ½º¿öµå
-//  * @param id_save È¸¿ø ¾ÆÀÌµğ Cookie¿¡ ÀúÀå ¿©ºÎ
-//  * @param password_save ÆĞ½º¿öµå Cookie¿¡ ÀúÀå ¿©ºÎ
+//  * Cookie ê¸°ë°˜ ë¡œê·¸ì¸ ì²˜ë¦¬
+//  * @param request Cookieë¥¼ ì½ê¸°ìœ„í•´ í•„ìš”
+//  * @param response Cookieë¥¼ ì“°ê¸°ìœ„í•´ í•„ìš”
+//  * @param session ë¡œê·¸ì¸ ì •ë³´ë¥¼ ë©”ëª¨ë¦¬ì— ê¸°ë¡
+//  * @param id  íšŒì› ì•„ì´ë””
+//  * @param password íšŒì› íŒ¨ìŠ¤ì›Œë“œ
+//  * @param id_save íšŒì› ì•„ì´ë”” Cookieì— ì €ì¥ ì—¬ë¶€
+//  * @param password_save íŒ¨ìŠ¤ì›Œë“œ Cookieì— ì €ì¥ ì—¬ë¶€
 //  * @return
 //  */
 //  // http://localhost:9091/member/login.do 
@@ -569,30 +567,30 @@ public class MemberCont {
 //    map.put("password", password);
 //   
 //    int cnt = memberProc.login(map);
-//    if (cnt == 1) { // ·Î±×ÀÎ ¼º°ø
-//      // System.out.println(id + " ·Î±×ÀÎ ¼º°ø");
+//    if (cnt == 1) { // ë¡œê·¸ì¸ ì„±ê³µ
+//      // System.out.println(id + " ë¡œê·¸ì¸ ì„±ê³µ");
 //      MemberVO memberVO = memberProc.readById(id);
-//      session.setAttribute("memberno", memberVO.getMemberno()); // ¼­¹öÀÇ ¸Ş¸ğ¸®¿¡ ±â·Ï
+//      session.setAttribute("memberno", memberVO.getMemberno()); // ì„œë²„ì˜ ë©”ëª¨ë¦¬ì— ê¸°ë¡
 //      session.setAttribute("id", id);
 //      session.setAttribute("mname", memberVO.getMname());
 //      session.setAttribute("grade", memberVO.getGrade());
 //   
 //      // -------------------------------------------------------------------
-//      // id °ü·Ã Äí±â ÀúÀå
+//      // id ê´€ë ¨ ì¿ ê¸° ì €ì¥
 //      // -------------------------------------------------------------------
-//      if (id_save.equals("Y")) { // id¸¦ ÀúÀåÇÒ °æ¿ì, Checkbox¸¦ Ã¼Å©ÇÑ °æ¿ì
+//      if (id_save.equals("Y")) { // idë¥¼ ì €ì¥í•  ê²½ìš°, Checkboxë¥¼ ì²´í¬í•œ ê²½ìš°
 //        Cookie ck_id = new Cookie("ck_id", id);
-//        ck_id.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
-//        ck_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, ÃÊ´ÜÀ§
-//        response.addCookie(ck_id); // id ÀúÀå
-//      } else { // N, id¸¦ ÀúÀåÇÏÁö ¾Ê´Â °æ¿ì, Checkbox¸¦ Ã¼Å© ÇØÁ¦ÇÑ °æ¿ì
+//        ck_id.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
+//        ck_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, ì´ˆë‹¨ìœ„
+//        response.addCookie(ck_id); // id ì €ì¥
+//      } else { // N, idë¥¼ ì €ì¥í•˜ì§€ ì•ŠëŠ” ê²½ìš°, Checkboxë¥¼ ì²´í¬ í•´ì œí•œ ê²½ìš°
 //        Cookie ck_id = new Cookie("ck_id", "");
 //        ck_id.setPath("/");
 //        ck_id.setMaxAge(0);
-//        response.addCookie(ck_id); // id ÀúÀå
+//        response.addCookie(ck_id); // id ì €ì¥
 //      }
 //      
-//      // id¸¦ ÀúÀåÇÒÁö ¼±ÅÃÇÏ´Â  CheckBox Ã¼Å© ¿©ºÎ
+//      // idë¥¼ ì €ì¥í• ì§€ ì„ íƒí•˜ëŠ”  CheckBox ì²´í¬ ì—¬ë¶€
 //      Cookie ck_id_save = new Cookie("ck_id_save", id_save);
 //      ck_id_save.setPath("/");
 //      ck_id_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
@@ -600,20 +598,20 @@ public class MemberCont {
 //      // -------------------------------------------------------------------
 //  
 //      // -------------------------------------------------------------------
-//      // Password °ü·Ã Äí±â ÀúÀå
+//      // Password ê´€ë ¨ ì¿ ê¸° ì €ì¥
 //      // -------------------------------------------------------------------
-//      if (password_save.equals("Y")) { // ÆĞ½º¿öµå ÀúÀåÇÒ °æ¿ì
+//      if (password_save.equals("Y")) { // íŒ¨ìŠ¤ì›Œë“œ ì €ì¥í•  ê²½ìš°
 //        Cookie ck_password = new Cookie("ck_password", password);
 //        ck_password.setPath("/");
 //        ck_password.setMaxAge(60 * 60 * 24 * 30); // 30 day
 //        response.addCookie(ck_password);
-//      } else { // N, ÆĞ½º¿öµå¸¦ ÀúÀåÇÏÁö ¾ÊÀ» °æ¿ì
+//      } else { // N, íŒ¨ìŠ¤ì›Œë“œë¥¼ ì €ì¥í•˜ì§€ ì•Šì„ ê²½ìš°
 //        Cookie ck_password = new Cookie("ck_password", "");
 //        ck_password.setPath("/");
 //        ck_password.setMaxAge(0);
 //        response.addCookie(ck_password);
 //      }
-//      // password¸¦ ÀúÀåÇÒÁö ¼±ÅÃÇÏ´Â  CheckBox Ã¼Å© ¿©ºÎ
+//      // passwordë¥¼ ì €ì¥í• ì§€ ì„ íƒí•˜ëŠ”  CheckBox ì²´í¬ ì—¬ë¶€
 //      Cookie ck_password_save = new Cookie("ck_password_save", password_save);
 //      ck_password_save.setPath("/");
 //      ck_password_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
@@ -630,14 +628,14 @@ public class MemberCont {
 //  }
 
   /**
-  * Cookie ±â¹İ ·Î±×ÀÎ Ã³¸®
-  * @param request Cookie¸¦ ÀĞ±âÀ§ÇØ ÇÊ¿ä
-  * @param response Cookie¸¦ ¾²±âÀ§ÇØ ÇÊ¿ä
-  * @param session ·Î±×ÀÎ Á¤º¸¸¦ ¸Ş¸ğ¸®¿¡ ±â·Ï
-  * @param id  È¸¿ø ¾ÆÀÌµğ
-  * @param password È¸¿ø ÆĞ½º¿öµå
-  * @param id_save È¸¿ø ¾ÆÀÌµğ Cookie¿¡ ÀúÀå ¿©ºÎ
-  * @param password_save ÆĞ½º¿öµå Cookie¿¡ ÀúÀå ¿©ºÎ
+  * Cookie ê¸°ë°˜ ë¡œê·¸ì¸ ì²˜ë¦¬
+  * @param request Cookieë¥¼ ì½ê¸°ìœ„í•´ í•„ìš”
+  * @param response Cookieë¥¼ ì“°ê¸°ìœ„í•´ í•„ìš”
+  * @param session ë¡œê·¸ì¸ ì •ë³´ë¥¼ ë©”ëª¨ë¦¬ì— ê¸°ë¡
+  * @param id  íšŒì› ì•„ì´ë””
+  * @param password íšŒì› íŒ¨ìŠ¤ì›Œë“œ
+  * @param id_save íšŒì› ì•„ì´ë”” Cookieì— ì €ì¥ ì—¬ë¶€
+  * @param password_save íŒ¨ìŠ¤ì›Œë“œ Cookieì— ì €ì¥ ì—¬ë¶€
   * @return
   */
   // http://localhost:9091/member/login.do 
@@ -658,30 +656,30 @@ public class MemberCont {
     map.put("password", password);
    
     int cnt = memberProc.login(map);
-    if (cnt == 1) { // ·Î±×ÀÎ ¼º°ø
-      // System.out.println(id + " ·Î±×ÀÎ ¼º°ø");
+    if (cnt == 1) { // ë¡œê·¸ì¸ ì„±ê³µ
+      // System.out.println(id + " ë¡œê·¸ì¸ ì„±ê³µ");
       MemberVO memberVO = memberProc.readById(id);
-      session.setAttribute("memberno", memberVO.getMemberno()); // ¼­¹öÀÇ ¸Ş¸ğ¸®¿¡ ±â·Ï
+      session.setAttribute("memberno", memberVO.getMemberno()); // ì„œë²„ì˜ ë©”ëª¨ë¦¬ì— ê¸°ë¡
       session.setAttribute("id", id);
       session.setAttribute("mname", memberVO.getMname());
       session.setAttribute("grade", memberVO.getGrade());
    
       // -------------------------------------------------------------------
-      // id °ü·Ã Äí±â ÀúÀå
+      // id ê´€ë ¨ ì¿ ê¸° ì €ì¥
       // -------------------------------------------------------------------
-      if (id_save.equals("Y")) { // id¸¦ ÀúÀåÇÒ °æ¿ì, Checkbox¸¦ Ã¼Å©ÇÑ °æ¿ì
+      if (id_save.equals("Y")) { // idë¥¼ ì €ì¥í•  ê²½ìš°, Checkboxë¥¼ ì²´í¬í•œ ê²½ìš°
         Cookie ck_id = new Cookie("ck_id", id);
-        ck_id.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
-        ck_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, ÃÊ´ÜÀ§
-        response.addCookie(ck_id); // id ÀúÀå
-      } else { // N, id¸¦ ÀúÀåÇÏÁö ¾Ê´Â °æ¿ì, Checkbox¸¦ Ã¼Å© ÇØÁ¦ÇÑ °æ¿ì
+        ck_id.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
+        ck_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, ì´ˆë‹¨ìœ„
+        response.addCookie(ck_id); // id ì €ì¥
+      } else { // N, idë¥¼ ì €ì¥í•˜ì§€ ì•ŠëŠ” ê²½ìš°, Checkboxë¥¼ ì²´í¬ í•´ì œí•œ ê²½ìš°
         Cookie ck_id = new Cookie("ck_id", "");
         ck_id.setPath("/");
         ck_id.setMaxAge(0);
-        response.addCookie(ck_id); // id ÀúÀå
+        response.addCookie(ck_id); // id ì €ì¥
       }
       
-      // id¸¦ ÀúÀåÇÒÁö ¼±ÅÃÇÏ´Â  CheckBox Ã¼Å© ¿©ºÎ
+      // idë¥¼ ì €ì¥í• ì§€ ì„ íƒí•˜ëŠ”  CheckBox ì²´í¬ ì—¬ë¶€
       Cookie ck_id_save = new Cookie("ck_id_save", id_save);
       ck_id_save.setPath("/");
       ck_id_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
@@ -689,20 +687,20 @@ public class MemberCont {
       // -------------------------------------------------------------------
   
       // -------------------------------------------------------------------
-      // Password °ü·Ã Äí±â ÀúÀå
+      // Password ê´€ë ¨ ì¿ ê¸° ì €ì¥
       // -------------------------------------------------------------------
-      if (password_save.equals("Y")) { // ÆĞ½º¿öµå ÀúÀåÇÒ °æ¿ì
+      if (password_save.equals("Y")) { // íŒ¨ìŠ¤ì›Œë“œ ì €ì¥í•  ê²½ìš°
         Cookie ck_password = new Cookie("ck_password", password);
         ck_password.setPath("/");
         ck_password.setMaxAge(60 * 60 * 24 * 30); // 30 day
         response.addCookie(ck_password);
-      } else { // N, ÆĞ½º¿öµå¸¦ ÀúÀåÇÏÁö ¾ÊÀ» °æ¿ì
+      } else { // N, íŒ¨ìŠ¤ì›Œë“œë¥¼ ì €ì¥í•˜ì§€ ì•Šì„ ê²½ìš°
         Cookie ck_password = new Cookie("ck_password", "");
         ck_password.setPath("/");
         ck_password.setMaxAge(0);
         response.addCookie(ck_password);
       }
-      // password¸¦ ÀúÀåÇÒÁö ¼±ÅÃÇÏ´Â  CheckBox Ã¼Å© ¿©ºÎ
+      // passwordë¥¼ ì €ì¥í• ì§€ ì„ íƒí•˜ëŠ”  CheckBox ì²´í¬ ì—¬ë¶€
       Cookie ck_password_save = new Cookie("ck_password_save", password_save);
       ck_password_save.setPath("/");
       ck_password_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
@@ -711,10 +709,10 @@ public class MemberCont {
    
       System.out.println("-> return_url: " + return_url);
       
-      if (return_url.length() > 0) { // ¡Ú ·Î±×ÀÎ ¼º°øÈÄ ÀÚµ¿À¸·Î ÀÌµ¿ÇÒ ÁÖ¼Ò
+      if (return_url.length() > 0) { // â˜… ë¡œê·¸ì¸ ì„±ê³µí›„ ìë™ìœ¼ë¡œ ì´ë™í•  ì£¼ì†Œ
         mav.setViewName("redirect:" + return_url);  
       } else {
-        mav.setViewName("redirect:/index.do"); // ½ÃÀÛ ÆäÀÌÁö·Î ÀÌµ¿
+        mav.setViewName("redirect:/index.do"); // ì‹œì‘ í˜ì´ì§€ë¡œ ì´ë™
       }
       
     } else {
@@ -726,7 +724,7 @@ public class MemberCont {
   }
     
   /**
-   * ·Î±×¾Æ¿ô Ã³¸®
+   * ë¡œê·¸ì•„ì›ƒ ì²˜ë¦¬
    * @param session
    * @return
    */
@@ -734,7 +732,7 @@ public class MemberCont {
                              method=RequestMethod.GET)
   public ModelAndView logout(HttpSession session){
     ModelAndView mav = new ModelAndView();
-    session.invalidate(); // ¸ğµç session º¯¼ö »èÁ¦
+    session.invalidate(); // ëª¨ë“  session ë³€ìˆ˜ ì‚­ì œ
     
     mav.setViewName("redirect:/index.do"); 
     
@@ -742,14 +740,14 @@ public class MemberCont {
   }
   
   /**
-   * Cookie + Ajax ±â¹İ ·Î±×ÀÎ Ã³¸®
-   * @param request Cookie¸¦ ÀĞ±âÀ§ÇØ ÇÊ¿ä
-   * @param response Cookie¸¦ ¾²±âÀ§ÇØ ÇÊ¿ä
-   * @param session ·Î±×ÀÎ Á¤º¸¸¦ ¸Ş¸ğ¸®¿¡ ±â·Ï
-   * @param id  È¸¿ø ¾ÆÀÌµğ
-   * @param password È¸¿ø ÆĞ½º¿öµå
-   * @param id_save È¸¿ø ¾ÆÀÌµğ Cookie¿¡ ÀúÀå ¿©ºÎ
-   * @param password_save ÆĞ½º¿öµå Cookie¿¡ ÀúÀå ¿©ºÎ
+   * Cookie + Ajax ê¸°ë°˜ ë¡œê·¸ì¸ ì²˜ë¦¬
+   * @param request Cookieë¥¼ ì½ê¸°ìœ„í•´ í•„ìš”
+   * @param response Cookieë¥¼ ì“°ê¸°ìœ„í•´ í•„ìš”
+   * @param session ë¡œê·¸ì¸ ì •ë³´ë¥¼ ë©”ëª¨ë¦¬ì— ê¸°ë¡
+   * @param id  íšŒì› ì•„ì´ë””
+   * @param password íšŒì› íŒ¨ìŠ¤ì›Œë“œ
+   * @param id_save íšŒì› ì•„ì´ë”” Cookieì— ì €ì¥ ì—¬ë¶€
+   * @param password_save íŒ¨ìŠ¤ì›Œë“œ Cookieì— ì €ì¥ ì—¬ë¶€
    * @return
    */
   // http://localhost:9091/member/login_ajax.do 
@@ -769,52 +767,52 @@ public class MemberCont {
     map.put("password", password);
     
     int cnt = memberProc.login(map);
-    if (cnt == 1) { // ·Î±×ÀÎ ¼º°ø
-      // System.out.println(id + " ·Î±×ÀÎ ¼º°ø");
+    if (cnt == 1) { // ë¡œê·¸ì¸ ì„±ê³µ
+      // System.out.println(id + " ë¡œê·¸ì¸ ì„±ê³µ");
       MemberVO memberVO = memberProc.readById(id);
-      session.setAttribute("memberno", memberVO.getMemberno()); // ¼­¹öÀÇ ¸Ş¸ğ¸®¿¡ ±â·Ï
+      session.setAttribute("memberno", memberVO.getMemberno()); // ì„œë²„ì˜ ë©”ëª¨ë¦¬ì— ê¸°ë¡
       session.setAttribute("id", id);
       session.setAttribute("mname", memberVO.getMname());
       session.setAttribute("grade", memberVO.getGrade());
       
       // -------------------------------------------------------------------
-      // id °ü·Ã Äí±â ÀúÀå
+      // id ê´€ë ¨ ì¿ ê¸° ì €ì¥
       // -------------------------------------------------------------------
-      if (id_save.equals("Y")) { // id¸¦ ÀúÀåÇÒ °æ¿ì, Checkbox¸¦ Ã¼Å©ÇÑ °æ¿ì
+      if (id_save.equals("Y")) { // idë¥¼ ì €ì¥í•  ê²½ìš°, Checkboxë¥¼ ì²´í¬í•œ ê²½ìš°
         Cookie ck_id = new Cookie("ck_id", id);
-        ck_id.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
-        ck_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, ÃÊ´ÜÀ§
-        response.addCookie(ck_id); // id ÀúÀå
-      } else { // N, id¸¦ ÀúÀåÇÏÁö ¾Ê´Â °æ¿ì, Checkbox¸¦ Ã¼Å© ÇØÁ¦ÇÑ °æ¿ì
+        ck_id.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
+        ck_id.setMaxAge(60 * 60 * 24 * 30); // 30 day, ì´ˆë‹¨ìœ„
+        response.addCookie(ck_id); // id ì €ì¥
+      } else { // N, idë¥¼ ì €ì¥í•˜ì§€ ì•ŠëŠ” ê²½ìš°, Checkboxë¥¼ ì²´í¬ í•´ì œí•œ ê²½ìš°
         Cookie ck_id = new Cookie("ck_id", "");
-        ck_id.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
+        ck_id.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
         ck_id.setMaxAge(0);
-        response.addCookie(ck_id); // id ÀúÀå
+        response.addCookie(ck_id); // id ì €ì¥
       }
-      // id¸¦ ÀúÀåÇÒÁö ¼±ÅÃÇÏ´Â  CheckBox Ã¼Å© ¿©ºÎ
+      // idë¥¼ ì €ì¥í• ì§€ ì„ íƒí•˜ëŠ”  CheckBox ì²´í¬ ì—¬ë¶€
       Cookie ck_id_save = new Cookie("ck_id_save", id_save);
-      ck_id_save.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
+      ck_id_save.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
       ck_id_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
       response.addCookie(ck_id_save);
       // -------------------------------------------------------------------
 
       // -------------------------------------------------------------------
-      // Password °ü·Ã Äí±â ÀúÀå
+      // Password ê´€ë ¨ ì¿ ê¸° ì €ì¥
       // -------------------------------------------------------------------
-      if (password_save.equals("Y")) { // ÆĞ½º¿öµå ÀúÀåÇÒ °æ¿ì
+      if (password_save.equals("Y")) { // íŒ¨ìŠ¤ì›Œë“œ ì €ì¥í•  ê²½ìš°
         Cookie ck_password = new Cookie("ck_password", password);
-        ck_password.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
+        ck_password.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
         ck_password.setMaxAge(60 * 60 * 24 * 30); // 30 day
         response.addCookie(ck_password);
-      } else { // N, ÆĞ½º¿öµå¸¦ ÀúÀåÇÏÁö ¾ÊÀ» °æ¿ì
+      } else { // N, íŒ¨ìŠ¤ì›Œë“œë¥¼ ì €ì¥í•˜ì§€ ì•Šì„ ê²½ìš°
         Cookie ck_password = new Cookie("ck_password", "");
-        ck_password.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
+        ck_password.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
         ck_password.setMaxAge(0);
         response.addCookie(ck_password);
       }
-      // password¸¦ ÀúÀåÇÒÁö ¼±ÅÃÇÏ´Â  CheckBox Ã¼Å© ¿©ºÎ
+      // passwordë¥¼ ì €ì¥í• ì§€ ì„ íƒí•˜ëŠ”  CheckBox ì²´í¬ ì—¬ë¶€
       Cookie ck_password_save = new Cookie("ck_password_save", password_save);
-      ck_password_save.setPath("/");  // root Æú´õ¿¡ ÄíÅ°¸¦ ±â·ÏÇÔÀ¸·Î ¸ğµç °æ·Î¿¡¼­ Äí±â Á¢±Ù °¡´É
+      ck_password_save.setPath("/");  // root í´ë”ì— ì¿ í‚¤ë¥¼ ê¸°ë¡í•¨ìœ¼ë¡œ ëª¨ë“  ê²½ë¡œì—ì„œ ì¿ ê¸° ì ‘ê·¼ ê°€ëŠ¥
       ck_password_save.setMaxAge(60 * 60 * 24 * 30); // 30 day
       response.addCookie(ck_password_save);
       // -------------------------------------------------------------------
@@ -828,13 +826,13 @@ public class MemberCont {
   }
   
   /**
-   * Ajax ±â¹İ È¸¿ø Á¶È¸
+   * Ajax ê¸°ë°˜ íšŒì› ì¡°íšŒ
    * http://localhost:9091/member/read_ajax.do
    * {
-   * "rname":"¿Õ´«ÀÌ",
-   * "raddress2":"°üÃ¶µ¿",
+   * "rname":"ì™•ëˆˆì´",
+   * "raddress2":"ê´€ì² ë™",
    * "rzipcode":"12345",
-   * "raddress1":"¼­¿ï½Ã Á¾·Î±¸",
+   * "raddress1":"ì„œìš¸ì‹œ ì¢…ë¡œêµ¬",
    * "rtel":"000-0000-0000"
    * }
    * @param memberno
@@ -860,7 +858,7 @@ public class MemberCont {
   
 //http://localhost:9092/mail/send.do
   /**
-   * ¸ŞÀÏ Àü¼Û
+   * ë©”ì¼ ì „ì†¡
    * @return
    */
 	/*
@@ -874,13 +872,13 @@ public class MemberCont {
 	 * 
 	 * 
 	 * MailTool mailTool = new MailTool(); from = "1229juwon67@gmail.com"; title =
-	 * "ÀÎÁõ¹øÈ£ ÀÎÁõÅ° ÀÔ´Ï´Ù."; String key = content;
+	 * "ì¸ì¦ë²ˆí˜¸ ì¸ì¦í‚¤ ì…ë‹ˆë‹¤."; String key = content;
 	 * 
 	 * 
 	 * ArrayList<MemberVO> list = memberProc.list(); mav.addObject("list", list);
 	 * mav.addObject("authKey", key); mav.addObject("checkn", name);
 	 * 
-	 * mailTool.send(receiver, from, title, content); // ¸ŞÀÏ Àü¼Û
+	 * mailTool.send(receiver, from, title, content); // ë©”ì¼ ì „ì†¡
 	 * 
 	 * return mav; }
 	 */
@@ -889,7 +887,7 @@ public class MemberCont {
   
 //http://localhost:9092/mail/send.do
 // /**
-// * ¸ŞÀÏ Àü¼Û
+// * ë©”ì¼ ì „ì†¡
 // * @return
 // */
 // @RequestMapping(value="/member/send.do", method=RequestMethod.GET )
@@ -901,7 +899,7 @@ public class MemberCont {
 // }
 
  /**
-  * ¸ŞÀÏ Àü¼Û
+  * ì•„ì´ë”” ì°¾ê¸° ë©”ì¼ ì „ì†¡
   * @return
   */
  @RequestMapping(value="/member/send.do", method=RequestMethod.POST)
@@ -910,7 +908,7 @@ public class MemberCont {
    
    MailTool mailTool = new MailTool();
    from = "1229juwon67@gmail.com";
-   title = "ÀÎÁõ¹øÈ£ ÀÎÁõÅ° ÀÔ´Ï´Ù.";
+   title = "ì¸ì¦ë²ˆí˜¸ ì¸ì¦í‚¤ ì…ë‹ˆë‹¤.";
    String key = content;
    
    
@@ -919,23 +917,49 @@ public class MemberCont {
    mav.addObject("authKey", key);
    mav.addObject("checkn", name);
    
-   mailTool.send(receiver, from, title, content); // ¸ŞÀÏ Àü¼Û
+   mailTool.send(receiver, from, title, content); // ë©”ì¼ ì „ì†¡
    mav.setViewName("/member/send");
    return mav;
  }
+ 
+ /**
+  * ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ë©”ì¼ ì „ì†¡
+  * @return
+  */
+ @RequestMapping(value="/member/send2.do", method=RequestMethod.POST)
+ public ModelAndView send2(String receiver, String from, String title, String content, String id){
+   ModelAndView mav = new ModelAndView();
+   
+   MailTool mailTool = new MailTool();
+   from = "1229juwon67@gmail.com";
+   title = "ì¸ì¦ë²ˆí˜¸ ì¸ì¦í‚¤ ì…ë‹ˆë‹¤.";
+   String key = content;
+   
+   
+   ArrayList<MemberVO> list = memberProc.list();
+   mav.addObject("list", list);
+   mav.addObject("authKey", key);
+   mav.addObject("checkId", id);
+   System.out.println("asddd: " + id);
+   
+   mailTool.send(receiver, from, title, content); // ë©”ì¼ ì „ì†¡
+   mav.setViewName("/member/send2");
+   return mav;
+ }
+ 
   
   /**
-   * ¾ÆÀÌµğ Ãâ·Â °¡´É
-   * http://localhost:9091/member/show_id.do
+   * ì•„ì´ë”” ì¶œë ¥ ê°€ëŠ¥
+   * http://localhost:9093/member/show_id.do
    * @param session
    * @return
    */
    @RequestMapping(value="/member/show_id.do", method= RequestMethod.POST)
-   public ModelAndView list(String checkn) {
+   public ModelAndView show_id(String checkn) {
      ModelAndView mav = new ModelAndView();
      
 
-     MemberVO memberVO = memberProc.readByEmail(checkn);
+     MemberVO memberVO = memberProc.readByName(checkn);
      ArrayList<MemberVO> list = memberProc.list();
      mav.addObject("list", list);
 
@@ -943,9 +967,31 @@ public class MemberCont {
      mav.setViewName("/member/show_id");
      return mav;
    }  
+   
+   
+   /**
+    * ë¹„ë°€ë²ˆí˜¸ ì¶œë ¥ ê°€ëŠ¥
+    * http://localhost:9093/member/show_id.do
+    * @param session
+    * @return
+    */
+    @RequestMapping(value="/member/show_pw.do", method= RequestMethod.POST)
+    public ModelAndView show_pw(String checkId) {
+      ModelAndView mav = new ModelAndView();
+      
+
+      MemberVO memberVO = memberProc.readById(checkId);
+      ArrayList<MemberVO> list = memberProc.list();
+      mav.addObject("list", list);
+
+      mav.addObject("find_pw", memberVO.getPassword());
+      mav.setViewName("/member/show_pw");
+      return mav;
+    }  
 
   
 }
+
 
 
 
