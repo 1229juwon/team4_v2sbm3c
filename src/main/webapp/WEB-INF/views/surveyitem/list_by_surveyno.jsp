@@ -58,7 +58,7 @@
 
       
             <label style="cursor: pointer;">
-            <input type="radio" name="${surveyitemVO.item}" value="${surveyitemVO.item}" > ${surveyitemVO.item}
+            <input type="radio" name="${surveyitemVO.surveyno}" value="${surveyitemVO.surveyno}" > ${surveyitemVO.item}
             </label>
 
           </td> 
