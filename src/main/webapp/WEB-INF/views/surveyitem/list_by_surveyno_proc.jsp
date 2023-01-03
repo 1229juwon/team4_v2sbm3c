@@ -7,7 +7,7 @@
 <head> 
 <meta charset="UTF-8"> 
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, width=device-width" /> 
-<title>Resort world</title>
+<title>투표 결과</title>
  
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
  
@@ -18,13 +18,10 @@
 <body>
 <c:import url="/menu/top.do" />
  
-${surveyVO.topic }<br>
-  <%
-  
-
-  %>
+  축제 예약<br>
+  ----------------------------------------<br>
   <br>
-  <A href='./list_by_surveyno.jsp'>설문조사 계속</A>
+  <A href='./list_by_survey.jsp'>예약 계속</A>
  
 <jsp:include page="../menu/bottom.jsp" />
 </body>

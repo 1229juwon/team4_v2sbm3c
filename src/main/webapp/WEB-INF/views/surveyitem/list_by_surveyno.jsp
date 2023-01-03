@@ -16,8 +16,8 @@
 </head> 
  
 <body>
-<form name='topic' action='./list_by_surveyno_ck.jsp' method='POST'>
 <c:import url="/menu/top.do" />
+ <form name='topic' action='./list_by_surveyno_proc.jsp' method='POST'>
  
 <DIV class='title_line'>
   <A href="./list_by_surveyno.do?surveyno=${surveyVO.surveyno }" class='title_link'>${surveyVO.topic }</A>
@@ -56,20 +56,19 @@
           </td>  
           <td style='vertical-align: middle;'> 
 
-      
+     
             <label style="cursor: pointer;">
             <input type="radio" name="${surveyitemVO.surveyno}" value="${surveyitemVO.surveyno}" > ${surveyitemVO.item}
             </label>
-
           </td> 
+         
 
           <td style='vertical-align: middle; text-align: center;'>
             <A href="/surveyitem/map.do?surveyno=${surveyno }&surveyitemno=${surveyitemno}" title="지도"><IMG src="/surveyitem/images/map.png" class="icon"></A>
             <A href="/surveyitem/youtube.do?surveyno=${surveyno }&surveyitemno=${surveyitemno}" title="Youtube"><IMG src="/surveyitem/images/youtube.png" class="icon"></A>
             수정/삭제
           </td> 
-
-        </tr>
+       </tr>
       </c:forEach>
      
             
@@ -77,13 +76,13 @@
   </table>
 </DIV>
 
-    <div class="content_body_bottom">
-      <button type="submit" class="btn btn-primary">참여</button>
-    </div>
+       <div class="content_body_bottom">
+       <button type="submit" class="btn btn-primary">참여</button>
+       </div>
+ </form>
 
  
 <jsp:include page="../menu/bottom.jsp" />
-</form>
 </body>
  
 </html>
