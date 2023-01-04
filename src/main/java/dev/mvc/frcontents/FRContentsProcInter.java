@@ -88,4 +88,10 @@ public interface FRContentsProcInter {
    */
   public int map(HashMap<String, Object> hashMap);
   
+  /**
+   * 추천 목록
+   * @return
+   */
+  public ArrayList<FRContentsVO> mf_food_member(HashMap<String, Object> hashMap); 
+  
 }

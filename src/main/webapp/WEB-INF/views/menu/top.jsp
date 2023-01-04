@@ -98,6 +98,17 @@
                         </c:when>
                     </c:choose>        
                    
+                   <li class="nav-item">
+                          <c:choose>
+                              <c:when test="${sessionScope.id != null}">
+                                  <a class="nav-link" href="/frcontents/mf_food_member.do">음식점 추천 받기</a>
+                              </c:when>
+                              <c:otherwise>
+                                  <a class="nav-link" href='/member/login.do'>로그인하여 음식점 추천 받기</a>
+                              </c:otherwise>
+                          </c:choose>
+                      </li> 
+                      
                 </ul>
             </div>    
         </nav>

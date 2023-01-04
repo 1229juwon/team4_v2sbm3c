@@ -234,4 +234,10 @@ public class FRContentsProc implements FRContentsProcInter {
     int cnt = this.frcontentsDAO.map(hashMap);
     return cnt;
   }
+
+  @Override
+  public ArrayList<FRContentsVO> mf_food_member(HashMap<String, Object> hashMap) {
+    ArrayList<FRContentsVO> list = this.frcontentsDAO.mf_food_member(hashMap);
+    return list;
+  }
 }

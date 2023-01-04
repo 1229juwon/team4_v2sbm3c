@@ -1,5 +1,11 @@
 package dev.mvc.frcontents;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -9,6 +15,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -513,6 +521,80 @@ public class FRContentsCont {
     
     mav.setViewName("redirect:/frcontents/read.do?cateno=" + cateno + "&frno=" + frno); 
     // /webapp/WEB-INF/views/frcontents/read.jsp
+    
+    return mav;
+  }
+  
+  // GET 요청
+  public String mf_recommend(String django_url) throws MalformedURLException, IOException {
+      URL url = new URL(django_url);
+      HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+      
+      int statusCode = httpConn.getResponseCode();        
+      System.out.println((statusCode == 200) ? "success" : "fail");
+      System.out.println("Response code: " + statusCode);
+      
+      BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
+      String line=br.readLine();
+      br.close();
+      
+      return line;
+  }
+  
+  /**
+   * 추천 목록, http://localhost:9093/frcontents/mf_food_member.do
+   * @return
+   */
+  @RequestMapping(value="/frcontents/mf_food_member.do", method=RequestMethod.GET)
+  public ModelAndView mf_food_member(HttpSession session) {
+    ModelAndView mav = new ModelAndView();
+    
+    // Spring boot -> Django로 요청을 보냄 -> JSON 문자열 수신
+    int memberno = (int)session.getAttribute("memberno");
+//    memberno=1;
+    // int userId = 1; // test
+//    int userId = memberno;
+    
+    String source = "";
+    try {
+      source = mf_recommend("http://127.0.0.1:8000/recommend_food/mf_food?memberno=" + memberno);
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }        
+
+    System.out.println("-> source: " + source);
+    // -> source: [{"movie_id": 246, "movie_title": "Hoop Dreams (1994)", "movie_rating": 5}, 
+    // {"movie_id": 318, "movie_title": "Shawshank Redemption, The (1994)", "movie_rating": 5}, 
+    // {"movie_id": 720, "movie_title": "Wallace & Gromit: The Best of Aardman Animation (1996)", "movie_rating": 5}, {"movie_id": 741, "movie_title": "Ghost in the Shell (Kôkaku kidôtai) (1995)", "movie_rating": 5}, {"movie_id": 750, "movie_title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964)", "movie_rating": 5}]
+    
+    // 영화 번호를 추출
+    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+    
+    JSONArray json = new JSONArray(source);
+    ArrayList<String> frno_list = new ArrayList<String>();
+    
+    for (int index=0; index < json.length(); index++) {
+      JSONObject obj = (JSONObject)json.opt(index);
+      String frno = obj.optString("frno");
+      System.out.println("-> frno: " + frno);
+      frno_list.add(frno);
+    }
+    
+    hashMap.put("frno_list", frno_list);
+        
+    // 추천 상품 목록 읽기
+    ArrayList<FRContentsVO> list = this.frcontentsProc.mf_food_member(hashMap);
+    mav.addObject("list", list);
+    
+    // 유형 1: 테이블
+    // /webapp/WEB-INF/views/contents/mf_movie_member.jsp
+    // mav.setViewName("/contents/mf_movie_member"); 
+
+    // 유형 2: 그리드
+    // /webapp/WEB-INF/views/contents/mf_movie_member_grid.jsp
+    mav.setViewName("/frcontents/mf_food_member_grid"); 
     
     return mav;
   }
