@@ -17,7 +17,8 @@
  
 <body>
 <c:import url="/menu/top.do" />
- <form name='topic' action='./list_by_surveyno_proc.jsp' method='POST'>
+ <form name='topic' action='./list_by_surveyno_proc.do' method='POST'>
+   <input type='hidden' name='surveyno' value='${param.surveyno }' >
  
 <DIV class='title_line'>
   <A href="./list_by_surveyno.do?surveyno=${surveyVO.surveyno }" class='title_link'>${surveyVO.topic }</A>

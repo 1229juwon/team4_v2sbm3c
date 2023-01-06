@@ -45,6 +45,7 @@ COMMIT;
 SELECT surveyitemno, surveyno, item, cnt, rdate
 FROM surveyitem
 ORDER BY rdate ASC;
+
      
      
 3. 조회

@@ -17,13 +17,17 @@
  
 <body>
 <c:import url="/menu/top.do" />
+<form name='topic' id='topic' method='get' action='./list_by_surveyno_proc.do'>
+ <input type='hidden' name='item' value='${surveyVO.surveyno }'>
  
-  축제 예약<br>
+  설문조사 결과<br>
   ----------------------------------------<br>
+  결과: <%=request.getParameter("surveyno") %><br>
   <br>
-  <A href='./list_by_survey.jsp'>예약 계속</A>
+  <A href='./list_by_surveyno.jsp'>예약 계속</A>
  
 <jsp:include page="../menu/bottom.jsp" />
+</form>
 </body>
  
 </html>
