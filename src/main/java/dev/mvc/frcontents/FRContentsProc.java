@@ -194,13 +194,13 @@ public class FRContentsProc implements FRContentsProcInter {
     FRContentsVO frcontentsVO = this.frcontentsDAO.read(frno);
     
     String fr_name = frcontentsVO.getFr_name();
-    String fr_content = frcontentsVO.getFr_content();
+//    String fr_content = frcontentsVO.getFr_content();
     
     fr_name = Tool.convertChar(fr_name);
-    fr_content = Tool.convertChar(fr_content);
+//    fr_content = Tool.convertChar(fr_content);
     
     frcontentsVO.setFr_name(fr_name);
-    frcontentsVO.setFr_content(fr_content);
+//    frcontentsVO.setFr_content(fr_content);
     
     return frcontentsVO;
   }

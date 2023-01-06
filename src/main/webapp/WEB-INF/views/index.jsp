@@ -18,11 +18,19 @@
 </head>
 <body>
 <c:import url="/menu/top.do" />
-  
-  <DIV style='width: 100%; margin: 30px auto; text-align: center;'>
-    <%-- /static/images/resort01.jpg --%>
-    <IMG src='/images/resort01.jpg' style='width: 50%;'>
-  </DIV>
+
+  <c:choose>
+      <c:when test="${sessionScope.id != null}">
+        <c:import url="/frcontents/mf_movie_member_grid_index.do" />
+      </c:when>
+      <c:otherwise>
+        <DIV style='width: 100%; margin: 30px auto; text-align: center;'>
+          <%-- /static/images/resort01.jpg --%>
+          <IMG src='/images/resort01.jpg' style='width: 50%;'>
+        </DIV>
+      </c:otherwise>
+  </c:choose>                            
+
   
   <DIV style='margin: 0px auto; width: 90%;'>
     <DIV style='float: left; width: 50%;'>

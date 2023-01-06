@@ -112,14 +112,7 @@
           </td>  
           <td style='vertical-align: middle;'>
             <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><strong>${frcontentsVO.fr_name}</strong> 
-            <c:choose>
-              <c:when test="${frcontentsVO.fr_content.length() > 160 }">
-                  ${frcontentsVO.fr_content.substring(0, 160)}.....
-              </c:when>
-              <c:when test="${frcontentsVO.fr_content.length() <= 160 }">
-                  ${frcontentsVO.fr_content}
-              </c:when>
-            </c:choose>
+
             
             </a> 
            <td style='vertical-align: middle; text-align: center;'>

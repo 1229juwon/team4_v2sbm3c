@@ -34,7 +34,7 @@
         <c:set var="thumb1" value="${frcontentsVO.thumb1 }" />
                 
         <DIV style='margin: 0px auto; width: 19.5%; float: left; height: 350px;'>
-          <a href="./read.do?frno=${frno}&cateno=${cateno}"><IMG src="/frcontents/storage/${thumb1 }" style="width: 95%; height: 200px;"></a>
+          <a href="/frcontents/read.do?frno=${frno}&cateno=${cateno}"><IMG src="/frcontents/storage/${thumb1 }" style="width: 95%; height: 200px;"></a>
           <br>
           ${fr_name } 
         </DIV>
@@ -42,7 +42,6 @@
     </DIV>
   </DIV>
 </DIV>
-<jsp:include page="../menu/bottom.jsp" />
 </body>
  
 </html>
