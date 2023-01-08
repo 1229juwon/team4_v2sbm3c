@@ -21,7 +21,7 @@ CREATE TABLE frcontents(
         file1saved                            VARCHAR(100)          NULL,  -- 저장된 파일명, image
         thumb1                                VARCHAR(100)          NULL,   -- preview image
         size1                                 NUMBER(10)      DEFAULT 0 NULL,
-        favorites                             NUMBER(10)      DEFAULT 1 NOT NULL,
+        favorites                             NUMBER(10)      DEFAULT 1 NULL,
         FOREIGN KEY (cateno) REFERENCES fcate (cateno),
         FOREIGN KEY (memberno) REFERENCES member (memberno)
 );
