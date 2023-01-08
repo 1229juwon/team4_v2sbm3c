@@ -7,11 +7,27 @@
 <meta charset="UTF-8"> 
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" /> 
 <title>Resort world</title>
- 
+
+<!-- /static 기준 -->
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script> <!-- /static 기준 -->
+ 
+<script type="text/JavaScript">
+  // window.onload=function(){
+  //  CKEDITOR.replace('content');  // <TEXTAREA>태그 name 값
+  // };
+
+  $(function() {
+    CKEDITOR.replace('fr_content');  // <TEXTAREA>태그 name 값
+  });
+ 
+</script>   
 </head> 
  
 <body>
@@ -67,7 +83,7 @@
     </div>
     <div>
        <label> 맛집 설명</label>
-       <textarea name='fr_content' required="required" class="form-control" rows="12" style='width: 100%;'>맛있다</textarea>
+       <textarea name='fr_content' id='fr_content' required="required" class="form-control" rows="12" style='width: 100%;'>맛있다</textarea>
     </div>
     <div>
        <label>맛집 주소</label>

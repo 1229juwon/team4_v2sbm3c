@@ -122,5 +122,28 @@ public class SurveyitemCont {
   return mav;
  }
   
+  /**
+  * 모든 레코드 목록, http://localhost:9093/surveyitem/list_by_surveyno_proc.do?surveyno=1
+  * @return
+  */ 
+  @RequestMapping(value="/surveyitem/list_by_surveyno_proc.do", method=RequestMethod.POST)
+  public ModelAndView list_by_surveyno_proc(int surveyno) {
+  ModelAndView mav = new ModelAndView();
+ 
+  SurveyVO surveyVO = this.surveyProc.read(surveyno);
+  mav.addObject("surveyVO", surveyVO);
+ 
+  ArrayList<SurveyitemVO> list = this.surveyitemProc.list_by_surveyno(surveyno);
+  mav.addObject("list", list);
+  // request.setAttribute("list", list);
+ 
+  // System.out.println("-> list size: " + list.size());
+ 
+  mav.setViewName("/surveyitem/list_by_surveyno_proc"); // /webapp/WEB-INF/views/surveyitem/list_by_surveyno_proc.jsp
+ 
+  return mav;
+ }
+  
+  
 
 }

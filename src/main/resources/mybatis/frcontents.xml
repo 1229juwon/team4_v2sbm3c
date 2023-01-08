@@ -118,6 +118,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE frno=#{frno}
   </update>   
   
+    <!-- 추천 목록, WHERE contentsno IN (246, 318, 720, 741, 750) -->
+  <select id="mf_food_member" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="HashMap">
+	       SELECT frno, cateno, memberno,
+	       fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+	       price, file1, file1saved, thumb1, size1
+				FROM frcontents 
+				WHERE frno IN <foreach collection="frno_list" item="item" index="index" open="(" separator="," close=")">#{item}</foreach>
+				ORDER BY frno ASC
+  </select>
+  
 </mapper>
 
 

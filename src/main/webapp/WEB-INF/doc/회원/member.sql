@@ -52,6 +52,19 @@ WHERE id='user1';
 INSERT INTO member(memberno, id, password, mname, phonenum, homenum,address, nickname, mdate, grade)
 VALUES (member_seq.nextval, 'user1', '1234', 'juwon', '000-0000-0000', '00-0000-0000',
              '서울시', '주원', sysdate, 1);
+             
+INSERT INTO member(memberno, id, password, mname, phonenum, homenum,address, nickname, mdate, grade)
+VALUES (member_seq.nextval, 'user2', '1234', 'seahyeon', '000-0000-0000', '00-0000-0000',
+             '서울시', '세현', sysdate, 1);
+
+INSERT INTO member(memberno, id, password, mname, phonenum, homenum,address, nickname, mdate, grade)
+VALUES (member_seq.nextval, 'user3', '1234', 'minji', '000-0000-0000', '00-0000-0000',
+             '서울시', '민지', sysdate, 1);
+            
+INSERT INTO member(memberno, id, password, mname, phonenum, homenum,address, nickname, mdate, grade)
+VALUES (member_seq.nextval, 'user4', '1234', 'minsu', '000-0000-0000', '00-0000-0000',
+             '서울시', '민수', sysdate, 1);           
+             
 
 COMMIT;
 

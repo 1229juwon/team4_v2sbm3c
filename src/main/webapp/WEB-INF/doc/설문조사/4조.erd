@@ -909,8 +909,8 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>555</x>
-                          <y>1383</y>
+                          <x>562</x>
+                          <y>1385</y>
                         </constraint>
                         <sourceConnections>
                           <net.java.amateras.db.visual.model.ForeignKeyModel reference="../../.."/>
@@ -2928,7 +2928,7 @@
   </children>
   <dommains/>
   <dialectName>hsqldb</dialectName>
-  <logicalMode>false</logicalMode>
+  <logicalMode>true</logicalMode>
   <jarFile></jarFile>
   <jdbcDriver>sun.jdbc.odbc.JdbcOdbc</jdbcDriver>
   <jdbcUrl></jdbcUrl>
