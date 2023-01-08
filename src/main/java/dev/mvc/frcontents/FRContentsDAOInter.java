@@ -83,4 +83,12 @@ public interface FRContentsDAOInter {
    */
   public ArrayList<FRContentsVO> mf_food_member(HashMap<String, Object> hashMap); 
   
+  /**
+   * 조회
+   * @param favorites 조회할 레코드 번호
+   * @return 조회된 레코드
+   */
+  public ArrayList<FRContentsVO> read_by_favorites(int favorites);
+  
+  
 }

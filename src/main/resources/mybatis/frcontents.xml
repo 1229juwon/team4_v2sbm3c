@@ -128,6 +128,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				ORDER BY frno ASC
   </select>
   
+    <!-- 조회, id: read_by_favorites, 입력: favorites, 리턴: ContentsVO -->
+  <select id="read_by_favorites" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="int">
+   SELECT frno, cateno, memberno,
+       fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+       price, file1, file1saved, thumb1, size1, favorites
+    FROM frcontents
+    WHERE favorites = #{favorites}
+  </select>
+  
 </mapper>
 
 

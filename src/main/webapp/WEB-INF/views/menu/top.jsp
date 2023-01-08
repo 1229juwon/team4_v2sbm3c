@@ -55,7 +55,7 @@
                                 <a class="dropdown-item" href="/member/passwd_update.do">비밀번호 변경</a>
                                 <a class="dropdown-item" href="/member/read.do">회원 정보 조회 및 수정</a>
                                 <a class="dropdown-item" href="/member/delete.do?memberno=${memberno}">회원 탈퇴</a>
-                                <a class="dropdown-item" href="/favorites/list.do">즐겨찾기</a>
+                                <a class="dropdown-item" href="/frcontents/favorites.do">즐겨찾기</a>
                               </c:when>
                             </c:choose>
                         </div>

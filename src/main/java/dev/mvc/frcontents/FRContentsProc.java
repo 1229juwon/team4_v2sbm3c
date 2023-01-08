@@ -240,4 +240,24 @@ public class FRContentsProc implements FRContentsProcInter {
     ArrayList<FRContentsVO> list = this.frcontentsDAO.mf_food_member(hashMap);
     return list;
   }
+  
+  @Override
+  public  ArrayList<FRContentsVO> read_by_favorites(int favorites) {
+	  ArrayList<FRContentsVO> list = this.frcontentsDAO.read_by_favorites(favorites);
+	    
+	    for (int i=0; i<list.size(); i++) {
+	      FRContentsVO frcontentsVO = list.get(i);
+	      
+	      String fr_name = frcontentsVO.getFr_name();
+	      String fr_content = frcontentsVO.getFr_content();
+	  
+	      fr_name = Tool.convertChar(fr_name);
+	      fr_content = Tool.convertChar(fr_content);
+	      
+	      frcontentsVO.setFr_name(fr_name);
+	      frcontentsVO.setFr_content(fr_content);
+	    }
+
+  return list;
+  }
 }
