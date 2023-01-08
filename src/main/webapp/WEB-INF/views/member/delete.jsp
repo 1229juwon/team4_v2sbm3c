@@ -19,7 +19,7 @@
 <c:import url="/menu/top.do" />
  
   <DIV class='title_line'>
-    회원 삭제(관리자 전용)
+    회원 삭제
   </DIV>
 
   <DIV class='content_body'>

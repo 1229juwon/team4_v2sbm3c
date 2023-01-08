@@ -52,10 +52,10 @@
                             <a class="dropdown-item" href="#">비밀번호 찾기</a>
                             <c:choose>
                               <c:when test="${sessionScope.id != null}">
-                                <a class="dropdown-item" href="/member/read.do">가입 정보</a>
                                 <a class="dropdown-item" href="/member/passwd_update.do">비밀번호 변경</a>
-                                <a class="dropdown-item" href="/member/read.do">회원 정보 수정</a>
+                                <a class="dropdown-item" href="/member/read.do">회원 정보 조회 및 수정</a>
                                 <a class="dropdown-item" href="/member/delete.do?memberno=${memberno}">회원 탈퇴</a>
+                                <a class="dropdown-item" href="/favorites/list.do">즐겨찾기</a>
                               </c:when>
                             </c:choose>
                         </div>
@@ -92,7 +92,7 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="/fcate/list_all.do">카테고리</a>
                                     <a class="dropdown-item" href="/member/list.do">회원 목록</a>
-                                    <a class='menu_link'  href='/survey/list_all.do'>설문조사</a>
+                                    <a class='dropdown-item'  href='/survey/list_all.do'>설문조사</a>
                                 </div>
                             </li>
                         </c:when>
