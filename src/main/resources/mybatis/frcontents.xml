@@ -18,10 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <insert id="create" parameterType="dev.mvc.frcontents.FRContentsVO">
   INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1)
+                   price, file1, file1saved, thumb1, size1, favorites)
   VALUES (frcontents_seq.nextval, #{cateno}, #{memberno}, 
         #{fr_name}, #{fr_content}, #{fr_addres}, sysdate, #{fr_word},
-       #{price}, #{file1}, #{file1saved}, #{thumb1}, #{size1})
+       #{price}, #{file1}, #{file1saved}, #{thumb1}, #{size1}, #{favorites})
   </insert>
   
     <!-- 카테고리별 검색 레코드 갯수 -->
@@ -43,15 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="list_by_cateno_search_paging" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="HashMap">
   SELECT frno, cateno, memberno,
          fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-         price, file1, file1saved, thumb1, size1
+         price, file1, file1saved, thumb1, size1, favorites
   FROM(
        SELECT frno, cateno, memberno,
          fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-         price, file1, file1saved, thumb1, size1, rownum as r
+         price, file1, file1saved, thumb1, size1, favorites, rownum as r
        FROM (
             SELECT frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-                   price, file1, file1saved, thumb1, size1
+                   price, file1, file1saved, thumb1, size1, favorites
             FROM frcontents
                         <choose>
                           <when test="fr_word == null or fr_word == ''"> <!-- 검색하지 않는 경우 -->
@@ -78,7 +78,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="read" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="int">
    SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1
+       price, file1, file1saved, thumb1, size1, favorites
     FROM frcontents
     WHERE frno = #{frno}
   </select>
@@ -122,10 +122,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="mf_food_member" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="HashMap">
 	       SELECT frno, cateno, memberno,
 	       fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-	       price, file1, file1saved, thumb1, size1
+	       price, file1, file1saved, thumb1, size1, favorites
 				FROM frcontents 
 				WHERE frno IN <foreach collection="frno_list" item="item" index="index" open="(" separator="," close=")">#{item}</foreach>
 				ORDER BY frno ASC
+  </select>
+  
+    <!-- 조회, id: read_by_favorites, 입력: favorites, 리턴: ContentsVO -->
+  <select id="read_by_favorites" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="int">
+   SELECT frno, cateno, memberno,
+       fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+       price, file1, file1saved, thumb1, size1, favorites
+    FROM frcontents
+    WHERE favorites = #{favorites}
   </select>
   
 </mapper>

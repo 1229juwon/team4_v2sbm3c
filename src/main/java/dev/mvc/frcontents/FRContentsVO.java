@@ -60,8 +60,11 @@ public class FRContentsVO {
   private String thumb1 = "";
   /** 메인 이미지 크기 */
   private long size1;
+  /** 즐겨찾기 */
+  private int favorites;
 
-  /**
+
+/**
    이미지 파일
    <input type='file' class="form-control" name='file1MF' id='file1MF' 
               value='' placeholder="파일 선택">
@@ -213,6 +216,14 @@ public class FRContentsVO {
 
   public void setSize1_label(String size1_label) {
     this.size1_label = size1_label;
+  }
+  
+  public int getFavorites() {
+	return favorites;
+  }
+
+  public void setFavorites(int favorites) {
+	this.favorites = favorites;
   }
 
  

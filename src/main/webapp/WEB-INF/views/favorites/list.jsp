@@ -22,7 +22,7 @@
 <c:import url="/menu/top.do" />
  
 <DIV class='title_line'>
-  <A href="./list_by_cateno_search_paging.do?cateno=${fcateVO.cateno }" class='title_link'>${fcateVO.name }</A>
+  <A class='title_link'>dd</A>
 </DIV>
 
 <DIV class='content_body'>
@@ -87,7 +87,6 @@
         <c:set var="file1" value="${frcontentsVO.file1 }" />
         <c:set var="size1" value="${frcontentsVO.size1 }" />
         <c:set var="thumb1" value="${frcontentsVO.thumb1 }" />
-
         
         <tr style="height: 132px;"> 
           <td style='vertical-align: middle; text-align: center;'>
@@ -105,15 +104,20 @@
                   <c:when test="${size1 == 0 }"> <!-- 기본 이미지 출력 -->
                     <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><IMG src="/frcontents/images/none1.png" style="width: 120px; height: 80px;"></a>
                   </c:when>
-                </c:choose>
-                
+                </c:choose>   
               </c:otherwise>
             </c:choose>
           </td>  
           <td style='vertical-align: middle;'>
-            <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><strong>${frcontentsVO.fr_name}</strong> 
-
-            
+            <a href="/frcontents/read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><strong>${frcontentsVO.fr_name}</strong> 
+            <c:choose>
+              <c:when test="${frcontentsVO.fr_content.length() > 160 }">
+                  ${frcontentsVO.fr_content.substring(0, 160)}.....
+              </c:when>
+              <c:when test="${frcontentsVO.fr_content.length() <= 160 }">
+                  ${frcontentsVO.fr_content}
+              </c:when>
+            </c:choose>
             </a> 
            <td style='vertical-align: middle; text-align: center;'>
               ${frcontentsVO.fr_addres}
@@ -131,18 +135,12 @@
             <A href="/frcontents/delete.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="삭제"><IMG src="/frcontents/images/delete.png" class="icon"></A>
             <A href="/frcontents/delete.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="즐겨찾기"><IMG src="/css/images/url5.png" class="icon"></A>
           </td>
+          
         </tr>
       </c:forEach>
-      
     </tbody>
   </table>
-  
-  <!-- 페이지 목록 출력 부분 시작 -->
-  <DIV class='bottom_menu'>${paging }</DIV> <%-- 페이지 리스트 --%>
-  <!-- 페이지 목록 출력 부분 종료 -->
-  
 </DIV>
-
  
 <jsp:include page="../menu/bottom.jsp" />
 </body>
