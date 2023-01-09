@@ -21,6 +21,7 @@ CREATE TABLE frcontents(
         file1saved                            VARCHAR(100)          NULL,  -- 저장된 파일명, image
         thumb1                                VARCHAR(100)          NULL,   -- preview image
         size1                                 NUMBER(10)      DEFAULT 0 NULL,
+        favorites                             NUMBER(10)      DEFAULT 1 NULL,
         FOREIGN KEY (cateno) REFERENCES fcate (cateno),
         FOREIGN KEY (memberno) REFERENCES member (memberno)
 );
@@ -42,6 +43,7 @@ COMMENT ON COLUMN frcontents.file1 is '메인 이미지';
 COMMENT ON COLUMN frcontents.file1saved is '실제 저장된 메인 이미지';
 COMMENT ON COLUMN frcontents.thumb1 is '메인 이미지 Preview';
 COMMENT ON COLUMN frcontents.size1 is '메인 이미지 크기';
+COMMENT ON COLUMN frcontents.favorites is '즐겨찾기';
 
 DROP SEQUENCE frcontents_seq;
 
@@ -51,6 +53,7 @@ CREATE SEQUENCE frcontents_seq
   MAXVALUE 9999999999  -- 최대값: 9999999999 --> NUMBER(10) 대응
   CACHE 2                        -- 2번은 메모리에서만 계산
   NOCYCLE;                      -- 다시 1부터 생성되는 것을 방지
+
 
 -- 등록: 1건 이상, adminno, noticecateno 컬럼에 등록되어 있는 값만 사용 가능
 INSERT INTO frcontents(frno, cateno, memberno,
