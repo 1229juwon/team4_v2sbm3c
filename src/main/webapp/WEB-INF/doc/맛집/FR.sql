@@ -21,7 +21,6 @@ CREATE TABLE frcontents(
         file1saved                            VARCHAR(100)          NULL,  -- 저장된 파일명, image
         thumb1                                VARCHAR(100)          NULL,   -- preview image
         size1                                 NUMBER(10)      DEFAULT 0 NULL,
-        favorites                             NUMBER(10)      DEFAULT 1 NULL,
         FOREIGN KEY (cateno) REFERENCES fcate (cateno),
         FOREIGN KEY (memberno) REFERENCES member (memberno)
 );
@@ -43,7 +42,6 @@ COMMENT ON COLUMN frcontents.file1 is '메인 이미지';
 COMMENT ON COLUMN frcontents.file1saved is '실제 저장된 메인 이미지';
 COMMENT ON COLUMN frcontents.thumb1 is '메인 이미지 Preview';
 COMMENT ON COLUMN frcontents.size1 is '메인 이미지 크기';
-COMMENT ON COLUMN frcontents.favorites is '즐겨찾기';
 
 DROP SEQUENCE frcontents_seq;
 
@@ -54,28 +52,27 @@ CREATE SEQUENCE frcontents_seq
   CACHE 2                        -- 2번은 메모리에서만 계산
   NOCYCLE;                      -- 다시 1부터 생성되는 것을 방지
 
-
 -- 등록: 1건 이상, adminno, noticecateno 컬럼에 등록되어 있는 값만 사용 가능
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
+                   price, file1, file1saved, thumb1, size1)
 VALUES (frcontents_seq.nextval, 1, 1, 
         '플레이버즈', '호텔 해산물', '서울 서울특별시 서초구 신반포로 176 JW 메리어트 호텔 서울 2층', sysdate, '해산물',
-        '10000원 이상', 'file1.jpg', 'file1saved.jpg', 'thumb1.jpg', 1000, 1);
+        '10000원 이상', 'file1.jpg', 'file1saved.jpg', 'thumb1.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
+                   price, file1, file1saved, thumb1, size1)
 VALUES (frcontents_seq.nextval, 2, 1, 
         '클레오', '지중해 요리', '서울 서울시 용산구 장문로 23 몬드리안 서울 이태원 1층 클레오', sysdate, '지중해',
-        '10000원 이하', 'file1.jpg', 'file1saved.jpg', 'thumb1.jpg', 1000, 2);
+        '10000원 이하', 'file1.jpg', 'file1saved.jpg', 'thumb1.jpg', 1000);
 
 commit;
 
 -- 전체 목록
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1, favorites
+       price, file1, file1saved, thumb1, size1
 FROM frcontents
 ORDER BY frno ASC;
 
@@ -85,14 +82,14 @@ ORDER BY frno ASC;
 -- ----------------------------------------------------------------------------
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1, favorites
+       price, file1, file1saved, thumb1, size1
 FROM frcontents
 WHERE frno = 1;
 
 -- 카테고리별 목록
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1, favorites
+       price, file1, file1saved, thumb1, size1
 FROM frcontents
 WHERE frno=5
  ORDER BY frno ASC;
@@ -151,7 +148,7 @@ DELETE FROM frcontents WHERE cateno=2;
 -- 검색 목록(구현 권장)
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1, favorites
+       price, file1, file1saved, thumb1, size1
 FROM frcontents
 WHERE fr_name Like '%가게%' or fr_word Like'%고기%'
 ORDER BY cateno DESC;
@@ -161,15 +158,15 @@ ORDER BY cateno DESC;
 
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1, favorites
+       price, file1, file1saved, thumb1, size1
 FROM(
      SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1, favorites, rownum as r
+       price, file1, file1saved, thumb1, size1, rownum as r
      FROM (
           SELECT frno, cateno, memberno,
                  fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-                 price, file1, file1saved, thumb1, size1, favorites
+                 price, file1, file1saved, thumb1, size1
           FROM frcontents
           WHERE cateno=1 AND (UPPER (fr_name) LIKE '%' || '가게' || '%' 
                                                 OR UPPER(fr_content) LIKE '%' || '가게' || '%' 
@@ -182,7 +179,7 @@ WHERE r >= 1 AND r <= 3;
 		SELECT c.name,
 		          t.frno, t.cateno, t.memberno,
                  t.fr_name, t.fr_content, t.fr_addres, t.fr_map,fr_word, t.fr_rdate, t.fr_udate, t.review_cnt,
-                 t.price, t.file1, t.file1saved, t.thumb1, t.size1, t.favorites
+                 t.price, t.file1, t.file1saved, t.thumb1, t.size1
 		FROM cate c, frcontents t
 		WHERE c.cateno = t.cateno
 		ORDER BY t.frno DESC
@@ -541,6 +538,4 @@ ORDER BY frno ASC;
 -- -----------------------------------------------------------------------------
 -- 추천 시스템 관련 종료
 -- -----------------------------------------------------------------------------
-
-
     
