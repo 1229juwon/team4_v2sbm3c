@@ -65,7 +65,7 @@ VALUES (frcontents_seq.nextval, 1, 1,
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
                    price, file1, file1saved, thumb1, size1, favorites)
-VALUES (frcontents_seq.nextval, 2, 1, 
+VALUES (frcontents_seq.nextval, 4, 1, 
         '클레오', '지중해 요리', '서울 서울시 용산구 장문로 23 몬드리안 서울 이태원 1층 클레오', sysdate, '지중해',
         '10000원 이하', 'file1.jpg', 'file1saved.jpg', 'thumb1.jpg', 1000, 2);
 
@@ -99,13 +99,19 @@ WHERE frno=5
 -- 글 수정
 UPDATE frcontents
 SET fr_name='플레이버즈 2', fr_content='고기', fr_addres='경기도 화성', fr_word='고기00', fr_udate=sysdate, price='5000'
-WHERE frno=5;
+WHERE frno=2;
 
 -- 파일 수정
 UPDATE frcontents
 SET file1='food.jpg', file1saved='food_1.jpg', thumb1='food_1_t.jpg', size1=5000
 WHERE frno=2 and cateno=2
 
+-- 즐겨찾기 수정
+UPDATE frcontents
+SET favorites='1'
+WHERE frno=2;
+
+commit;
 -- 삭제
 DELETE FROM frcontents
 WHERE frno=2 and cateno=2

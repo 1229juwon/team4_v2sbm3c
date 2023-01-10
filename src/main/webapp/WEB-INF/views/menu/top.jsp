@@ -3,7 +3,6 @@
 
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="dev.mvc.fcate.FCateVO" %>
-
 <DIV class='container_main'> 
     <!-- 헤더 start -->
     <div class="header">

@@ -218,15 +218,6 @@ public class FRContentsVO {
     this.size1_label = size1_label;
   }
   
-  public int getFavorites() {
-	return favorites;
-  }
-
-  public void setFavorites(int favorites) {
-	this.favorites = favorites;
-  }
-
- 
   
 }
 

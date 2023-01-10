@@ -93,13 +93,6 @@ public interface FRContentsProcInter {
    * @return
    */
   public ArrayList<FRContentsVO> mf_food_member(HashMap<String, Object> hashMap); 
-  
-  
-  /**
-   * 조회
-   * @param contentsno 조회할 레코드 번호(PK)
-   * @return 조회된 레코드
-   */
-  public  ArrayList<FRContentsVO> read_by_favorites(int favorites);
+ 
   
 }

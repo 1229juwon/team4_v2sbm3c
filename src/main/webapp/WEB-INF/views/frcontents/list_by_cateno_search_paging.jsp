@@ -129,7 +129,6 @@
             <A href="/frcontents/update_text.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="글 수정"><IMG src="/frcontents/images/update.png" class="icon"></A>
             <A href="/frcontents/update_file.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="파일 수정"><IMG src="/frcontents/images/update_file.png" class="icon"></A>
             <A href="/frcontents/delete.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="삭제"><IMG src="/frcontents/images/delete.png" class="icon"></A>
-            <A href="/frcontents/delete.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="즐겨찾기"><IMG src="/css/images/url5.png" class="icon"></A>
           </td>
         </tr>
       </c:forEach>
