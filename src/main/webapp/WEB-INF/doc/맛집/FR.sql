@@ -23,6 +23,7 @@ CREATE TABLE frcontents(
         size1                                 NUMBER(10)      DEFAULT 0 NULL,
         FOREIGN KEY (cateno) REFERENCES fcate (cateno),
         FOREIGN KEY (memberno) REFERENCES member (memberno)
+        
 );
 
 COMMENT ON TABLE frcontents is '맛집';
@@ -117,7 +118,7 @@ WHERE frno=2;
 commit;
 -- 삭제
 DELETE FROM frcontents
-WHERE frno=2 and cateno=2
+WHERE frno=11 and cateno=5;
 
 -- 레코드 갯수
 SELECT COUNT(*) as cnt FROM frcontents;
