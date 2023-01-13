@@ -125,7 +125,7 @@ public class ReviewCont {
      // mav.setViewName("redirect:/review/msg.do"); // GET
    }
     
-
+    
     return mav; // forward
   }
   
@@ -199,7 +199,7 @@ public class ReviewCont {
     ModelAndView mav = new ModelAndView();
     
     ReviewVO reviewVO = reviewProc.read(reviewno);
-    int cnt = this.reviewProc.delete(reviewno);
+    int cnt = this.reviewProc.delete(reviewVO);
     if (cnt == 0) {
       mav.addObject("code", "delete_fail");
     }
@@ -247,4 +247,26 @@ public class ReviewCont {
     return json.toString();
   }
   
+//  /**
+//   * 평균 구하기
+//   */
+//  @RequestMapping(value="/review/rating_avg.do", method=RequestMethod.GET)
+//  public double rating_avg(int frno) {
+//    int cnt = this.reviewProc.rating_avg(frno);
+//    return cnt;
+//    
+//  }
+  
+//  // ratings 수정
+//  // http://localhost:9091/fcate/update_cnt_sub.do?cateno=1
+//  @RequestMapping(value="/frcontents/update_ratings.do", method = RequestMethod.GET)
+//  public void update_ratings(int frno, FRContentsVO frcontentsVO) {
+//     int result = this.reviewProc.rating_avg(frno);
+//     frcontentsVO.setRatings(result);
+//     frcontentsVO.setFrno(frno);
+//     
+//     frcontentsProc.update_ratings(frcontentsVO);
+//    
+//  }
+ 
 }

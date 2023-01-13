@@ -76,6 +76,7 @@ FROM(
 )
 WHERE r >= 1 AND r <= 3;
 
+SELECT AVG(rating) as rating FROM review WHERE frno=14;
 
 
 

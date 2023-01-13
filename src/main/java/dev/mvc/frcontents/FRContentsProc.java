@@ -240,5 +240,15 @@ public class FRContentsProc implements FRContentsProcInter {
     ArrayList<FRContentsVO> list = this.frcontentsDAO.mf_food_member(hashMap);
     return list;
   }
+
+  @Override
+  public void update_ratings(FRContentsVO frcontentsVO) {
+    this.frcontentsDAO.update_ratings(frcontentsVO);
+    
+  }
+
+
+
+
   
 }

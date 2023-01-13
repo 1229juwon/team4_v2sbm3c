@@ -64,9 +64,9 @@
       <col style="width: 10%;"></col>
       <col style="width: 35%;"></col>
       <col style="width: 15%;"></col>
+      <col style="width: 20%;"></col>
       <col style="width: 15%;"></col>
-      <col style="width: 10%;"></col>
-      <col style="width: 15%;"></col>
+      <col style="width: 5%;"></col>
     </colgroup>
     <%-- table 컬럼 --%>
 <!--     <thead>
@@ -87,6 +87,7 @@
         <c:set var="file1" value="${frcontentsVO.file1 }" />
         <c:set var="size1" value="${frcontentsVO.size1 }" />
         <c:set var="thumb1" value="${frcontentsVO.thumb1 }" />
+        <c:set var="ratings" value="${frcontentsVO.ratings }" />
 
         
         <tr style="height: 132px;"> 
@@ -118,11 +119,11 @@
            <td style='vertical-align: middle; text-align: center;'>
               ${frcontentsVO.fr_addres}
           </td> 
-          <td style='vertical-align: middle; text-align: center;'>
-              ${frcontentsVO.review_cnt}
-          </td> 
            <td style='vertical-align: middle; text-align: center;'>
               ${frcontentsVO.price}
+          </td> 
+          <td style='vertical-align: middle; text-align: center;'>
+              <IMG src="/review/images/star.png" class="icon" align="middle">&nbsp; ${frcontentsVO.ratings}
           </td> 
           <td style='vertical-align: middle; text-align: center;'>
             <A href="/frcontents/map.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="지도"><IMG src="/frcontents/images/map.png" class="icon"></A>

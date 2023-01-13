@@ -42,7 +42,7 @@ public interface ReviewProcInter {
    * @param reviewno
    * @return 삭제된 레코드 갯수
    */
-  public int delete(int reviewno);
+  public int delete(ReviewVO reviewVO);
   
   /**
    * 조회
@@ -51,4 +51,12 @@ public interface ReviewProcInter {
    * @return
    */
   public ReviewVO read(int reviewno);
+  
+  /**
+   * 평균
+   * <xmp>
+   * @param frno
+   * @return
+   */
+  public double rating_avg(int frno);
 }

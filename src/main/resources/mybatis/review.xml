@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
   
     <!-- 삭제 -->
-   <delete id="delete" parameterType="int">
+   <delete id="delete" parameterType="dev.mvc.review.ReviewVO">
 	  DELETE FROM review
 	  WHERE reviewno = #{reviewno}
   </delete>
@@ -49,7 +49,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      WHERE reviewno=#{reviewno}
   </select>  
 	  
-
+	  <!-- 평균, id: read, 입력: cateno, 리턴: CateVO -->
+	  <select id="rating_avg" resultType="double" parameterType="int">
+	  SELECT AVG(rating) as rating FROM review WHERE frno=#{frno}
+    </select>
+    
 </mapper>
 
 
