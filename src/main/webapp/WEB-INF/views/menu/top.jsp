@@ -3,6 +3,18 @@
 
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="dev.mvc.fcate.FCateVO" %>
+<script type="text/javascript">
+
+  function type2_recommend_food() {
+      var url = 'http://localhost:9093/type2_recommend_food/start.do';
+    var win = window.open(url, 'AI 서비스', 'width=1200px, height=700px');
+
+    var x = (screen.width - 1000) / 2;
+    var y = (screen.height - 570) / 2;
+
+    win.moveTo(x, y); // 화면 중앙으로 이동
+  }
+</script>
 <DIV class='container_main'> 
     <!-- 헤더 start -->
     <div class="header">
@@ -108,6 +120,10 @@
                           </c:choose>
                       </li> 
                       
+                      
+                      <li class="nav-item">
+                      <a class="nav-link" href="javascript:type2_recommend_food();">관심요리 추천 받기</a>
+                      </li>  
                 </ul>
             </div>    
         </nav>
