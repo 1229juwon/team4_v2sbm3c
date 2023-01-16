@@ -102,7 +102,7 @@ public class FavoritesCont {
       	 mav.addObject("list", llist);
        }
        
-       mav.setViewName("/favorites/list");
+       mav.setViewName("redirect:/favorites/list.do");
    
 
      
