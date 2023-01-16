@@ -34,7 +34,7 @@ public class DatabaseConfiguration {
     
     @Bean
     @ConfigurationProperties(prefix="spring.datasource.hikari")  // �꽕�젙 �뙆�씪�쓽 �젒�몢�궗 �꽑�뼵 spring.datasource.hikari....
-    public HikariConfig hikariConfig() {
+    public HikariConfig hikariConfig() { 
         return new HikariConfig();
     }
     

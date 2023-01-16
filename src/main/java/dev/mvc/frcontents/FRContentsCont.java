@@ -673,25 +673,11 @@ public class FRContentsCont {
    */
   @RequestMapping(value = "/frcontents/favorites_create.do", method = RequestMethod.GET)
   public ModelAndView favorites_create(HttpSession session, HttpServletRequest request, FRContentsVO frcontentsVO, 
-		  @RequestParam(value = "cateno", defaultValue = "1") int cateno,
+		  @RequestParam(value = "cateno", defaultValue = "2") int cateno,
           @RequestParam(value = "fr_word", defaultValue = "") String fr_word,
           @RequestParam(value = "now_page", defaultValue = "1") int now_page) {
     ModelAndView mav = new ModelAndView();
-    
-    if (this.memberProc.isMember(session)) {
-      int memberno = (int)session.getAttribute("memberno");
-      int frno = frcontentsVO.getFrno();
-     
-      FavoritesVO favoritesVO = new FavoritesVO();
-      
-      favoritesVO.setFrno(frno);
-      favoritesVO.setMemberno(memberno);
-
-      int cnt = this.favoritesProc.create(favoritesVO); 
-         
-   }
-    
-    
+ 
  // 숫자와 문자열 타입을 저장해야함으로 Obejct 사용
     HashMap<String, Object> map = new HashMap<String, Object>();
     map.put("cateno", cateno); // #{cateno}
@@ -720,13 +706,20 @@ public class FRContentsCont {
 //     */
         String paging = frcontentsProc.pagingBox(cateno, search_count, now_page, fr_word);
          mav.addObject("paging", paging);
-//
-//    // mav.addObject("now_page", now_page);
-//    
-//    // 로그인 Cookie 지원
-//    mav.setViewName("/contents/list_by_cateno_search_paging_cookie");  // /contents/list_by_cateno_search_paging_cookie.jsp ★
-//    
-//    // 로그인 Cookie + 쇼핑카트
+
+         if (this.memberProc.isMember(session)) {
+             int memberno = (int)session.getAttribute("memberno");
+             int frno = frcontentsVO.getFrno();
+            
+             FavoritesVO favoritesVO = new FavoritesVO();
+             
+             favoritesVO.setFrno(frno);
+             favoritesVO.setMemberno(memberno);
+
+             int cnt = this.favoritesProc.create(favoritesVO); 
+                
+          }
+         System.out.println("->->->->->->->->->-> "  + cateno);
         mav.setViewName("/frcontents/list_by_cateno_search_paging");  // /contents/list_by_cateno_search_paging.jsp ★ 
 
     return mav; // forward
