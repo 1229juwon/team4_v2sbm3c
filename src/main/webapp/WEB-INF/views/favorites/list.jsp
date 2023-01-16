@@ -22,7 +22,7 @@
 <c:import url="/menu/top.do" />
  
 <DIV class='title_line'>
-  <A href="./list_by_cateno_search_paging.do?cateno=${fcateVO.cateno }" class='title_link'>${fcateVO.name }</A>
+  <A class='title_link'></A>
 </DIV>
 
 <DIV class='content_body'>
@@ -64,9 +64,9 @@
       <col style="width: 10%;"></col>
       <col style="width: 35%;"></col>
       <col style="width: 15%;"></col>
-      <col style="width: 20%;"></col>
       <col style="width: 15%;"></col>
-      <col style="width: 5%;"></col>
+      <col style="width: 10%;"></col>
+      <col style="width: 15%;"></col>
     </colgroup>
     <%-- table 컬럼 --%>
 <!--     <thead>
@@ -81,14 +81,14 @@
     
     <%-- table 내용 --%>
     <tbody>
-      <c:forEach var="frcontentsVO" items="${list }">
+
+<c:forEach var="frcontentsVO" items="${list }">
         <c:set var="cateno" value="${frcontentsVO.cateno }" />
         <c:set var="frno" value="${frcontentsVO.frno }" />
         <c:set var="file1" value="${frcontentsVO.file1 }" />
         <c:set var="size1" value="${frcontentsVO.size1 }" />
         <c:set var="thumb1" value="${frcontentsVO.thumb1 }" />
         <c:set var="ratings" value="${frcontentsVO.ratings }" />
-
         
         <tr style="height: 132px;"> 
           <td style='vertical-align: middle; text-align: center;'>
@@ -106,48 +106,47 @@
                   <c:when test="${size1 == 0 }"> <!-- 기본 이미지 출력 -->
                     <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><IMG src="/frcontents/images/none1.png" style="width: 120px; height: 80px;"></a>
                   </c:when>
-                </c:choose>
-                
+                </c:choose>   
               </c:otherwise>
             </c:choose>
           </td>  
           <td style='vertical-align: middle;'>
-            <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><strong>${frcontentsVO.fr_name}</strong> 
-
-            
+            <a href="/frcontents/read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><strong>${frcontentsVO.fr_name}</strong> 
+            <c:choose>
+              <c:when test="${frcontentsVO.fr_content.length() > 160 }">
+                  ${frcontentsVO.fr_content.substring(0, 160)}.....
+              </c:when>
+              <c:when test="${frcontentsVO.fr_content.length() <= 160 }">
+                  ${frcontentsVO.fr_content}
+              </c:when>
+            </c:choose>
             </a> 
            <td style='vertical-align: middle; text-align: center;'>
               ${frcontentsVO.fr_addres}
           </td> 
+          <td style='vertical-align: middle; text-align: center;'>
+              ${frcontentsVO.review_cnt}
+          </td> 
            <td style='vertical-align: middle; text-align: center;'>
               ${frcontentsVO.price}
-          </td> 
-          <td style='vertical-align: middle; text-align: center;'>
-              <IMG src="/review/images/star.png" class="icon" align="middle">&nbsp; ${frcontentsVO.ratings}
           </td> 
           <td style='vertical-align: middle; text-align: center;'>
             <A href="/frcontents/map.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="지도"><IMG src="/frcontents/images/map.png" class="icon"></A>
             <A href="/frcontents/update_text.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="글 수정"><IMG src="/frcontents/images/update.png" class="icon"></A>
             <A href="/frcontents/update_file.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="파일 수정"><IMG src="/frcontents/images/update_file.png" class="icon"></A>
             <A href="/frcontents/delete.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="삭제"><IMG src="/frcontents/images/delete.png" class="icon"></A>
-            <A href="/review/list_by_cateno_search_paging.do?frno=${frno }" title="리뷰"><IMG src="/review/images/sort.png" class="icon"></A>
-            <form name='frm' id='frm' method='get' action='./favorites_create.do'>
+   				 <form name='frm' id='frm' method='get' action='./favorites_delete.do'>
      			<input type='hidden' name='frno' value='${frno }'>
-      			<button type='submit'>즐찾 추가</button>
+      			<button type='submit'>삭제</button>
    				 </form>
+  			
           </td>
+          
         </tr>
       </c:forEach>
-      
     </tbody>
   </table>
-  
-  <!-- 페이지 목록 출력 부분 시작 -->
-  <DIV class='bottom_menu'>${paging }</DIV> <%-- 페이지 리스트 --%>
-  <!-- 페이지 목록 출력 부분 종료 -->
-  
 </DIV>
-
  
 <jsp:include page="../menu/bottom.jsp" />
 </body>

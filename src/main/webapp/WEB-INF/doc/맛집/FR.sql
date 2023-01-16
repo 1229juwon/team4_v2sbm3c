@@ -21,8 +21,10 @@ CREATE TABLE frcontents(
         file1saved                            VARCHAR(100)          NULL,  -- 저장된 파일명, image
         thumb1                                VARCHAR(100)          NULL,   -- preview image
         size1                                 NUMBER(10)      DEFAULT 0 NULL,
+        ratings                                NUMBER(3, 2)         DEFAULT 0         NULL, 
         FOREIGN KEY (cateno) REFERENCES fcate (cateno),
         FOREIGN KEY (memberno) REFERENCES member (memberno)
+        
 );
 
 COMMENT ON TABLE frcontents is '맛집';
@@ -42,6 +44,7 @@ COMMENT ON COLUMN frcontents.file1 is '메인 이미지';
 COMMENT ON COLUMN frcontents.file1saved is '실제 저장된 메인 이미지';
 COMMENT ON COLUMN frcontents.thumb1 is '메인 이미지 Preview';
 COMMENT ON COLUMN frcontents.size1 is '메인 이미지 크기';
+COMMENT ON COLUMN frcontents.ratings is '평점';
 
 DROP SEQUENCE frcontents_seq;
 
@@ -77,7 +80,7 @@ commit;
 -- 전체 목록
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1
+       price, file1, file1saved, thumb1, size1, ratings
 FROM frcontents
 ORDER BY frno ASC;
 
@@ -87,9 +90,9 @@ ORDER BY frno ASC;
 -- ----------------------------------------------------------------------------
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1
+       price, file1, file1saved, thumb1, size1, ratings
 FROM frcontents
-WHERE frno = 1;
+WHERE frno = 14;
 
 -- 카테고리별 목록
 SELECT frno, cateno, memberno,
@@ -117,7 +120,7 @@ WHERE frno=2;
 commit;
 -- 삭제
 DELETE FROM frcontents
-WHERE frno=2 and cateno=2
+WHERE frno=11 and cateno=5;
 
 -- 레코드 갯수
 SELECT COUNT(*) as cnt FROM frcontents;
@@ -549,4 +552,10 @@ ORDER BY frno ASC;
 -- -----------------------------------------------------------------------------
 -- 추천 시스템 관련 종료
 -- -----------------------------------------------------------------------------
+
+----- 평점 업데이트
+UPDATE frcontents
+SET ratings= (SELECT AVG(rating) as rating FROM review WHERE frno=14)
+WHERE frno=14;
+commit;
     

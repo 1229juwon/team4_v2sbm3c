@@ -60,9 +60,18 @@ public class FRContentsVO {
   private String thumb1 = "";
   /** 메인 이미지 크기 */
   private long size1;
-  /** 즐겨찾기 */
-  private int favorites;
+  /** 평점 */
+  private double ratings;
 
+
+
+public double getRatings() {
+    return ratings;
+  }
+
+  public void setRatings(double ratings) {
+    this.ratings = ratings;
+  }
 
 /**
    이미지 파일
