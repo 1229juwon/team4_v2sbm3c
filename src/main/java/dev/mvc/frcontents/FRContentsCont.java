@@ -697,7 +697,7 @@ public class FRContentsCont {
     map.put("cateno", cateno); // #{cateno}
     map.put("fr_word", fr_word); // #{word}
     map.put("now_page", now_page); // 페이지에 출력할 레코드의 범위를 산출하기위해 사용
-*
+
     // 검색 목록
     ArrayList<FRContentsVO> list = frcontentsProc.list_by_cateno_search_paging(map);
     mav.addObject("list", list);
