@@ -131,10 +131,13 @@
             <A href="/frcontents/update_file.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="파일 수정"><IMG src="/frcontents/images/update_file.png" class="icon"></A>
             <A href="/frcontents/delete.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="삭제"><IMG src="/frcontents/images/delete.png" class="icon"></A>
             <A href="/review/list_by_cateno_search_paging.do?frno=${frno }" title="리뷰"><IMG src="/review/images/sort.png" class="icon"></A>
+<<<<<<< HEAD
             <form name='frm' id='frm' method='get' action='./favorites_create.do'>
      			<input type='hidden' name='frno' value='${frno }'>
       			<button type='submit'>즐찾 추가</button>
    				 </form>
+=======
+>>>>>>> be1b5631edb61bd61a67ce035e42eccb8e4963b8
           </td>
         </tr>
       </c:forEach>

@@ -254,288 +254,288 @@ VALUES (frcontents_seq.nextval, 1, 1,
 SET DEFINE OFF
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (1, 1, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 1, 1, 
         '호반', '호반', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '1.jpg', '1.jpg', '1.jpg', 1000, 1);
+        '10000원 이상', '1.jpg', '1.jpg', '1.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (2, 1, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 1, 1, 
         '맛짱조개', '맛짱조개', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '2.jpg', '2.jpg', '2.jpg', 1000, 1);
+        '10000원 이상', '2.jpg', '2.jpg', '2.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (3, 1, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 1, 1, 
         '모던샤브하우스', '모던샤브하우스', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '3.jpg', '3.jpg', '3.jpg', 1000, 1);
+        '10000원 이상', '3.jpg', '3.jpg', '3.jpg', 1000);
     
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (4, 1, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 1, 1, 
         '미영이네식당', '미영이네식당', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '4.jpg', '4.jpg', '4.jpg', 1000, 1);
+        '10000원 이상', '4.jpg', '4.jpg', '4.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (5, 1, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 1, 1, 
         '진미평양냉면', '진미평양냉면', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '5.jpg', '5.jpg', '5.jpg', 1000, 1);
+        '10000원 이상', '5.jpg', '5.jpg', '5.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (6, 1, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 1, 1, 
         '꿉당', '꿉당', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '6.jpg', '6.jpg', '6.jpg', 1000, 1);
+        '10000원 이상', '6.jpg', '6.jpg', '6.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (7, 2, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 2, 1, 
         '페리지', '페리지', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '7.jpg', '7.jpg', '7.jpg', 1000, 1);
+        '10000원 이상', '7.jpg', '7.jpg', '7.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (8, 2, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 2, 1, 
         '치즈플로', '치즈플로', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '8.jpg', '8.jpg', '8.jpg', 1000, 1);
+        '10000원 이상', '8.jpg', '8.jpg', '8.jpg', 1000);
     
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (9, 2, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 2, 1, 
         '메종조', '메종조', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '9.jpg', '9.jpg', '9.jpg', 1000, 1);
+        '10000원 이상', '9.jpg', '9.jpg', '9.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (10, 2, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 2, 1, 
         '디핀옥수', '디핀옥수', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '10.jpg', '10.jpg', '10.jpg', 1000, 1);
+        '10000원 이상', '10.jpg', '10.jpg', '10.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (11, 2, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 2, 1, 
         '노아', '노아', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '11.jpg', '11.jpg', '11.jpg', 1000, 1);
+        '10000원 이상', '11.jpg', '11.jpg', '11.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (12, 2, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 2, 1, 
         '쿳사', '쿳사', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '12.jpg', '12.jpg', '12.jpg', 1000, 1);
+        '10000원 이상', '12.jpg', '12.jpg', '12.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (13, 2, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 2, 1, 
         '알라프리마', '알라프리마', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '13.jpg', '13.jpg', '13.jpg', 1000, 1);
+        '10000원 이상', '13.jpg', '13.jpg', '13.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (14, 3, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 3, 1, 
         '우육면관', '우육면관', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '14.jpg', '14.jpg', '14.jpg', 1000, 1);
+        '10000원 이상', '14.jpg', '14.jpg', '14.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (15, 3, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 3, 1, 
         '팔레드신', '팔레드신', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '15.jpg', '15.jpg', '15.jpg', 1000, 1);
+        '10000원 이상', '15.jpg', '15.jpg', '15.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (16, 3, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 3, 1, 
         'Sogak', 'Sogak', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '16.jpg', '16.jpg', '16.jpg', 1000, 1);
+        '10000원 이상', '16.jpg', '16.jpg', '16.jpg', 1000);
 
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (17, 3, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 3, 1, 
         '화양연가', '화양연가', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '17.jpg', '17.jpg', '17.jpg', 1000, 1);
+        '10000원 이상', '17.jpg', '17.jpg', '17.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (18, 3, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 3, 1, 
         '모트', '모트', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '18.jpg', '18.jpg', '18.jpg', 1000, 1);
+        '10000원 이상', '18.jpg', '18.jpg', '18.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (19, 3, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 3, 1, 
         '지우관', '지우관', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '19.jpg', '19.jpg', '19.jpg', 1000, 1);
+        '10000원 이상', '19.jpg', '19.jpg', '19.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (20, 3, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 3, 1, 
         '쥬에', '쥬에', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '20.jpg', '20.jpg', '20.jpg', 1000, 1);
+        '10000원 이상', '20.jpg', '20.jpg', '20.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (21, 4, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 4, 1, 
         '미라이', '미라이', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '21.jpg', '21.jpg', '21.jpg', 1000, 1);
+        '10000원 이상', '21.jpg', '21.jpg', '21.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (22, 4, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 4, 1, 
         '시라카와', '시라카와', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '22.jpg', '22.jpg', '22.jpg', 1000, 1);
+        '10000원 이상', '22.jpg', '22.jpg', '22.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (23, 4, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 4, 1, 
         '카와카츠', '카와카츠', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '23.jpg', '23.jpg', '23.jpg', 1000, 1);
+        '10000원 이상', '23.jpg', '23.jpg', '23.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (24, 4, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 4, 1, 
         '야키토리나루토', '야키토리나루토', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '24.jpg', '24.jpg', '24.jpg', 1000, 1);
+        '10000원 이상', '24.jpg', '24.jpg', '24.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (25, 4, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 4, 1, 
         '스시카나에', '스시카나에', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '25.jpg', '25.jpg', '25.jpg', 1000, 1);
+        '10000원 이상', '25.jpg', '25.jpg', '25.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (26, 4, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 4, 1, 
         '스시아라타', '스시아라타', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '26.jpg', '26.jpg', '26.jpg', 1000, 1);
+        '10000원 이상', '26.jpg', '26.jpg', '26.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (27, 4, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 4, 1, 
         '마루심', '마루심', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '27.jpg', '27.jpg', '27.jpg', 1000, 1);
+        '10000원 이상', '27.jpg', '27.jpg', '27.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (28, 5, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 5, 1, 
         '팜티진쌀국수', '팜티진쌀국수', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '28.jpg', '28.jpg', '28.jpg', 1000, 1);
+        '10000원 이상', '28.jpg', '28.jpg', '28.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (29, 5, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 5, 1, 
         '비엣꽌', '비엣꽌', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '29.jpg', '29.jpg', '29.jpg', 1000, 1);
+        '10000원 이상', '29.jpg', '29.jpg', '29.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (30, 5, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 5, 1, 
         '사이공마켓(숙대점)', '사이공마켓(숙대점)', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '30.jpg', '30.jpg', '30.jpg', 1000, 1);
+        '10000원 이상', '30.jpg', '30.jpg', '30.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (31, 5, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 5, 1, 
         '몬비엣', '몬비엣', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '31.jpg', '31.jpg', '31.jpg', 1000, 1);
+        '10000원 이상', '31.jpg', '31.jpg', '31.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (32, 5, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 5, 1, 
         '르번미', '르번미', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '32.jpg', '32.jpg', '32.jpg', 1000, 1);
+        '10000원 이상', '32.jpg', '32.jpg', '32.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (33, 5, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 5, 1, 
         '반포식스', '반포식스', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '33.jpg', '33.jpg', '33.jpg', 1000, 1);
+        '10000원 이상', '33.jpg', '33.jpg', '33.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (34, 6, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 6, 1, 
         '툭툭누들타이', '툭툭누들타이', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '34.jpg', '34.jpg', '34.jpg', 1000, 1);
+        '10000원 이상', '34.jpg', '34.jpg', '34.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (35, 6, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 6, 1, 
         '왕타이', '왕타이', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '35.jpg', '35.jpg', '35.jpg', 1000, 1);
+        '10000원 이상', '35.jpg', '35.jpg', '35.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (36, 6, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 6, 1, 
         '방콕익스프레스(신촌점)', '방콕익스프레스(신촌점)', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '36.jpg', '36.jpg', '36.jpg', 1000, 1);
+        '10000원 이상', '36.jpg', '36.jpg', '36.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (37, 6, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 6, 1, 
         '반타이', '반타이', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '37.jpg', '37.jpg', '37.jpg', 1000, 1);
+        '10000원 이상', '37.jpg', '37.jpg', '37.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (38, 6, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 6, 1, 
         '팔람까오', '팔람까오', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '38.jpg', '38.jpg', '38.jpg', 1000, 1);
+        '10000원 이상', '38.jpg', '38.jpg', '38.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (39, 6, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 6, 1, 
         '부다스벨리', '부다스벨리', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '39.jpg', '39.jpg', '39.jpg', 1000, 1);
+        '10000원 이상', '39.jpg', '39.jpg', '39.jpg', 1000);
         
 INSERT INTO frcontents(frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_rdate,fr_word,
-                   price, file1, file1saved, thumb1, size1, favorites)
-VALUES (40, 6, 1, 
+                   price, file1, file1saved, thumb1, size1)
+VALUES (frcontents_seq.nextval, 6, 1, 
         '타이가든', '타이가든', '서울 서울특별시 ', sysdate, '음식',
-        '10000원 이상', '40.jpg', '40.jpg', '40.jpg', 1000, 1);
+        '10000원 이상', '40.jpg', '40.jpg', '40.jpg', 1000);
         
 -- 유형 1 전체 목록
 SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1, favorites
+       price, file1, file1saved, thumb1, size1
 FROM frcontents
 ORDER BY frno ASC;
 
