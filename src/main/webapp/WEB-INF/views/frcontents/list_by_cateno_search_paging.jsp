@@ -62,11 +62,11 @@
   <table class="table table-striped" style='width: 100%;'>
     <colgroup>
       <col style="width: 10%;"></col>
-      <col style="width: 35%;"></col>
+      <col style="width: 25%;"></col>
       <col style="width: 15%;"></col>
       <col style="width: 20%;"></col>
       <col style="width: 15%;"></col>
-      <col style="width: 5%;"></col>
+      <col style="width: 15%;"></col>
     </colgroup>
     <%-- table 컬럼 --%>
 <!--     <thead>

@@ -41,9 +41,7 @@
 							      }      
 							      %>
 
-                     <li class="nav-item">
-                         <a class="nav-link" href="/fcate/list_all.do">카테고리</a>  
-                    </li>  
+                    
                           <li class="nav-item">
                         <c:choose>
                             <c:when test="${sessionScope.id == null}">

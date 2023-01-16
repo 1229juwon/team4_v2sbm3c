@@ -122,7 +122,7 @@ public class ReviewCont {
       mav.setViewName("redirect:/review/list_by_cateno_search_paging.do?frno="+reviewVO.getFrno()); // GET
   } else {
       mav.addObject("url", "/member/login_need"); // login_need.jsp, redirect parameter 적용
-     // mav.setViewName("redirect:/review/msg.do"); // GET
+      mav.setViewName("redirect:/review/msg.do"); // GET
    }
     
     
