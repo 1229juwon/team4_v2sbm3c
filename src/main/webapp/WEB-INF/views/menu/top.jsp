@@ -117,17 +117,14 @@
                               </c:otherwise>
                           </c:choose>
                       </li> 
-                      
-<<<<<<< HEAD
+                     
                    <li class="nav-item">
                       <a class="nav-link" href="/survey/list_all.do">설문조사</a>
                     </li> 
-=======
                       
                       <li class="nav-item">
                       <a class="nav-link" href="javascript:type2_recommend_food();">관심요리 추천 받기</a>
                       </li>  
->>>>>>> 2e67c1afa4e3903b221cfb7935f619bb82d42339
                 </ul>
             </div>    
         </nav>
