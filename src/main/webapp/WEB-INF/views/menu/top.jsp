@@ -28,18 +28,25 @@
                 <li class="nav-item">
                         <a class="nav-link" href="/frcontents/list_by_cateno_search_paging_all.do">전체</a>
                     </li>
-							      <%
-							        ArrayList<FCateVO> list = (ArrayList<FCateVO>)request.getAttribute("list");
-							      							      for (int index=0; index < list.size(); index++) {
-							      							        FCateVO fcateVO = list.get(index);
-							      %>
-							      
-							        <li class="nav-item">
-                        <a class="nav-link" href="/frcontents/list_by_cateno_search_paging.do?cateno=<%=fcateVO.getCateno() %>"><%=fcateVO.getName() %></a>
-                      </li>
-							      <%
-							      }      
-							      %>                    
+                    
+                    <li class="nav-item dropdown"> <%-- 회원 서브 메뉴 --%>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">나라별로 보기</a>
+                        <div class="dropdown-menu">
+                            <%
+                      ArrayList<FCateVO> list = (ArrayList<FCateVO>)request.getAttribute("list");
+                                        for (int index=0; index < list.size(); index++) {
+                                          FCateVO fcateVO = list.get(index);
+                    %>
+                    
+                  
+                        <a class="dropdown-item" href="/frcontents/list_by_cateno_search_paging.do?cateno=<%=fcateVO.getCateno() %>"><%=fcateVO.getName() %></a>
+                   
+                    <%
+                    }      
+                    %>
+                        </div>
+                    </li>
+							                          
                     <li class="nav-item dropdown"> <%-- 회원 서브 메뉴 --%>
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">회원</a>
                         <div class="dropdown-menu">

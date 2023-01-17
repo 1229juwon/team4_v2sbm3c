@@ -96,11 +96,18 @@
     <FORM name='frm_create' id='frm_create' method='POST' action='/review/create.do'>
     <input type="hidden" name="frno" id="frno" value="${param.frno}">
      <input type="hidden" name="memberno" id="memberno" value="${sessionScope.memberno }">
-      <label class='review_label'>리뷰</label>
+  <c:choose>
+      <c:when test="${sessionScope.id != null}">
+       <label class='review_label'>리뷰</label>
       <input type='text' name='review_content' value='' required="required" style='width: 70%; height: 100px;' autofocus="autofocus">
          <label class='review_label'>평점</label>
-      <input type='number' name='rating' id="rating" value=' ' required="required" min="1" max="5" step="1" style='width: 5%;'>
+         <input type='number' name='rating' id="rating" value=' ' required="required" min="1" max="5" step="1" style='width: 5%;'>
       <button type="submit"  class="btn btn-dark" id='submit'>등록</button>
+        </c:when>
+        <c:otherwise>
+          <a class="nav-link" href='/member/login.do'>로그인하여 리뷰 쓰기</a>
+      </c:otherwise>
+   </c:choose>
     </FORM>
   </DIV>
   

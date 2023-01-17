@@ -27,8 +27,12 @@
 
 <DIV class='content_body'>
   <ASIDE class="aside_right">
-    <A href="./create.do?cateno=${fcateVO.cateno }">등록</A>
-    <span class='menu_divide' >│</span>
+  <c:choose>
+          <c:when test="${sessionScope.id != null}">
+          <A href="./create.do?cateno=${fcateVO.cateno }">등록</A>
+          <span class='menu_divide' >│</span>
+        </c:when>
+   </c:choose>
     <A href="javascript:location.reload();">새로고침</A>
     <span class='menu_divide' >│</span>
     <A href="./list_by_cateno_search_paging.do?cateno=${fcateVO.cateno }">기본 목록형</A>    
