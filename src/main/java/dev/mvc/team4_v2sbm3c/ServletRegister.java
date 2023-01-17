@@ -16,24 +16,24 @@ import dev.mvc.tool.Download;
 @Configuration
 public class ServletRegister {
   
-  // 다운로드 서블릿 등록
+  // �떎�슫濡쒕뱶 �꽌釉붾┸ �벑濡�
   @Bean
   public ServletRegistrationBean<HttpServlet> getServletRegistrationBean()  {
     
     // urlPatterns: /download?dir=/contents/storage&filename=winter_1.jpg&downname=winter.jpg
     // urlPatterns: /download?dir=/attachfile/storage&filename=winter_1.jpg&downname=winter.jpg
     ServletRegistrationBean<HttpServlet> registrationBean = new ServletRegistrationBean<HttpServlet>(new Download());
-    registrationBean.addUrlMappings("/download"); // 접근 주소
+    registrationBean.addUrlMappings("/download"); // �젒洹� 二쇱냼
     
     return registrationBean;
   }
 
-  // CKEditor 서블릿 등록
+  // CKEditor �꽌釉붾┸ �벑濡�
   @Bean
   public ServletRegistrationBean<HttpServlet> getConnectorServlet()  {
     
     ServletRegistrationBean<HttpServlet> registrationBean = new ServletRegistrationBean<HttpServlet>(new ConnectorServlet());
-    registrationBean.addUrlMappings("/ckfinder/core/connector/java/connector.java"); // 접근 주소
+    registrationBean.addUrlMappings("/ckfinder/core/connector/java/connector.java"); // �젒洹� 二쇱냼
     Map<String, String> params = new HashMap<String, String>();
     params.put("XMLConfig", "/WEB-INF/ckfinder-config.xml");
     params.put("debug", "false");
