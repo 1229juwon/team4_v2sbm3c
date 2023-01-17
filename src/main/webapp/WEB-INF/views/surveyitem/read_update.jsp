@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- 
+
 <!DOCTYPE html> 
 <html lang="ko"> 
 <head> 
@@ -17,14 +17,30 @@
  
 <body>
 <c:import url="/menu/top.do" />
- <form name='topic' action='./surveyitem/cnt_update_msg.do' method='POST'>
-   <input type='hidden' name='surveyno' value='${param.surveyno }' >
+
+ <form name='topic' action='./surveyitem/read_update.do' method='POST'>
+   <input type='hidden' name='surveyitemno' value='${param.surveyitemno }' >
  
 <DIV class='title_line'>
-  <A href="./list_by_surveyno.do?surveyno=${surveyVO.surveyno }" class='title_link'>${surveyVO.topic }</A>
+  <A href="./list_by_surveyitemno.do?surveyitemno=${surveyitemVO.surveyitemno }" class='title_link'>${surveyitemVO.item }</A>
 </DIV>
 
+<DIV class='title_line'>설문조사 > [${surveyitemVO.item }] 수정</DIV>
+
 <DIV class='content_body'>
+  <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
+    <FORM name='frm_create' id='frm_create' method='POST' action='./read_update.do'>
+      <input type='hidden' name='surveyitemno' value='${surveyitemVO.surveyitemno }'>
+      
+      <label>설문 주제</label>
+      <input type='text' name='item' value='${surveyitemVO.item}' required="required" style='width: 25%;' autofocus="autofocus">
+  
+      <button type="submit" id='submit'>수정</button>
+      <button type="button" onclick="history.back();">취소</button>
+    </FORM>
+  </DIV>
+  
+  <DIV class='content_body'>
   <ASIDE class="aside_right">
     <A href="./create.do?surveyno=${surveyVO.surveyno }">등록</A>
     <span class='menu_divide' >│</span>
@@ -34,7 +50,7 @@
   </ASIDE> 
 
   <DIV class='menu_line'></DIV>
-  
+
   <table class="table table-striped" style='width: 100%;'>
     <colgroup>
       <col style="width: 10%;"></col>
@@ -87,4 +103,4 @@
 </body>
  
 </html>
-
+ 

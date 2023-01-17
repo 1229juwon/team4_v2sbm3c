@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- 
+
 <!DOCTYPE html> 
 <html lang="ko"> 
 <head> 
@@ -17,14 +17,32 @@
  
 <body>
 <c:import url="/menu/top.do" />
- <form name='topic' action='./surveyitem/cnt_update_msg.do' method='POST'>
+
+ <form name='topic' action='./surveyitem/read_delete.do' method='GET'>
    <input type='hidden' name='surveyno' value='${param.surveyno }' >
+   <input type='hidden' name='surveyitemno' value='${param.surveyitemno }' >
  
 <DIV class='title_line'>
   <A href="./list_by_surveyno.do?surveyno=${surveyVO.surveyno }" class='title_link'>${surveyVO.topic }</A>
 </DIV>
 
+<DIV class='title_line'>설문조사 > [${surveyitemVO.item}] 삭제</DIV>
+
 <DIV class='content_body'>
+  <DIV id='panel_delete' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
+    <div class="msg_warning">설문조사를 삭제하면 복구 할 수 없습니다.</div>
+    <FORM name='frm_delete' id='frm_delete' method='GET' action='./read_delete.do'>
+      <!-- 삭제할 설문 번호 -->
+      <input type='hidden' name='surveyitemno' id='surveyitemno' value="${surveyitemVO.surveyitemno}">
+      
+      <label>설문조사</label>: ${surveyitemVO.item } 
+       
+      <button type="submit" id='submit'>삭제</button>
+      <button type="button" onclick="location.href='./list_by_surveyno.do'">취소</button>
+    </FORM>
+  </DIV>
+  
+  <DIV class='content_body'>
   <ASIDE class="aside_right">
     <A href="./create.do?surveyno=${surveyVO.surveyno }">등록</A>
     <span class='menu_divide' >│</span>
@@ -34,7 +52,7 @@
   </ASIDE> 
 
   <DIV class='menu_line'></DIV>
-  
+
   <table class="table table-striped" style='width: 100%;'>
     <colgroup>
       <col style="width: 10%;"></col>
@@ -87,4 +105,4 @@
 </body>
  
 </html>
-
+ 

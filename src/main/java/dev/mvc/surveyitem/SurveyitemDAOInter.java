@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import dev.mvc.survey.SurveyVO;
+
 public interface SurveyitemDAOInter {
   /**
    * 등록
@@ -18,6 +20,37 @@ public interface SurveyitemDAOInter {
    * @return 레코드 전체 목록
    */
   public ArrayList<SurveyitemVO> list_by_surveyno(int surveyno);
+  
+  /**
+   * 카운트 증가
+   * @param
+   * @return
+   */
+  public int cnt_update(int surveyitemno);
+  
+  /**
+   * 조회
+   * <xmp><select id="read" resultType="dev.mvc.surveyitem.SurveyitemVO" parameterType="int"></xmp>
+   * @param surveyitemno
+   * @return
+   */
+  public SurveyitemVO read(int surveyitemno);
+  
+  /**
+   * 수정
+   * <xmp><update id="update" parameterType="dev.mvc.surveyitem.SurveyitemVO"></xmp>
+   * @param surveyitemVO
+   * @return 수정된 레코드 갯수
+   */
+  public int update(SurveyitemVO surveyitemVO);
+  
+  /**
+   * 삭제
+   * @param surveyitemno
+   * @return 삭제된 레코드 수
+   */
+  public int delete(int surveyitemno);
+
 
 }
 

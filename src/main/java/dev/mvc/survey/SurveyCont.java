@@ -56,7 +56,7 @@ public class SurveyCont {
     
     if (cnt > 0) { // 정상 등록
       System.out.println("정상 등록");
-//      mav.setViewName("redirect:/survey/list_all.do"); // 콘트롤러의 주소 요청, 자동 이동
+      mav.setViewName("redirect:/survey/list_all.do"); // 콘트롤러의 주소 요청, 자동 이동
       // mav.setViewName("/survey/list_all"); // /webapp/WEB-INF/views/survey/list_all.jsp X
     } else { // 등록 실패
       System.out.println("등록 실패");

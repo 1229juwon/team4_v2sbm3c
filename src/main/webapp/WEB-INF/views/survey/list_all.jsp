@@ -60,7 +60,7 @@
  
     <TR>
         <TD class="td_bs">${surveyno}</TD>
-        <TD class="td_bs_left">${topic}</TD>     
+        <TD class="td_bs_left"><A href="../surveyitem/list_by_surveyno.do?surveyno=${surveyno}">${topic}</A></TD>     
         <TD class="td_bs">${yn}</TD>
         <TD class="td_bs">${rdate}</TD>
         <TD class="td_bs">

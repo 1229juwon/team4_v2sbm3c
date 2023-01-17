@@ -54,6 +54,10 @@ ORDER BY rdate ASC;
 SELECT surveyitemno, surveyno, item, cnt, rdate
 FROM surveyitem
 WHERE surveyitemno = 4;
+
+SELECT surveyitemno, surveyno, item, cnt, rdate
+FROM surveyitem
+WHERE surveyno = 6;
  
     
 4. 수정
@@ -71,6 +75,9 @@ DELETE FROM surveyitem;
 2) 특정 설문 삭제
 DELETE FROM surveyitem
 WHERE surveyitemno=1;
+
+DELETE FROM surveyitem
+WHERE surveyno=6;
 
 COMMIT;
 
@@ -96,3 +103,11 @@ FROM(
      )  
 )
 WHERE r >= 1 AND r <= 2;
+
+8. 카운트 증가
+UPDATE surveyitem
+SET cnt = cnt + 1
+WHERE surveyitemno = 1;
+
+
+

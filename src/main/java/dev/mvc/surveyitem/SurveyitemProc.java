@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import dev.mvc.survey.SurveyVO;
 import dev.mvc.surveyitem.SurveyitemVO;
 import dev.mvc.tool.Tool;
 
@@ -40,5 +41,29 @@ import dev.mvc.tool.Tool;
       
       return list;
     }
+  
+  @Override
+   public int cnt_update(int surveyitemno) {
+     int cnt = this.surveyitemDAO.cnt_update(surveyitemno);
+     return cnt;
+  }
+  
+  @Override
+  public SurveyitemVO read(int surveyitemno) {
+    SurveyitemVO surveyitemVO = this.surveyitemDAO.read(surveyitemno);
+    return surveyitemVO;
+  }
 
+  @Override
+  public int update(SurveyitemVO surveyitemVO) {
+    int cnt = this.surveyitemDAO.update(surveyitemVO);
+    return cnt;
+  }
+  
+  @Override
+  public int delete(int surveyitemno) {
+    int cnt = this.surveyitemDAO.delete(surveyitemno);
+    return cnt;
+  }
 }
+
