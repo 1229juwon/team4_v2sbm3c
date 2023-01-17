@@ -26,8 +26,7 @@ import com.zaxxer.hikari.HikariDataSource;
                                           "dev.mvc.surveyitem",
                                           "dev.mvc.msurvey",
                                           "dev.mvc.review",
-                                          "dev.mvc.favorites",
-                                          "dev.mvc.notice"}) // DAO interface?���? 李얜?�� �쐞移�
+                                          "dev.mvc.favorites"}) // DAO interface?���? 李얜?�� �쐞移�
 
 public class DatabaseConfiguration {
     

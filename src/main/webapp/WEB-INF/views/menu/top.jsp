@@ -24,7 +24,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>    
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
+               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                         <a class="nav-link" href=" ">전체</a>
                     </li>
@@ -39,20 +39,7 @@
                       </li>
 							      <%
 							      }      
-							      %>
-
-                    
-                          <li class="nav-item">
-                        <c:choose>
-                            <c:when test="${sessionScope.id == null}">
-                                <a class="nav-link" href="/member/login.do">로그인</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a class="nav-link" href='/member/logout.do'>${sessionScope.id } 로그아웃</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </li>
-                    
+							      %>                    
                     <li class="nav-item dropdown"> <%-- 회원 서브 메뉴 --%>
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">회원</a>
                         <div class="dropdown-menu">
@@ -69,31 +56,7 @@
                             </c:choose>
                         </div>
                     </li>
-                    
-                    <c:choose>
-                        <c:when test="${sessionScope.grade <= 10}"> <%-- 로그인 한 경우 --%>                    
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">회원 관리자</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/fcate/list_all.do">카테고리</a>
-                                    <a class="dropdown-item" href="/member/list.do">회원 목록</a>
-                                    
-                                </div>
-                            </li>
-                        </c:when>
-                    </c:choose>        
-
-                    <li class="nav-item">
-                        <c:choose>
-                            <c:when test="${sessionScope.admin_id == null}">
-                                <a class="nav-link" href="/admin/login.do">관리자 로그인</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a class="nav-link" href='/admin/logout.do'>관리자 ${sessionScope.id } 로그아웃</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </li> 
-                    
+    
                     <c:choose>
                         <c:when test="${sessionScope.admin_grade <= 10}"> <%-- 관리자로 로그인 한 경우 --%>                    
                             <li class="nav-item dropdown">
@@ -125,6 +88,45 @@
                       <li class="nav-item">
                       <a class="nav-link" href="javascript:type2_recommend_food();">관심요리 추천 받기</a>
                       </li>  
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                	<li class="nav-item">
+                        <c:choose>
+                            <c:when test="${sessionScope.id == null}">
+                                <a class="nav-link" href="/member/login.do">로그인</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="nav-link" href='/member/logout.do'>${sessionScope.id } 로그아웃</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </li>    
+                    
+                    <li class="nav-item">
+                        <c:choose>
+                            <c:when test="${sessionScope.admin_id == null}">
+                                <a class="nav-link" href="/admin/login.do">관리자 로그인</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="nav-link" href='/admin/logout.do'>관리자 ${sessionScope.id } 로그아웃</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </li> 
+                    
+                    <c:choose>
+                        <c:when test="${sessionScope.grade <= 10}"> <%-- 로그인 한 경우 --%>                    
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">회원 관리자</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/fcate/list_all.do">카테고리</a>
+                                    <a class="dropdown-item" href="/member/list.do">회원 목록</a>
+                                    
+                                </div>
+                            </li>
+                        </c:when>
+                    </c:choose>        
+                    
+                            
                 </ul>
             </div>    
         </nav>
