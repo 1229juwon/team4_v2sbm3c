@@ -30,10 +30,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM frcontents
     <choose>
       <when test="fr_word == null or fr_word == ''"> <!-- 검색하지 않는 경우의 레코드 갯수 -->
-        WHERE cateno=#{cateno}
+        WHERE cateno=#{cateno, jdbcType=VARCHAR }
       </when>
       <otherwise> <!-- 검색하는 경우의 레코드 갯수 -->
-        WHERE cateno=#{cateno} AND (UPPER(fr_name) LIKE '%' || #{fr_name, jdbcType=VARCHAR} || '%' 
+        WHERE cateno=#{cateno, jdbcType=VARCHAR} AND (UPPER(fr_name) LIKE '%' || #{fr_name, jdbcType=VARCHAR} || '%' 
                                                   OR UPPER(fr_content) LIKE '%' || #{fr_content, jdbcType=VARCHAR} || '%' 
                                                   OR UPPER(fr_word) LIKE '%' || #{fr_word, jdbcType=VARCHAR} || '%')
       </otherwise>
@@ -135,6 +135,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     SET ratings= #{ratings}
     WHERE frno=#{frno}
   </update>
+  
+    <select id="list_by_cateno_search_paging_all" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="HashMap">
+  SELECT frno, cateno, memberno,
+         fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+         price, file1, file1saved, thumb1, size1, ratings
+  FROM(
+       SELECT frno, cateno, memberno,
+         fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+         price, file1, file1saved, thumb1, size1, ratings, rownum as r
+       FROM (
+            SELECT frno, cateno, memberno,
+                   fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
+                   price, file1, file1saved, thumb1, size1, ratings
+            FROM frcontents
+                        <choose>
+                          <when test="fr_word == null or fr_word == ''"> <!-- 검색하지 않는 경우 -->
+                            
+                          </when>
+                          <otherwise>
+                            WHERE    (UPPER (fr_name) LIKE '%' || #{fr_word} || '%' 
+                                                            OR UPPER(fr_content) LIKE '%' || #{fr_word} || '%' 
+                                                            OR UPPER(fr_word) LIKE '%' || #{fr_word} || '%')
+                          </otherwise>
+                        </choose>
+                        ORDER BY frno ASC
+               )
+    )
+    WHERE <![CDATA[ r >= #{start_num} AND r <= #{end_num} ]]>
+     
+    <!--  1 page: WHERE r >= 1 AND r <= 10; 
+            2 page: WHERE r >= 11 AND r <= 20;
+            3 page: WHERE r >= 21 AND r <= 30; -->
+     
+  </select>   
+  
+      <!-- 카테고리별 검색 레코드 갯수 -->
+  <select id="search_count_all" resultType="int" parameterType="HashMap">
+    SELECT COUNT(*) as cnt
+    FROM frcontents
+    <choose>
+      <when test="fr_word == null or fr_word == ''"> <!-- 검색하지 않는 경우의 레코드 갯수 -->
+      
+      </when>
+      <otherwise> <!-- 검색하는 경우의 레코드 갯수 -->
+        WHERE (UPPER(fr_name) LIKE '%' || #{fr_name, jdbcType=VARCHAR} || '%' 
+                                                  OR UPPER(fr_content) LIKE '%' || #{fr_content, jdbcType=VARCHAR} || '%' 
+                                                  OR UPPER(fr_word) LIKE '%' || #{fr_word, jdbcType=VARCHAR} || '%')
+      </otherwise>
+    </choose>
+  </select>
   
 </mapper>
 

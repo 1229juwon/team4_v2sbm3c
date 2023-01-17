@@ -182,13 +182,13 @@ FROM(
                  fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
                  price, file1, file1saved, thumb1, size1
           FROM frcontents
-          WHERE cateno=1 AND (UPPER (fr_name) LIKE '%' || '가게' || '%' 
-                                                OR UPPER(fr_content) LIKE '%' || '가게' || '%' 
-                                              OR UPPER(fr_word) LIKE '%' || '가게' || '%')
-          ORDER BY frno DESC
+          WHERE (UPPER (fr_name) LIKE '%' || '' || '%' 
+                                                OR UPPER(fr_content) LIKE '%' || '' || '%' 
+                                              OR UPPER(fr_word) LIKE '%' || '' || '%')
+          ORDER BY frno ASC
      )  
 )
-WHERE r >= 1 AND r <= 3;
+WHERE r >= 1 AND r <= 30;
 
 		SELECT c.name,
 		          t.frno, t.cateno, t.memberno,

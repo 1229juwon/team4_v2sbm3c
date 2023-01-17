@@ -89,4 +89,18 @@ public interface FRContentsDAOInter {
    * @return 처리된 레코드 수
    */
   public void update_ratings(FRContentsVO frcontentsVO);
+  
+  /**
+   * 검색 + 페이징 목록
+   * @param map
+   * @return
+   */
+  public ArrayList<FRContentsVO> list_by_cateno_search_paging_all(HashMap<String, Object> map);
+  
+  /**
+   * 검색된 레코드 수
+   * @param hashMap 검색어
+   * @return 검색된 레코드 수
+   */
+  public int search_count_all(HashMap hashMap);
 }

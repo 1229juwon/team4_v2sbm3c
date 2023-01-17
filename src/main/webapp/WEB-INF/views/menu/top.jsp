@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                        <a class="nav-link" href=" ">전체</a>
+                        <a class="nav-link" href="/frcontents/list_by_cateno_search_paging_all.do">전체</a>
                     </li>
 							      <%
 							        ArrayList<FCateVO> list = (ArrayList<FCateVO>)request.getAttribute("list");

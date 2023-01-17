@@ -11,6 +11,7 @@ public class FRContents {
 
     /** 목록 파일명 */
     public static String LIST_FILE = "list_by_cateno_search_paging.do";
+    public static String LIST_FILE2 = "list_by_cateno_search_paging_all.do";
     // public static String LIST_FILE = "list_by_cateno_grid.do";
     
     // Windows, VMWare, AWS cloud 절대 경로 설정

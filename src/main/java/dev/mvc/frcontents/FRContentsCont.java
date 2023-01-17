@@ -229,6 +229,7 @@ public class FRContentsCont {
 //     * @return 페이징용으로 생성된 HTML/CSS tag 문자열
 //     */
         String paging = frcontentsProc.pagingBox(cateno, search_count, now_page, fr_word);
+//        System.out.println("paging1->"+paging);
          mav.addObject("paging", paging);
 //
 //    // mav.addObject("now_page", now_page);
@@ -725,6 +726,61 @@ public class FRContentsCont {
     return mav; // forward
   }
   
+  /**
+   * 목록 + 검색 + 페이징 지원 + Cookie
+   * http://localhost:9093/frcontents/list_by_cateno_search_paging.do?cateno=1&word=스위스&now_page=1
+   * 
+   * @param cateno
+   * @param word
+   * @param now_page
+   * @return
+   */
+  @RequestMapping(value = "/frcontents/list_by_cateno_search_paging_all.do", method = RequestMethod.GET)
+  public ModelAndView list_by_cateno_search_paging_all(
+                                                                  HttpServletRequest request,
+                                                                  @RequestParam(value = "fr_word", defaultValue = "") String fr_word,
+                                                                  @RequestParam(value = "now_page", defaultValue = "1") int now_page) {
+    // System.out.println("--> now_page: " + now_page);
+
+    ModelAndView mav = new ModelAndView();
+
+    // 숫자와 문자열 타입을 저장해야함으로 Obejct 사용
+    HashMap<String, Object> map = new HashMap<String, Object>();
+    map.put("fr_word", fr_word); // #{word}
+    map.put("now_page", now_page); // 페이지에 출력할 레코드의 범위를 산출하기위해 사용
+
+    // 검색 목록
+    ArrayList<FRContentsVO> list = frcontentsProc.list_by_cateno_search_paging_all(map);
+    mav.addObject("list", list);
+
+//    // 검색된 레코드 갯수
+      int search_count_all = frcontentsProc.search_count_all(map);
+       mav.addObject("search_count_all", search_count_all);
+    
+//
+//    /*
+//     * SPAN태그를 이용한 박스 모델의 지원, 1 페이지부터 시작 현재 페이지: 11 / 22 [이전] 11 12 13 14 15 16 17
+//     * 18 19 20 [다음]
+//     * @param cateno 카테고리번호
+//     * @param search_count 검색(전체) 레코드수
+//     * @param now_page 현재 페이지
+//     * @param word 검색어
+//     * @return 페이징용으로 생성된 HTML/CSS tag 문자열
+//     */
+        String paging2 = frcontentsProc.pagingBox2(search_count_all, now_page, fr_word);
+//        System.out.println("paging2->" + paging2);
+         mav.addObject("paging2", paging2);
+//
+//    // mav.addObject("now_page", now_page);
+//    
+//    // 로그인 Cookie 지원
+//    mav.setViewName("/contents/list_by_cateno_search_paging_cookie");  // /contents/list_by_cateno_search_paging_cookie.jsp ★
+//    
+//    // 로그인 Cookie + 쇼핑카트
+        mav.setViewName("/frcontents/list_by_cateno_search_paging_all");  // /contents/list_by_cateno_search_paging.jsp ★ 
+
+        return mav;
+  }
  
   
 }
