@@ -80,8 +80,6 @@
          
 
           <td style='vertical-align: middle; text-align: center;'>
-            <A href="/surveyitem/map.do?surveyno=${surveyno }&surveyitemno=${surveyitemno}" title="지도"><IMG src="/surveyitem/images/map.png" class="icon"></A>
-            <A href="/surveyitem/youtube.do?surveyno=${surveyno }&surveyitemno=${surveyitemno}" title="Youtube"><IMG src="/surveyitem/images/youtube.png" class="icon"></A>
             <A href="./read_update.do?surveyitemno=${surveyno }&surveyitemno=${surveyitemno}" title="수정"><IMG src="/surveyitem/images/update.png" class="icon"></A>
             <A href="./read_delete.do?surveyitemno=${surveyno }&surveyitemno=${surveyitemno}" title="삭제"><IMG src="/surveyitem/images/delete.png" class="icon"></A>
           </td> 

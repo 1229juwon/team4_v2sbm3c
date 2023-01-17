@@ -17,7 +17,7 @@
  
 <body>
 <c:import url="/menu/top.do" />
- <form name='topic' action='./surveyitem/cnt_update_msg.do' method='POST'>
+ <form name='topic' action='./cnt_update.do' method='POST'>
    <input type='hidden' name='surveyno' value='${param.surveyno }' >
  
 <DIV class='title_line'>
@@ -38,7 +38,8 @@
   <table class="table table-striped" style='width: 100%;'>
     <colgroup>
       <col style="width: 10%;"></col>
-      <col style="width: 60%;"></col>
+      <col style="width: 50%;"></col>
+      <col style="width: 10%;"></col>
       <col style="width: 30%;"></col>
     </colgroup>
     <tbody>
@@ -55,17 +56,15 @@
             </c:choose>
           </td>  
           <td style='vertical-align: middle;'> 
-
-     
             <label style="cursor: pointer;">
-            <input type="radio" name="surveyitemno" value="${surveyitemVO.surveyno}" > ${surveyitemVO.item}
+            <input type="radio" name="surveyitemno" value="${surveyitemVO.surveyitemno}" > ${surveyitemVO.item}
             </label>
           </td> 
-         
+          <td style='vertical-align: middle;'> 
+            ${surveyitemVO.cnt}
+          </td>          
 
-          <td style='vertical-align: middle; text-align: center;'>
-            <A href="/surveyitem/map.do?surveyno=${surveyno }&surveyitemno=${surveyitemno}" title="지도"><IMG src="/surveyitem/images/map.png" class="icon"></A>
-            <A href="/surveyitem/youtube.do?surveyno=${surveyno }&surveyitemno=${surveyitemno}" title="Youtube"><IMG src="/surveyitem/images/youtube.png" class="icon"></A>
+          <td style='vertical-align: middle; text-align: center;'>          
             <A href="./read_update.do?surveyitemno=${surveyno }&surveyitemno=${surveyitemno}" title="수정"><IMG src="/surveyitem/images/update.png" class="icon"></A>
             <A href="./read_delete.do?surveyitemno=${surveyno }&surveyitemno=${surveyitemno}" title="삭제"><IMG src="/surveyitem/images/delete.png" class="icon"></A>
           </td> 

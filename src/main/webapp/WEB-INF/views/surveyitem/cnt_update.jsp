@@ -18,10 +18,13 @@
 <body>
 <c:import url="/menu/top.do" />
 
-  설문조사에 참여해주셔서 감사합니다<br><br>
-  <A href='./result.do' class="btn btn-primary">설문 결과 조회</A>
-  <A href='./list_by_surveyno.do' class="btn btn-primary">설문 목록</A>
-  <A href="/index.do" class="btn btn-primary">시작 화면</A>
+   <form name='topic' action='./surveyitem/cnt_update.do' method='POST'>
+     <input type='hidden' name='surveyno' value='${param.surveyno }' >
+     <input type='hidden' name='surveyitemno' value='${param.surveyitemno }' >   
+     
+      <A href="./list_by_surveyno.do?surveyno=${surveyVO.surveyno }" class='title_link'>${surveyitemVO.cnt }</A>
+    
+   </form>
  
 <jsp:include page="../menu/bottom.jsp" />
 

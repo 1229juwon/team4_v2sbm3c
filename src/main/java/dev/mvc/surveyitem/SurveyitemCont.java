@@ -247,7 +247,8 @@ public class SurveyitemCont {
    ModelAndView mav = new ModelAndView();
    
    this.surveyitemProc.cnt_update(surveyitemno);
-   mav.setViewName("/surveyitem/cnt_update_msg"); // /surveyitem/cnt_update_msg.jsp
+   
+   mav.setViewName("redirect:/survey/list_all.do"); 
    
    return mav;
  }
