@@ -1,7 +1,7 @@
 /* Table Name: 카테고리 */
 /**********************************/
 
-DROP TABLE cate CASCADE CONSTRAINTS;
+DROP TABLE fcate CASCADE CONSTRAINTS;
 DROP TABLE fcate;
 
 CREATE TABLE fcate(

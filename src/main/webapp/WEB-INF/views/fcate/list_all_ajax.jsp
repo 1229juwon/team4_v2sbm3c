@@ -190,10 +190,9 @@
   <TABLE class='table table-hover'>
     <colgroup>
       <col style='width: 10%;'/>
-      <col style='width: 35%;'/>
-      <col style='width: 10%;'/>    
+      <col style='width: 40%;'/>
       <col style='width: 15%;'/>
-      <col style='width: 15%;'/>
+      <col style='width: 20%;'/>
       <col style='width: 15%;'/>
     </colgroup>
    
@@ -201,8 +200,6 @@
     <TR>
       <TH class="th_bs">순서</TH>
       <TH class="th_bs">카테고리 이름</TH>
-      <TH class="th_bs">자료수</TH>
-      <TH class="th_bs">등록일</TH>
       <TH class="th_bs">수정일</TH>
       <TH class="th_bs">기타</TH>
     </TR>
@@ -212,7 +209,6 @@
     <c:forEach var="fcateVO" items="${list }">
       <c:set var="cateno" value="${fcateVO.cateno }" />
       <c:set var="name" value="${fcateVO.name }" />
-      <c:set var="cnt" value="${fcateVO.cnt }" />
       <c:set var="rdate" value="${fcateVO.rdate.substring(0, 16) }" />
       <c:set var="udate" value="${fcateVO.udate.substring(0, 16) }" />
       <c:set var="seqno" value="${fcateVO.seqno }" />
@@ -221,7 +217,6 @@
       <TR>
         <TD class="td_bs">${seqno}</TD>
         <TD class="td_bs_left"><A href="/frcontents/list_by_cateno_search_paging.do?cateno=${cateno }">${name }</A></TD>
-        <TD class="td_bs">${cnt }</TD>
         <TD class="td_bs">${rdate}</TD>
         <TD class="td_bs">${udate }</TD>
         <TD class="td_bs">

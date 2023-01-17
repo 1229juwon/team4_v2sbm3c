@@ -113,8 +113,8 @@
   </TABLE>
    
   <DIV class='bottom_menu'>
-    <button type='button' onclick="location.href='./create.do'" class="btn btn-info">등록</button>
-    <button type='button' onclick="location.reload();" class="btn btn-info">새로 고침</button>
+    <button type='button' onclick="location.href='./create.do'" class="btn btn-dark">등록</button>
+    <button type='button' onclick="location.reload();" class="btn btn-dark">새로 고침</button>
   </DIV>
 </DIV>
  

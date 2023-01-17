@@ -43,15 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="list_by_cateno_search_paging" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="HashMap">
   SELECT frno, cateno, memberno,
          fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-         price, file1, file1saved, thumb1, size1
+         price, file1, file1saved, thumb1, size1, ratings
   FROM(
        SELECT frno, cateno, memberno,
          fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-         price, file1, file1saved, thumb1, size1, rownum as r
+         price, file1, file1saved, thumb1, size1, ratings, rownum as r
        FROM (
             SELECT frno, cateno, memberno,
                    fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-                   price, file1, file1saved, thumb1, size1
+                   price, file1, file1saved, thumb1, size1, ratings
             FROM frcontents
                         <choose>
                           <when test="fr_word == null or fr_word == ''"> <!-- 검색하지 않는 경우 -->
@@ -78,7 +78,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="read" resultType="dev.mvc.frcontents.FRContentsVO" parameterType="int">
    SELECT frno, cateno, memberno,
        fr_name, fr_content, fr_addres, fr_map,fr_word, fr_rdate, fr_udate, review_cnt,
-       price, file1, file1saved, thumb1, size1
+       price, file1, file1saved, thumb1, size1, ratings
     FROM frcontents
     WHERE frno = #{frno}
   </select>
@@ -97,6 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     SET file1=#{file1}, file1saved=#{file1saved}, thumb1=#{thumb1}, size1=#{size1}
     WHERE frno=#{frno}
   </update>
+ 
   
   <!-- 삭제 -->
    <delete id="delete" parameterType="int">
@@ -127,6 +128,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				WHERE frno IN <foreach collection="frno_list" item="item" index="index" open="(" separator="," close=")">#{item}</foreach>
 				ORDER BY frno ASC
   </select>
+  
+    <!-- 평균 -->
+  <update id="update_ratings" parameterType="dev.mvc.frcontents.FRContentsVO">
+    UPDATE frcontents
+    SET ratings= #{ratings}
+    WHERE frno=#{frno}
+  </update>
   
 </mapper>
 

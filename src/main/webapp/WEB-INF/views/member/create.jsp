@@ -196,38 +196,38 @@
   
     <div class="form_input">
       <input type='text' class="form-control" name='id' id='id' value='' required="required" style='width: 30%;' placeholder="아이디*" autofocus="autofocus">
-      <button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-info">중복확인</button>
+      <button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-dark">중복확인</button>
     </div>   
                 
     <div class="form_input">
     비밀번호
-      <input type='password' class="form-control" name='password' id='password' value='1234' required="required" style='width: 30%;' placeholder="패스워드*">
+      <input type='password' class="form-control" name='password' id='password' value='' required="required" style='width: 30%;' placeholder="패스워드*">
     </div>   
 
     <div class="form_input">
     비밀번호 확인
-      <input type='password' class="form-control" name='password2' id='password2' value='1234' required="required" style='width: 30%;' placeholder="패스워드 확인*">
+      <input type='password' class="form-control" name='password2' id='password2' value='' required="required" style='width: 30%;' placeholder="패스워드 확인*">
     </div>   
     
     <div class="form_input">
       <input type='text' class="form-control" name='mname' id='mname' 
-                value='이름' required="required" style='width: 30%;' placeholder="성명*">
+                value='' required="required" style='width: 30%;' placeholder="이름*">
     </div>   
     
     <div class="form_input">
       <input type='text' class="form-control" name='nickname' id='nickname' 
-                 value='' style='width: 30%;' placeholder="닉네임">
+                 value='' style='width: 30%;' placeholder="닉네임*">
     </div> 
 
     <div class="form_input">
       <input type='text' class="form-control" name='phonenum' id='phonenum' 
-                value='010-0000-0000' required="required" style='width: 30%;' placeholder="전화번호*"> 예) 010-0000-0000
+                value='' required="required" style='width: 30%;' placeholder="전화번호*"> 예) 010-0000-0000
     </div>   
 
     <div class="form_input">
       <input type='text' class="form-control" name='address' id='address' 
-                value='' style='width: 100%;' placeholder="주소">
-      <button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-info">주소 찾기</button>
+                value='' style='width: 100%;' placeholder="주소*">
+      <button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-dark">주소 찾기</button>
     </div>  
 
     <div>
@@ -302,8 +302,8 @@
     </div>
     
     <div class="form_input">
-      <button type="button" id='btn_send' onclick="send()" class="btn btn-info">가입</button>
-      <button type="button" onclick="history.back()" class="btn btn-info">취소</button>
+      <button type="button" id='btn_send' onclick="send()" class="btn btn-dark">가입</button>
+      <button type="button" onclick="history.back()" class="btn btn-dark">취소</button>
     </div>   
   </FORM>
   </DIV>

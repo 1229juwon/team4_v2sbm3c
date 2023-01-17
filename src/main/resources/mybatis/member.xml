@@ -74,7 +74,7 @@
   </select>
   
   <!-- Email로 회원 정보 조회 -->
-  <select id="readByEmail" resultType="dev.mvc.member.MemberVO" parameterType="String">
+  <select id="readByName" resultType="dev.mvc.member.MemberVO" parameterType="String">
     SELECT memberno, id, password, mname, phonenum, homenum, address, nickname, mdate, grade
     FROM member
     WHERE mname = #{mname}

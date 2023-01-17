@@ -62,10 +62,10 @@
   <table class="table table-striped" style='width: 100%;'>
     <colgroup>
       <col style="width: 10%;"></col>
-      <col style="width: 35%;"></col>
+      <col style="width: 25%;"></col>
       <col style="width: 15%;"></col>
+      <col style="width: 20%;"></col>
       <col style="width: 15%;"></col>
-      <col style="width: 10%;"></col>
       <col style="width: 15%;"></col>
     </colgroup>
     <%-- table 컬럼 --%>
@@ -87,6 +87,7 @@
         <c:set var="file1" value="${frcontentsVO.file1 }" />
         <c:set var="size1" value="${frcontentsVO.size1 }" />
         <c:set var="thumb1" value="${frcontentsVO.thumb1 }" />
+        <c:set var="ratings" value="${frcontentsVO.ratings }" />
 
         
         <tr style="height: 132px;"> 
@@ -112,30 +113,29 @@
           </td>  
           <td style='vertical-align: middle;'>
             <a href="./read.do?frno=${frno}&cateno=${cateno}&fr_word=${param.fr_word}&now_page=${param.now_page}"><strong>${frcontentsVO.fr_name}</strong> 
-            <c:choose>
-              <c:when test="${frcontentsVO.fr_content.length() > 160 }">
-                  ${frcontentsVO.fr_content.substring(0, 160)}.....
-              </c:when>
-              <c:when test="${frcontentsVO.fr_content.length() <= 160 }">
-                  ${frcontentsVO.fr_content}
-              </c:when>
-            </c:choose>
+
             
             </a> 
            <td style='vertical-align: middle; text-align: center;'>
               ${frcontentsVO.fr_addres}
           </td> 
-          <td style='vertical-align: middle; text-align: center;'>
-              ${frcontentsVO.review_cnt}
-          </td> 
            <td style='vertical-align: middle; text-align: center;'>
               ${frcontentsVO.price}
+          </td> 
+          <td style='vertical-align: middle; text-align: center;'>
+              <IMG src="/review/images/star.png" class="icon" align="middle">&nbsp; ${frcontentsVO.ratings}
           </td> 
           <td style='vertical-align: middle; text-align: center;'>
             <A href="/frcontents/map.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="지도"><IMG src="/frcontents/images/map.png" class="icon"></A>
             <A href="/frcontents/update_text.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="글 수정"><IMG src="/frcontents/images/update.png" class="icon"></A>
             <A href="/frcontents/update_file.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="파일 수정"><IMG src="/frcontents/images/update_file.png" class="icon"></A>
             <A href="/frcontents/delete.do?cateno=${cateno }&frno=${frno}&fr_word=${param.fr_word }" title="삭제"><IMG src="/frcontents/images/delete.png" class="icon"></A>
+            <A href="/review/list_by_cateno_search_paging.do?frno=${frno }" title="리뷰"><IMG src="/review/images/sort.png" class="icon"></A>
+            <form name='frm' id='frm' method='get' action='./favorites_create.do'>
+     			<input type='hidden' name='frno' value='${frno }'>
+     			<input type='hidden' name='cateno' value='${cateno }'>
+      			<button type='submit'>즐찾 추가</button>
+   				 </form>
           </td>
         </tr>
       </c:forEach>

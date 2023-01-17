@@ -19,15 +19,11 @@
 <c:import url="/menu/top.do" />
  
 <DIV class='title_line'>
-  <A href="./list_all.do" class='title_link'>인공지능 기반 추천</A>
+  <A href="./list_all.do" class='title_link'>${sessionScope.mname }님을 위한 오늘의 추천</A>
 </DIV>
 
 <DIV class='content_body'>
-  <ASIDE class="aside_right">
-    <A href="javascript:location.reload();">새로고침</A>
-  </ASIDE> 
 
-  <DIV class='menu_line'></DIV>
   
   <DIV id='panel' style='margin: 10px auto; text-align: center; width: 90%;'>
     <DIV style='margin: 0px auto; width: 100%;'>

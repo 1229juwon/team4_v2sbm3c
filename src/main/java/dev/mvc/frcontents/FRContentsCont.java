@@ -25,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import dev.mvc.favorites.FavoritesProcInter;
+import dev.mvc.favorites.FavoritesVO;
 import dev.mvc.fcate.FCateProcInter;
 import dev.mvc.fcate.FCateVO;
 import dev.mvc.member.MemberProcInter;
@@ -44,6 +47,10 @@ public class FRContentsCont {
   @Autowired
   @Qualifier("dev.mvc.member.MemberProc")
   private MemberProcInter memberProc = null;
+  
+  @Autowired
+  @Qualifier("dev.mvc.favorites.FavoritesProc") 
+  private FavoritesProcInter favoritesProc;
   
   public FRContentsCont () {
     System.out.println("-> FRContentsCont created.");
@@ -598,5 +605,126 @@ public class FRContentsCont {
     
     return mav;
   }
+  
+  /**
+   * 추천 목록, http://localhost:9093/frcontents/mf_food_member.do
+   * @return
+   */
+  @RequestMapping(value="/frcontents/mf_food_member_grid_index.do", method=RequestMethod.GET)
+  public ModelAndView mf_food_member_main(HttpSession session) {
+    ModelAndView mav = new ModelAndView();
+    
+    // Spring boot -> Django로 요청을 보냄 -> JSON 문자열 수신
+    int memberno = (int)session.getAttribute("memberno");
+//    memberno=1;
+    // int userId = 1; // test
+//    int userId = memberno;
+    
+    String source = "";
+    try {
+      source = mf_recommend("http://127.0.0.1:8000/recommend_food/mf_food?memberno=" + memberno);
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }        
+
+    System.out.println("-> source: " + source);
+    // -> source: [{"movie_id": 246, "movie_title": "Hoop Dreams (1994)", "movie_rating": 5}, 
+    // {"movie_id": 318, "movie_title": "Shawshank Redemption, The (1994)", "movie_rating": 5}, 
+    // {"movie_id": 720, "movie_title": "Wallace & Gromit: The Best of Aardman Animation (1996)", "movie_rating": 5}, {"movie_id": 741, "movie_title": "Ghost in the Shell (Kôkaku kidôtai) (1995)", "movie_rating": 5}, {"movie_id": 750, "movie_title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1964)", "movie_rating": 5}]
+    
+    // 영화 번호를 추출
+    HashMap<String, Object> hashMap = new HashMap<String, Object>();
+    
+    JSONArray json = new JSONArray(source);
+    ArrayList<String> frno_list = new ArrayList<String>();
+    
+    for (int index=0; index < json.length(); index++) {
+      JSONObject obj = (JSONObject)json.opt(index);
+      String frno = obj.optString("frno");
+      System.out.println("-> frno: " + frno);
+      frno_list.add(frno);
+    }
+    
+    hashMap.put("frno_list", frno_list);
+        
+    // 추천 상품 목록 읽기
+    ArrayList<FRContentsVO> list = this.frcontentsProc.mf_food_member(hashMap);
+    mav.addObject("list", list);
+    
+    // 유형 1: 테이블
+    // /webapp/WEB-INF/views/contents/mf_movie_member.jsp
+    // mav.setViewName("/contents/mf_movie_member"); 
+
+    // 유형 2: 그리드
+    // /webapp/WEB-INF/views/contents/mf_movie_member_grid.jsp
+    mav.setViewName("/frcontents/mf_food_member_grid_index"); 
+    
+    return mav;
+  }
+  
+  
+  
+  /**
+   * 등록 처리 http://localhost:9093/frcontents/create.do
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/frcontents/favorites_create.do", method = RequestMethod.GET)
+  public ModelAndView favorites_create(HttpSession session, HttpServletRequest request, FRContentsVO frcontentsVO, 
+		  @RequestParam(value = "cateno", defaultValue = "2") int cateno,
+          @RequestParam(value = "fr_word", defaultValue = "") String fr_word,
+          @RequestParam(value = "now_page", defaultValue = "1") int now_page) {
+    ModelAndView mav = new ModelAndView();
+ 
+ // 숫자와 문자열 타입을 저장해야함으로 Obejct 사용
+    HashMap<String, Object> map = new HashMap<String, Object>();
+    map.put("cateno", cateno); // #{cateno}
+    map.put("fr_word", fr_word); // #{word}
+    map.put("now_page", now_page); // 페이지에 출력할 레코드의 범위를 산출하기위해 사용
+
+    // 검색 목록
+    ArrayList<FRContentsVO> list = frcontentsProc.list_by_cateno_search_paging(map);
+    mav.addObject("list", list);
+
+//    // 검색된 레코드 갯수
+      int search_count = frcontentsProc.search_count(map);
+       mav.addObject("search_count", search_count);
+    
+       FCateVO fcateVO = fcateProc.read(cateno);
+       mav.addObject("fcateVO", fcateVO);
+//
+//    /*
+//     * SPAN태그를 이용한 박스 모델의 지원, 1 페이지부터 시작 현재 페이지: 11 / 22 [이전] 11 12 13 14 15 16 17
+//     * 18 19 20 [다음]
+//     * @param cateno 카테고리번호
+//     * @param search_count 검색(전체) 레코드수
+//     * @param now_page 현재 페이지
+//     * @param word 검색어
+//     * @return 페이징용으로 생성된 HTML/CSS tag 문자열
+//     */
+        String paging = frcontentsProc.pagingBox(cateno, search_count, now_page, fr_word);
+         mav.addObject("paging", paging);
+
+         if (this.memberProc.isMember(session)) {
+             int memberno = (int)session.getAttribute("memberno");
+             int frno = frcontentsVO.getFrno();
+            
+             FavoritesVO favoritesVO = new FavoritesVO();
+             
+             favoritesVO.setFrno(frno);
+             favoritesVO.setMemberno(memberno);
+
+             int cnt = this.favoritesProc.create(favoritesVO); 
+                
+          }
+         System.out.println("->->->->->->->->->-> "  + cateno);
+        mav.setViewName("/frcontents/list_by_cateno_search_paging");  // /contents/list_by_cateno_search_paging.jsp ★ 
+
+    return mav; // forward
+  }
+  
+ 
   
 }

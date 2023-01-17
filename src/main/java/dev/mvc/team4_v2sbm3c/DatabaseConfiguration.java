@@ -24,7 +24,13 @@ import com.zaxxer.hikari.HikariDataSource;
                                           "dev.mvc.admin",
                                           "dev.mvc.survey",
                                           "dev.mvc.surveyitem",
+<<<<<<< HEAD
                                           "dev.mvc.msurvey"}) // DAO interface?���? 李얜?�� �쐞移�
+=======
+                                          "dev.mvc.review",
+                                          "dev.mvc.favorites"}) // DAO interface?���? 李얜?�� �쐞移�
+
+>>>>>>> 2e67c1afa4e3903b221cfb7935f619bb82d42339
 public class DatabaseConfiguration {
     
     @Autowired
@@ -32,7 +38,7 @@ public class DatabaseConfiguration {
     
     @Bean
     @ConfigurationProperties(prefix="spring.datasource.hikari")  // �꽕�젙 �뙆�씪�쓽 �젒�몢�궗 �꽑�뼵 spring.datasource.hikari....
-    public HikariConfig hikariConfig() {
+    public HikariConfig hikariConfig() { 
         return new HikariConfig();
     }
     

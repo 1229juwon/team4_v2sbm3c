@@ -97,7 +97,7 @@
         <div class="col-md-10">
           <input type='text' class="form-control" name='zipcode' id='zipcode' 
                      value='${memberVO.zipcode }' required="required" style='width: 30%;' placeholder="우편번호">
-          <input type="button" onclick="DaumPostcode()" value="우편번호 찾기" class="btn btn-info btn-md">
+          <input type="button" onclick="DaumPostcode()" value="우편번호 찾기" class="btn btn-dark btn-md">
         </div>
       </div>  
    

@@ -18,15 +18,11 @@
 
 <script type="text/javascript">
   $(function() { // click 이벤트 핸들러 등록
-    $('#btn_loadDefault').on('click', loadDefault); // 기본 로그인 정보 설정
     $('#content').val(createKey);
   });
 
-  // 테스트용 기본값 로딩
-  function loadDefault() {
-	$('#receiver').val('1229juwon67@gmail.com');
-    $('#id').val('user1');
-  }
+
+
 
   function createKey() {
 	  return Math.floor(Math.random() * (999999 - 100000)) + 100000;
@@ -60,8 +56,7 @@
      
         
         <div class="form_input">
-          <button type="submit" class="btn btn-info" id="send">인증번호 보내기</button>
-          <button type='button' id='btn_loadDefault' class="btn btn-info">테스트 계정</button>
+          <button type="submit" class="btn btn-dark" id="send">인증번호 보내기</button>
         </div>   
         
         <div class="form_input" style="display:none">

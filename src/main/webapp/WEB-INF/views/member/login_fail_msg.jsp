@@ -37,8 +37,8 @@
         <li class='li_none'>회원 로그인에 실패했습니다.</li>
         <li class='li_none'>ID 또는 패스워드가 일치하지 않습니다.</li>
         <li class='li_none'>
-          <button type="button" id="btn_retry" class="btn btn-info">로그인 다시 시도</button>
-          <button type="button" id="btn_home" class="btn btn-info">확인</button>
+          <button type="button" id="btn_retry" class="btn btn-dark">로그인 다시 시도</button>
+          <button type="button" id="btn_home" class="btn btn-dark">확인</button>
         </li>
         
       </ul>

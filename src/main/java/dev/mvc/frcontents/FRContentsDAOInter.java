@@ -83,4 +83,10 @@ public interface FRContentsDAOInter {
    */
   public ArrayList<FRContentsVO> mf_food_member(HashMap<String, Object> hashMap); 
   
+  /**
+   * 평점
+   * @param frcontentsVO
+   * @return 처리된 레코드 수
+   */
+  public void update_ratings(FRContentsVO frcontentsVO);
 }

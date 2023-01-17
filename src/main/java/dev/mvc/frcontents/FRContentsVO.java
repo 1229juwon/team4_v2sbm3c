@@ -60,8 +60,20 @@ public class FRContentsVO {
   private String thumb1 = "";
   /** 메인 이미지 크기 */
   private long size1;
+  /** 평점 */
+  private double ratings;
 
-  /**
+
+
+public double getRatings() {
+    return ratings;
+  }
+
+  public void setRatings(double ratings) {
+    this.ratings = ratings;
+  }
+
+/**
    이미지 파일
    <input type='file' class="form-control" name='file1MF' id='file1MF' 
               value='' placeholder="파일 선택">
@@ -214,8 +226,7 @@ public class FRContentsVO {
   public void setSize1_label(String size1_label) {
     this.size1_label = size1_label;
   }
-
- 
+  
   
 }
 
