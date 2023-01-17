@@ -24,13 +24,10 @@ import com.zaxxer.hikari.HikariDataSource;
                                           "dev.mvc.admin",
                                           "dev.mvc.survey",
                                           "dev.mvc.surveyitem",
-<<<<<<< HEAD
-                                          "dev.mvc.msurvey"}) // DAO interface?���? 李얜?�� �쐞移�
-=======
+                                          "dev.mvc.msurvey",
                                           "dev.mvc.review",
                                           "dev.mvc.favorites"}) // DAO interface?���? 李얜?�� �쐞移�
 
->>>>>>> 2e67c1afa4e3903b221cfb7935f619bb82d42339
 public class DatabaseConfiguration {
     
     @Autowired
