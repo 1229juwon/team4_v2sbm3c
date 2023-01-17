@@ -21,7 +21,7 @@
 
   <c:choose>
       <c:when test="${sessionScope.id != null}">
-        <c:import url="/frcontents/mf_movie_member_grid_index.do" />
+        <c:import url="/frcontents/mf_food_member_grid_index.do" />
       </c:when>
       <c:otherwise>
         <DIV style='width: 100%; margin: 30px auto; text-align: center;'>

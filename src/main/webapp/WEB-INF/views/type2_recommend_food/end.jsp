@@ -105,16 +105,17 @@
     
     <DIV id='panel_img' style='margin: 0px auto; width: 90%;'>
         <DIV id='korean' style='display: none;'> <!-- 개발 관련 도서 추천 필요 -->
+        한식 추천해 드립니다
             <TABLE style='margin: 0px auto;'>
                 <TR>
                     <TD class='td_image'>
-                        <img id='img1' src="/type2_recommend_food/images/v11.jpg" style='float:left; height: 200px'>
+                        <img id='img1' src="/type2_recommend_food/images/v11.jpg" style='float:left; height: 180px'>
                     </TD>
                     <TD class='td_image'>
-                        <img id='img2' src="/type2_recommend_food/images/v21.jpg" style='float:left; height: 200px'>
+                        <img id='img2' src="/type2_recommend_food/images/v21.jpg" style='float:left; height: 180px'>
                     </TD>
                     <TD class='td_image'>
-                        <img id='img3' src="/type2_recommend_food/images/v31.jpg" style='float:left; height: 200px'>
+                        <img id='img3' src="/type2_recommend_food/images/v31.jpg" style='float:left; height: 180px'>
                     </TD>
                 </TR>  
                 <TR>
@@ -132,6 +133,7 @@
             </TABLE>
         </DIV>
         <DIV id='eng' style='display: none;'>  <!-- 해외 여행 관련 도서 추천 필요 -->
+            양식 추천해 드립니다
             <TABLE style='margin: 0px auto;'>
                 <TR>
                     <TD class='td_image'>
@@ -158,6 +160,7 @@
             </TABLE>
         </DIV>
         <DIV id='china' style='display: none;'> <!-- 소설 관련 도서 추천 필요 -->
+          중식 추천해 드립니다
             <TABLE style='margin: 0px auto;'>
                 <TR>
                     <TD class='td_image'>
@@ -184,6 +187,7 @@
             </TABLE>
         </DIV>
         <DIV id='jap' style='display: none;'> <!-- 소설 관련 도서 추천 필요 -->
+          일식 추천해 드립니다
             <TABLE style='margin: 0px auto;'>
                 <TR>
                     <TD class='td_image'>
@@ -210,6 +214,7 @@
             </TABLE>
         </DIV>
         <DIV id='bet' style='display: none;'> <!-- 소설 관련 도서 추천 필요 -->
+          베트남음식 추천해 드립니다
             <TABLE style='margin: 0px auto;'>
                 <TR>
                     <TD class='td_image'>
@@ -236,6 +241,7 @@
             </TABLE>
         </DIV>
         <DIV id='tha' style='display: none;'> <!-- 소설 관련 도서 추천 필요 -->
+          태국음식 추천해 드립니다
             <TABLE style='margin: 0px auto;'>
                 <TR>
                     <TD class='td_image'>
