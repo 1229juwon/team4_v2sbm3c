@@ -109,7 +109,7 @@
         <br>
         <c:choose>
             <c:when test="${param.cnt == 0 }">
-                <button type='button' onclick="history.back()" class="btn btn-info">다시 시도</button>    
+                <button type='button' onclick="history.back()" class="btn btn-dark">다시 시도</button>    
             </c:when>
         </c:choose>
         

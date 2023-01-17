@@ -196,7 +196,7 @@
   
     <div class="form_input">
       <input type='text' class="form-control" name='id' id='id' value='' required="required" style='width: 30%;' placeholder="아이디*" autofocus="autofocus">
-      <button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-info">중복확인</button>
+      <button type='button' id="btn_checkID" onclick="checkID()" class="btn btn-dark">중복확인</button>
     </div>   
                 
     <div class="form_input">
@@ -227,7 +227,7 @@
     <div class="form_input">
       <input type='text' class="form-control" name='address' id='address' 
                 value='' style='width: 100%;' placeholder="주소*">
-      <button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-info">주소 찾기</button>
+      <button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-dark">주소 찾기</button>
     </div>  
 
     <div>
@@ -302,8 +302,8 @@
     </div>
     
     <div class="form_input">
-      <button type="button" id='btn_send' onclick="send()" class="btn btn-info">가입</button>
-      <button type="button" onclick="history.back()" class="btn btn-info">취소</button>
+      <button type="button" id='btn_send' onclick="send()" class="btn btn-dark">가입</button>
+      <button type="button" onclick="history.back()" class="btn btn-dark">취소</button>
     </div>   
   </FORM>
   </DIV>

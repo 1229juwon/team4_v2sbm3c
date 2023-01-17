@@ -140,7 +140,7 @@
     주소
       <input type='text' class="form-control" name='address' id='address' 
                  value='${memberVO.address }' style='width: 100%;' placeholder="주소">
-      <button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-info">주소 찾기</button>
+      <button type="button" id="btn_DaumPostcode" onclick="DaumPostcode()" class="btn btn-dark">주소 찾기</button>
     </div>   
 
     <div class="form_input">
@@ -223,8 +223,8 @@
     </div>
     
     <div class="form_input">
-      <button type="button" id='btn_send' onclick="send()" class="btn btn-info">저장</button>
-      <button type="button" onclick="history.back()" class="btn btn-info">취소</button>
+      <button type="button" id='btn_send' onclick="send()" class="btn btn-dark">저장</button>
+      <button type="button" onclick="history.back()" class="btn btn-dark">취소</button>
     </div>   
   </FORM>
   </DIV>

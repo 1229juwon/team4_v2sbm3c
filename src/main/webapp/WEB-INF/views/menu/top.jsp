@@ -60,7 +60,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/member/create.do">회원 가입</a>
                             <a class="dropdown-item" href="/member/find_id.do">아이디 찾기</a>
-                            <a class="dropdown-item" href="#">비밀번호 찾기</a>
+                            <a class="dropdown-item" href="/member/find_pw.do">비밀번호 찾기</a>
                             <c:choose>
                               <c:when test="${sessionScope.id != null}">
                                 <a class="dropdown-item" href="/member/passwd_update.do">비밀번호 변경</a>

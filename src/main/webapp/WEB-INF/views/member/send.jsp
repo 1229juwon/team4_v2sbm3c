@@ -85,7 +85,7 @@
         </div> 
         
         <div class="form_input">
-          <button type="button" id="authBtn" class="btn btn-info">찾기</button>
+          <button type="button" id="authBtn" class="btn btn-dark">찾기</button>
         </div>
         
      	<div class="form_input" style="display:none">

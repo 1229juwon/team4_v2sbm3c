@@ -109,8 +109,8 @@
       </div>   
       
       <div class="form_input">
-        <button type="button" id='btn_send' class="btn btn-info">변경</button>
-        <button type="button" onclick="location.href='./list.do'" class="btn btn-info">취소</button>
+        <button type="button" id='btn_send' class="btn btn-dark">변경</button>
+        <button type="button" onclick="location.href='./list.do'" class="btn btn-dark">취소</button>
       </div>   
 
     </FORM>

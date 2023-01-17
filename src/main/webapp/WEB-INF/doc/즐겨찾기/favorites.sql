@@ -27,7 +27,7 @@ INSERT INTO favorites(frno, memberno)
 VALUES(1, 3);
 
 INSERT INTO favorites(frno, memberno)
-VALUES(1, 1);
+VALUES(3, 1);
 
 commit;
 
