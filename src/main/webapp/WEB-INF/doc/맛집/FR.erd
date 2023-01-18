@@ -61,7 +61,7 @@
             <error></error>
             <linkedPath></linkedPath>
             <tableName>FCATE</tableName>
-            <logicalName>카테고리</logicalName>
+            <logicalName>맛집 카테고리</logicalName>
             <description></description>
             <columns>
               <net.java.amateras.db.visual.model.ColumnModel>
