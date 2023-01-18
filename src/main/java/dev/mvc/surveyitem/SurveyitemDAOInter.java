@@ -50,6 +50,13 @@ public interface SurveyitemDAOInter {
    * @return 삭제된 레코드 수
    */
   public int delete(int surveyitemno);
+  
+  /**
+   * 설문 번호에 해당하는 카운트의 합
+   * @param
+   * @return
+   */
+  public int sum_cnt(int surveyno);
 
 
 }

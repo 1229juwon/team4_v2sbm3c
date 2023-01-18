@@ -18,21 +18,15 @@
 <body>
 <c:import url="/menu/top.do" />
 
- <form name='topic' action='./surveyitem/read_update.do' method='POST'>
-   <input type='hidden' name='surveyitemno' value='${param.surveyitemno }' >
- 
-<DIV class='title_line'>
-  <A href="./list_by_surveyitemno.do?surveyitemno=${surveyitemVO.surveyitemno }" class='title_link'>${surveyitemVO.item }</A>
-</DIV>
-
 <DIV class='title_line'>설문조사 > [${surveyitemVO.item }] 수정</DIV>
 
 <DIV class='content_body'>
   <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
     <FORM name='frm_create' id='frm_create' method='POST' action='./read_update.do'>
+      <input type='hidden' name='surveyno' value='${surveyitemVO.surveyno }'>
       <input type='hidden' name='surveyitemno' value='${surveyitemVO.surveyitemno }'>
       
-      <label>설문 주제</label>
+      <label>설문 항목</label>
       <input type='text' name='item' value='${surveyitemVO.item}' required="required" style='width: 25%;' autofocus="autofocus">
   
       <button type="submit" id='submit'>수정</button>
@@ -45,8 +39,6 @@
     <A href="./create.do?surveyno=${surveyVO.surveyno }">등록</A>
     <span class='menu_divide' >│</span>
     <A href="javascript:location.reload();">새로고침</A>
-    <span class='menu_divide' >│</span>
-    <A href="./list_by_surveyno_grid1.do?surveyno=${surveyVO.surveyno }">갤러리형</A>
   </ASIDE> 
 
   <DIV class='menu_line'></DIV>
@@ -89,13 +81,12 @@
             
     </tbody>
   </table>
+  </DIV>
 </DIV>
 
        <div class="content_body_bottom">
        <button type="submit" class="btn btn-primary">참여</button>
        </div>
- </form>
-
  
 <jsp:include page="../menu/bottom.jsp" />
 </body>

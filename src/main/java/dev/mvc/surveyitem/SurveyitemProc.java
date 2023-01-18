@@ -65,5 +65,13 @@ import dev.mvc.tool.Tool;
     int cnt = this.surveyitemDAO.delete(surveyitemno);
     return cnt;
   }
+  
+  @Override
+  public int  sum_cnt(int surveyno) {
+    int cnt = this.surveyitemDAO.sum_cnt(surveyno);
+    return cnt;
+  }
+  
 }
+
 
