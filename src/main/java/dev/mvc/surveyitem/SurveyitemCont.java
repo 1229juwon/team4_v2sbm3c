@@ -117,6 +117,11 @@ public class SurveyitemCont {
   // request.setAttribute("list", list);
  
   // System.out.println("-> list size: " + list.size());
+  
+  System.out.println("-> surveyno: " + surveyno);
+  int sum = this.surveyitemProc.sum_cnt(surveyno);
+  System.out.println("-> sum: " + sum);
+  mav.addObject("sum", sum);
  
   mav.setViewName("/surveyitem/list_by_surveyno"); // /webapp/WEB-INF/views/surveyitem/list_by_surveyno.jsp
  

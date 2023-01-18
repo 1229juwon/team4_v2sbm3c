@@ -43,5 +43,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     DELETE FROM surveyitem
     WHERE surveyitemno = #{surveyitemno}
   </delete>  
+  
+  <!-- 설문 번호에 해당하는 카운트의 합 -->
+  <select id="sum_cnt" parameterType="int" resultType="int">
+    SELECT SUM(cnt)
+    FROM surveyitem 
+    WHERE surveyno = #{surveyno}
+  </select>  
      
 </mapper>

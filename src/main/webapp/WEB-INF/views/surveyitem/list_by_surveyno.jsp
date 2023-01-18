@@ -5,14 +5,25 @@
 <!DOCTYPE html> 
 <html lang="ko"> 
 <head> 
-<meta charset="UTF-8"> 
+<meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" /> 
 <title>Resort world</title>
  
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    
+<script type="text/javascript">
+  function send(f) {
+	  if ($("input[type=radio][name=surveyitemno]:checked").is(':checked')) {
+		  alert('참여해주셔서 감사합니다.');
+		  f.submit();
+    } else {
+    	 alert('선택이 되지 않았습니다.');
+    }	  
+	}
+</script>    
 </head> 
  
 <body>
@@ -39,12 +50,14 @@
     <colgroup>
       <col style="width: 10%;"></col>
       <col style="width: 50%;"></col>
-      <col style="width: 10%;"></col>
       <col style="width: 30%;"></col>
+      <col style="width: 10%;"></col>
     </colgroup>
     <tbody>
       <c:forEach var="surveyitemVO" items="${list }" varStatus="prop" >
         <c:set var="surveyno" value="${surveyitemVO.surveyno }" />
+        <c:set var="cnt" value="${surveyitemVO.cnt }" />
+        <c:set var="width" value="${(surveyitemVO.cnt / sum) * 300 }" />
         
         <tr style="height: 30px;"> 
           <td style='vertical-align: middle; text-align: center;'>
@@ -60,8 +73,8 @@
             <input type="radio" name="surveyitemno" value="${surveyitemVO.surveyitemno}" > ${surveyitemVO.item}
             </label>
           </td> 
-          <td style='vertical-align: middle;'> 
-            ${surveyitemVO.cnt}
+          <td style='vertical-align: middle;'>
+            <IMG src="/surveyitem/images/chart01.png" width="${width}" height="20px"> ${surveyitemVO.cnt} 명
           </td>          
 
           <td style='vertical-align: middle; text-align: center;'>          
@@ -77,7 +90,7 @@
 </DIV>
 
        <div class="content_body_bottom">
-       <button type="submit" class="btn btn-primary">참여</button>
+       <button type="button" class="btn btn-primary" onclick="send(this.form)">참여</button>
        </div>
  </form>
 

@@ -109,5 +109,10 @@ UPDATE surveyitem
 SET cnt = cnt + 1
 WHERE surveyitemno = 1;
 
+9. 설문 번호에 해당하는 카운트의 합
+SELECT SUM(cnt)
+FROM surveyitem
+WHERE surveyno = 11;
+
 
 
