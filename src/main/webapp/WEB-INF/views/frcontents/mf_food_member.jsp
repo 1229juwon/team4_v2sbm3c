@@ -53,6 +53,7 @@
         <c:set var="cateno" value="${frcontentsVO.cateno }" />
         <c:set var="frno" value="${frcontentsVO.frno }" />
         <c:set var="thumb1" value="${frcontentsVO.thumb1 }" />
+        <c:set var="ratings" value="${frcontentsVO.ratings }" />
         
         <tr style="height: 132px;">
           <td style='vertical-align: middle; text-align: center;'>

@@ -32,11 +32,15 @@
         <c:set var="cateno" value="${frcontentsVO.cateno }" />
         <c:set var="frno" value="${frcontentsVO.frno }" />
         <c:set var="thumb1" value="${frcontentsVO.thumb1 }" />
-                
+        <c:set var="ratings" value="${frcontentsVO.ratings }" />
+               
         <DIV style='margin: 0px auto; width: 19.5%; float: left; height: 350px;'>
           <a href="./read.do?frno=${frno}&cateno=${cateno}"><IMG src="/frcontents/storage/${thumb1 }" style="width: 95%; height: 200px;"></a>
           <br>
           ${fr_name } 
+          <br>
+              <IMG src="/review/images/star.png" class="icon" align="middle">&nbsp; ${ratings}
+          
         </DIV>
       </c:forEach>
     </DIV>
