@@ -64,9 +64,17 @@
         <TD class="td_bs">${yn}</TD>
         <TD class="td_bs">${rdate}</TD>
         <TD class="td_bs">
-          <A href="../surveyitem/create.do?surveyno=${surveyno}" title="항목 등록"><IMG src="/survey/images/create.png" class="icon"></A>
-          <A href="./read_update.do?surveyno=${surveyno}" title="수정"><IMG src="/survey/images/update.png" class="icon"></A>
-          <A href="./read_delete.do?surveyno=${surveyno}" title="삭제"><IMG src="/survey/images/delete.png" class="icon"></A>
+           <c:choose>
+               <c:when test="${sessionScope.admin_id == null}">
+            </c:when>
+            <c:otherwise>
+                <A href="../surveyitem/create.do?surveyno=${surveyno}" title="항목 등록"><IMG src="/survey/images/create.png" class="icon"></A>
+               <A href="./read_update.do?surveyno=${surveyno}" title="수정"><IMG src="/survey/images/update.png" class="icon"></A>
+              <A href="./read_delete.do?surveyno=${surveyno}" title="삭제"><IMG src="/survey/images/delete.png" class="icon"></A>
+       </c:otherwise>
+          
+            </c:choose>
+            
           <A href="../surveyitem/list_by_surveyno.do?surveyno=${surveyno}" title="항목"><IMG src="/survey/images/survey_item.png" class="icon"></A>
                   
         </TD>   
