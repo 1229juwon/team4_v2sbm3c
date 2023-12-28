@@ -34,4 +34,7 @@
 * Git 버전관리
 
 ## Physical Diagram
-* ![a](https://github.com/1229juwon/team4_v2sbm3c/assets/80947350/f7548f1b-52c3-4bb2-a124-0cbb8fa635ea)
+![a](https://github.com/1229juwon/team4_v2sbm3c/assets/80947350/f7548f1b-52c3-4bb2-a124-0cbb8fa635ea)
+
+## RESULT
+![그림3](https://github.com/1229juwon/team4_v2sbm3c/assets/80947350/1c1b87ef-5df6-4991-a7cc-396f8b5d87c2)
