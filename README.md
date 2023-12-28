@@ -33,6 +33,20 @@
 * 예외처리
 * Git 버전관리
 
+## 개발 항목
+* 회원
+* 관리자
+* 즐겨찾기
+* 설문조사
+* 공지사항
+* 리뷰
+* 추천시스템
+* 컨텐츠 목록
+* 카테고리
+
+## 추천 시스템 알고리즘
+* Contents-based Recommender System
+
 ## Physical Diagram
 ![a](https://github.com/1229juwon/team4_v2sbm3c/assets/80947350/f7548f1b-52c3-4bb2-a124-0cbb8fa635ea)
 
