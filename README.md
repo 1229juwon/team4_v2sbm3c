@@ -32,3 +32,6 @@
 * 트랜잭션
 * 예외처리
 * Git 버전관리
+
+## Physical Diagram
+* ![a](https://github.com/1229juwon/team4_v2sbm3c/assets/80947350/f7548f1b-52c3-4bb2-a124-0cbb8fa635ea)
